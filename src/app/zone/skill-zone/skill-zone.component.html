@@ -1,0 +1,40 @@
+<div class="learning-zone-container">
+    <!-- Header -->
+    <div class="header">
+        <img src="assets/icons/back-icon.png" alt="Back Icon" routerLink="/dashboard" class="back-button" />
+        <div class="title-container">
+            <h1>Skill Zone</h1>
+            <img src="assets/icons/long-arrow.png" alt="Arrow" class="long-arrow" />
+        </div>
+        <img src="assets/icons/setting-icon.png" alt="Setting Icon" class="header-icon" />
+    </div>
+
+
+
+
+    <div class="play-section">
+        <h2 class="play-section-title">
+            Learn and <span class="play-highlight">Play</span>
+        </h2>
+        <div class="play-card-container">
+            <div class="play-card" *ngFor="let card of learnAndPlayCards">
+                <div class="play-card-content">
+                    <img [src]="card.image" alt="{{ card.title }}" class="play-card-image-left" />
+                    <div class="play-card-details">
+                        <p class="play-card-title">{{ card.title }}</p>
+                        <div class="play-card-stats">
+                            <p class="play-card-solved">🏆 {{ card.solved }} SOLVED</p>
+                            <p class="play-card-goals">⚽ {{ card.goals }} GOALS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="coming-soon">
+        <img src="assets/icons/coming-soon-icon.png" alt="Coming Soon Icon" class="coming-soon-image" />
+    </div>
+
+</div>

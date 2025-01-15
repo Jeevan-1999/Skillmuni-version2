@@ -1,0 +1,35 @@
+.navbar {
+  border-radius: 0px 0px 20px 20px; /* Rounded corners */
+  background-color: #f5f5f5; /* Navbar background */
+  width: 100vw; /* Full width */
+  position: relative; /* For proper stacking context */
+  z-index: 1; /* Ensure it stays above the welcome-section */
+}
+
+.logo-left,
+.logo-right {
+  width: 48px; /* Adjust logo size */
+  height: auto;
+  object-fit: contain;
+}
+
+/* Styling for the Name Logo */
+.name-logo {
+  width: 40px; /* Circle size */
+  height: 40px;
+  background-color: #2c3e50; /* Dark blue background */
+  color: #fff; /* White text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; /* Circular shape */
+  font-size: 18px; /* Font size for the letter */
+  font-weight: bold; /* Bold text */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  margin-left: 15px; /* Add spacing between the logo and name */
+}
+
+/* Optional Shadow for Navbar */
+.shadow-nav {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}

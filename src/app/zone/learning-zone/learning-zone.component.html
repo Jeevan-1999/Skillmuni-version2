@@ -1,0 +1,37 @@
+<div class="learning-zone-container">
+    <!-- Header Section -->
+    <div class="header">
+        <a routerLink="/dashboard" class="back-button">&larr;</a>
+        <h1>Learning Zone</h1>
+        <img src="assets/icons/puzzle-icon.png" alt="Puzzle Icon" class="header-icon" />
+    </div>
+
+    <!-- Knowledge Hub Section -->
+    <div class="section">
+        <h2 class="section-title">Knowledge <span class="highlight">Hub</span></h2>
+        <div class="card-container knowledge-hub">
+            <div class="card" *ngFor="let item of knowledgeHubCards">
+                <img [src]="item.image" alt="{{item.title}}" />
+                <p>{{item.title}}</p>
+                <span class="arrow">→</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Learn and Play Section -->
+    <div class="section">
+        <h2 class="section-title">Learn and <span class="highlight">Play</span></h2>
+        <div class="card-container learn-and-play">
+            <div class="card" *ngFor="let game of learnAndPlayCards">
+                <img [src]="game.image" alt="{{game.title}}" />
+                <div class="game-info">
+                    <p class="title">{{game.title}}</p>
+                    <div class="stats">
+                        <span>🏆 {{game.solved}} SOLVED</span>
+                        <span>⚽ {{game.goals}} GOALS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

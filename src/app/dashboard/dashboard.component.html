@@ -1,0 +1,54 @@
+<div class="main-container">
+    <div class="welcome-section">
+        <div class="greeting">
+            <h1>Hello {{Name}}!</h1>
+            <p>Explore the <span class="highlight">Zones of Possibility.</span></p>
+            <img src="assets/icons/long arrow.png" alt="arrow">
+        </div>
+        <div class="zone-container">
+            <div class="zone" *ngFor="let zone of zones">
+                <div class="content">
+                    <div class="zone-content">
+                        <h2>{{ zone.name }} <span class="arrow">→</span></h2>
+                        <p class="zone-description">{{zone.description}}</p>
+                        <img [src]="zone.img" [alt]="zone.name" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Zones Section -->
+    <div class="new-zones-section">
+        <div class="zone-card-container">
+            <div class="zone-header">
+                <div class="zone-title">
+                    <img src="assets/icons/learning-zone-logo.png" alt="Learning Zone Logo" class="zone-logo" />
+                    <h2>Learning Zone</h2>
+                </div>
+                <a href="#" class="see-all-link">See All &gt;</a>
+            </div>
+            <div class="card-container">
+                <div class="card" *ngFor="let card of learningZoneCards.slice(0, 3)">
+                    <img [src]="card.image" alt="{{card.title}}" />
+                    <p>{{card.title}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="zone-card-container">
+            <div class="zone-header">
+                <div class="zone-title">
+                    <img src="assets/icons/skill-zone-logo.png" alt="Skill Zone Logo" class="zone-logo" />
+                    <h2>Skill Zone</h2>
+                </div>
+                <a href="#" class="see-all-link">See All &gt;</a>
+            </div>
+            <div class="card-container">
+                <div class="card" *ngFor="let card of skillZoneCards.slice(0, 3)">
+                    <img [src]="card.image" alt="{{card.title}}" />
+                    <p>{{card.title}}</p>
+                </div>
+            </div>
+        </div>
+    </div>

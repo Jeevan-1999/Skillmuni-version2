@@ -1,0 +1,141 @@
+/* General Styles */
+.learning-zone-container {
+  font-family: Arial, sans-serif;
+  background-color: #f5f7fb;
+  padding: 20px;
+  width: 100vw;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 28px;
+  color: #34437a;
+  margin: 0;
+}
+
+.header-icon {
+  max-width: 50px;
+}
+
+.back-button {
+  font-size: 24px;
+  color: #f7931e;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Section Title */
+.section-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #34437a;
+  margin-bottom: 15px;
+}
+
+.section-title .highlight {
+  color: #f7931e;
+}
+
+/* Card Container */
+.card-container {
+  display: grid;
+  gap: 15px;
+}
+
+.knowledge-hub {
+  grid-template-columns: repeat(4, 1fr); /* Default for larger screens */
+}
+
+.learn-and-play {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Card Styles */
+.card {
+  background: linear-gradient(to bottom, #ffffff, #f0f3ff);
+  border-radius: 10px;
+  text-align: center;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #34437a;
+  font-weight: bold;
+  margin: 0;
+}
+
+.arrow {
+  color: #f7931e;
+  font-size: 18px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.game-info {
+  text-align: left;
+}
+
+.game-info .stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #555;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .knowledge-hub,
+  .learn-and-play {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .knowledge-hub {
+    display: flex; /* Change grid to flex for horizontal layout */
+    flex-wrap: nowrap; /* Prevent wrapping */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    gap: 10px; /* Add spacing between cards */
+  }
+
+  .knowledge-hub .card {
+    flex: 0 0 auto; /* Ensure fixed width for each card */
+    width: 80%; /* Adjust width for better visibility */
+    height: auto; /* Keep height responsive */
+  }
+
+  .knowledge-hub::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for a cleaner look */
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+}
