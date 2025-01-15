@@ -297,3 +297,7 @@
   max-width: 50px;
   height: auto; /* Keep the aspect ratio of the logo */
 }
+
+.test {
+  display: inline;
+}
