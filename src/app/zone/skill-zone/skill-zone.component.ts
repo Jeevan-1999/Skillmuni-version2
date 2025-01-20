@@ -1,15 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LearnAndPlayService } from 'src/app/services/learn-and-play.service';
+
+// Define an interface for the learnAndPlayCard
+interface LearnAndPlayCard {
+  title: string;
+  image: string;
+  solved: string;
+  goals: string;
+}
 
 @Component({
   selector: 'app-skill-zone',
   templateUrl: './skill-zone.component.html',
   styleUrls: ['./skill-zone.component.css']
 })
-export class SkillZoneComponent {
-  learnAndPlayCards = [
-    { title: 'INSURANCE', image: 'assets/cards/insurance.png', solved: '1/106', goals: '3' },
-    { title: 'BANKING', image: 'assets/cards/banking.png', solved: '1/106', goals: '3' },
-    { title: 'HOSPITALITY', image: 'assets/cards/hospitality.png', solved: '1/106', goals: '3' },
-    { title: 'IT GYAN', image: 'assets/cards/it-gyan.png', solved: '1/106', goals: '3' },
-  ];
+export class SkillZoneComponent implements OnInit {
+  learnAndPlayCards: LearnAndPlayCard[] = [];  // Specify the type here
+
+  constructor(
+    private router: Router,
+    private learnAndPlayService: LearnAndPlayService
+  ) { }
+
+  ngOnInit(): void {
+    this.learnAndPlayCards = this.learnAndPlayService.getLearnAndPlayCards();
+  }
+
+  navigateToCategory(title: string) {
+    this.router.navigate(['/skill-zone-category', title]);
+  }
 }

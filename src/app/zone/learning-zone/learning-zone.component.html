@@ -1,34 +1,54 @@
+<!-- Learning Zone Component HTML -->
 <div class="learning-zone-container">
-    <!-- Header Section -->
+    <!-- Header -->
     <div class="header">
-        <a routerLink="/dashboard" class="back-button">&larr;</a>
-        <h1>Learning Zone</h1>
-        <img src="assets/icons/puzzle-icon.png" alt="Puzzle Icon" class="header-icon" />
+        <img src="assets/icons/back-arrow.png" alt="Back Icon" routerLink="" class="back-button" />
+        <div class="title-container">
+            <h1>Learning Zone</h1>
+            <img src="assets/icons/long-arrow.png" alt="Arrow" class="long-arrow" />
+        </div>
+        <img src="assets/icons/puzzle.png" alt="Puzzle Icon" class="header-icon" />
     </div>
 
     <!-- Knowledge Hub Section -->
     <div class="section">
-        <h2 class="section-title">Knowledge <span class="highlight">Hub</span></h2>
-        <div class="card-container knowledge-hub">
+        <div class="section-header">
+            <h2 class="section-title">
+                Knowledge <span class="highlight">Hub</span>
+            </h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="card-container">
             <div class="card" *ngFor="let item of knowledgeHubCards">
-                <img [src]="item.image" alt="{{item.title}}" />
-                <p>{{item.title}}</p>
-                <span class="arrow">→</span>
+                <div class="card-heading">
+                    <p class="card-title">{{ item.title }}</p>
+                    <div class="card-arrow">
+                        <span>→</span>
+                    </div>
+                </div>
+                <img [src]="item.image" alt="{{ item.title }}" class="card-image" />
             </div>
         </div>
     </div>
 
     <!-- Learn and Play Section -->
-    <div class="section">
-        <h2 class="section-title">Learn and <span class="highlight">Play</span></h2>
-        <div class="card-container learn-and-play">
-            <div class="card" *ngFor="let game of learnAndPlayCards">
-                <img [src]="game.image" alt="{{game.title}}" />
-                <div class="game-info">
-                    <p class="title">{{game.title}}</p>
-                    <div class="stats">
-                        <span>🏆 {{game.solved}} SOLVED</span>
-                        <span>⚽ {{game.goals}} GOALS</span>
+    <div class="play-section">
+        <div class="play-section-header">
+            <h2 class="play-section-title">
+                Learn and <span class="play-highlight">Play</span>
+            </h2>
+            <div class="play-section-line"></div>
+        </div>
+        <div class="play-card-container">
+            <div class="play-card" *ngFor="let card of learnAndPlayCards">
+                <div class="play-card-content">
+                    <img [src]="card.image" alt="{{ card.title }}" class="play-card-image-left" />
+                    <div class="play-card-details">
+                        <p class="play-card-title">{{ card.title }}</p>
+                        <div class="play-card-stats">
+                            <p class="play-card-solved">🏆 {{ card.solved }} SOLVED</p>
+                            <p class="play-card-goals">⚽ {{ card.goals }} GOALS</p>
+                        </div>
                     </div>
                 </div>
             </div>

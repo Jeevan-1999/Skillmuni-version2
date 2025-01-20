@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-learning-zone',
@@ -21,4 +22,6 @@ export class LearningZoneComponent {
     { title: 'HAPPINESS BAROMETER', image: 'assets/cards/happiness-barometer.png', solved: '1/106', goals: '3' },
     { title: 'SURGICAL STRIKE', image: 'assets/cards/surgical-strike.png', solved: '1/106', goals: '3' },
   ];
+
+
 }

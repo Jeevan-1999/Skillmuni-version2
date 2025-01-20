@@ -1,7 +1,8 @@
-.learning-zone-container {
+/* Main container */
+.skill-zone-container {
   font-family: "Arial", sans-serif;
   width: 100vw;
-  min-height: 100vh; /* Changed from height to min-height */
+  min-height: 100vh; /* Ensure full height */
   padding: 0;
   box-sizing: border-box;
   background-color: #f5f7fb;
@@ -12,9 +13,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 24px;
+  padding: 0 10px;
   background: linear-gradient(to right, #d2dbff, #f7f9ff, #e7ecff);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 85px;
 }
 
 .title-container {
@@ -22,17 +24,18 @@
   flex-direction: column;
   align-items: center;
   gap: 5px;
+  margin-left: 60px;
 }
 
 .header h1 {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
   color: #34437a;
   margin: 0;
 }
 
 .long-arrow {
-  width: 150px;
+  width: 160px;
 }
 
 .header-icon {
@@ -45,102 +48,25 @@
   cursor: pointer;
 }
 
-/* Section Title */
-.section-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: #34437a;
-  padding: 20px;
-  padding-bottom: 0;
-  margin: 0;
-}
-
-.highlight {
-  color: #f7931e;
-}
-
-/* Card Container */
-.card-container {
+/* Learn and Play Section */
+.play-section-header {
   display: flex;
-  gap: 20px;
-  justify-content: flex-start;
-  padding: 20px;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Ensures proper spacing between top and bottom */
   align-items: center;
-  background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  width: 220px;
-  height: auto; /* Fixed height to maintain consistent layout */
-  position: relative;
-  transition: transform 0.2s ease-in-out;
-}
-.card:hover {
-  transform: scale(1.05);
+  margin: 20px;
+  gap: 10px;
 }
 
-.card-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 0 10px;
-}
-
-.card-title {
-  font-size: 16px;
-  font-weight: bold;
-  color: #34437a;
-  margin: 0;
-}
-
-.card-arrow {
-  font-size: 20px;
-  color: #f7931e;
-  font-weight: bold;
-}
-
-.card-image {
-  width: 100%; /* Adjust width of the image */
-  height: auto; /* Adjust height of the image */
-  margin-top: 10px; /* Space between the image and the previous content */
-  align-self: center; /* Ensures the image is centered */
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .card-container {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 10px;
-  }
-
-  .card {
-    flex: 0 0 auto;
-    width: 50%;
-    height: auto;
-  }
-
-  .play-section-title {
-    padding-bottom: 14px !important;
-  }
-}
-
-/* Learn and Play Section Styling */
 .play-section-title {
   font-size: 22px;
   font-weight: 700;
   color: #34437a;
-  padding: 20px;
-  padding-bottom: 0;
   margin: 0;
+}
+
+.play-section-line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #f7931e;
 }
 
 .play-highlight {
@@ -164,11 +90,13 @@
   width: 400px;
   height: auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(to bottom, #ffffff, #f0f3ff);
 }
 
 .play-card:hover {
   transform: translateY(-5px);
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .play-card-content {
@@ -182,16 +110,6 @@
   height: auto;
   margin-right: 15px;
 }
-.play-card-stats {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  background-color: #fff0de;
-  border-radius: 10px;
-  padding: 5px 10px;
-  width: max-content;
-  padding-top: 16px;
-}
 
 .play-card-details {
   display: flex;
@@ -199,9 +117,20 @@
 }
 
 .play-card-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   color: #34437a;
+}
+
+.play-card-stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  background-color: #fff0de;
+  border-radius: 10px;
+  padding: 0px;
+  width: max-content;
+  padding-top: 16px;
 }
 
 .play-card-solved,
@@ -210,8 +139,46 @@
   color: #666;
 }
 
+.coming-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.coming-soon img {
+  max-width: 240px;
+  margin-top: 35px;
+}
+
 /* Responsive Styling */
 @media (max-width: 768px) {
+  .play-section-title {
+    font-size: 18px;
+  }
+
+  .play-card-solved,
+  .play-card-goals {
+    font-size: 12px;
+  }
+
+  .play-card-title {
+    font-size: 14px;
+  }
+
+  .play-card-image-left {
+    width: 100px;
+    height: auto;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .long-arrow {
+    width: 120px;
+  }
+
   .play-card-container {
     flex-direction: column;
     align-items: center;
@@ -221,28 +188,4 @@
   .play-card {
     width: 90%;
   }
-  .play-card-title {
-    font-size: 16px;
-  }
-
-  .play-card-solved,
-  .play-card-goals {
-    font-size: 11px;
-    color: #666;
-  }
-}
-
-.coming-soon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-  color: #666;
-}
-
-.coming-soon-image {
-  width: 80px; /* Adjust size as needed */
-  height: auto;
-  margin-bottom: 10px;
 }

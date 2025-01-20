@@ -1,9 +1,11 @@
-/* General Styles */
+/* Main container */
 .learning-zone-container {
-  font-family: Arial, sans-serif;
-  background-color: #f5f7fb;
-  padding: 20px;
+  font-family: "Arial", sans-serif;
   width: 100vw;
+  min-height: 100vh; /* Ensure full height */
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f5f7fb;
 }
 
 /* Header */
@@ -11,131 +13,266 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  padding: 0 10px;
+  background: linear-gradient(to right, #d2dbff, #f7f9ff, #e7ecff);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 85px;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
 }
 
 .header h1 {
-  font-size: 28px;
+  font-size: 24px;
+  font-weight: bold;
   color: #34437a;
   margin: 0;
 }
 
+.long-arrow {
+  width: 160px;
+}
+
 .header-icon {
-  max-width: 50px;
+  max-width: 80px;
 }
 
 .back-button {
-  font-size: 24px;
-  color: #f7931e;
-  text-decoration: none;
-  font-weight: bold;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }
 
 /* Section Title */
-.section-title {
-  font-size: 22px;
-  font-weight: bold;
-  color: #34437a;
-  margin-bottom: 15px;
+.section-header {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+  gap: 10px; /* Space between the title and the line */
 }
 
-.section-title .highlight {
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #34437a;
+  margin: 0;
+}
+
+.section-line {
+  flex-grow: 1; /* Makes the line take up the remaining space */
+  height: 2px; /* Thickness of the line */
+  background-color: #f7931e; /* Orange color */
+}
+
+.highlight {
   color: #f7931e;
 }
 
 /* Card Container */
 .card-container {
-  display: grid;
-  gap: 15px;
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start;
+  padding: 20px;
 }
 
-.knowledge-hub {
-  grid-template-columns: repeat(4, 1fr); /* Default for larger screens */
-}
-
-.learn-and-play {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-/* Card Styles */
 .card {
-  background: linear-gradient(to bottom, #ffffff, #f0f3ff);
-  border-radius: 10px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   padding: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 220px;
+  height: auto;
   position: relative;
   transition: transform 0.2s ease-in-out;
 }
-
 .card:hover {
   transform: scale(1.05);
+  background: linear-gradient(to bottom, #ffffff, #f0f3ff);
 }
 
-.card img {
+.card-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #34437a;
+  margin: 0;
+  width: 100%;
+}
+
+.card-arrow {
+  font-size: 20px;
+  color: #f7931e;
+  font-weight: bold;
+}
+
+.card-image {
   width: 100%;
   height: auto;
-  margin-bottom: 10px;
-  border-radius: 10px;
+  margin-top: 10px;
+  align-self: center;
 }
 
-.card p {
-  font-size: 14px;
+/* Play Section */
+.play-section-header {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+  gap: 10px;
+}
+
+.play-section-title {
+  font-size: 22px;
+  font-weight: 700;
   color: #34437a;
-  font-weight: bold;
   margin: 0;
 }
 
-.arrow {
+.play-section-line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #f7931e;
+}
+
+.play-highlight {
   color: #f7931e;
-  font-size: 18px;
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
 }
 
-.game-info {
-  text-align: left;
+.play-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 20px;
 }
 
-.game-info .stats {
+.play-card {
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 400px;
+  height: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(to bottom, #ffffff, #f0f3ff);
+}
+
+.play-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.play-card-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.play-card-image-left {
+  width: 40%;
+  height: auto;
+  margin-right: 15px;
+}
+
+.play-card-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.play-card-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #34437a;
+}
+
+.play-card-stats {
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
-  color: #555;
+  gap: 10px;
+  background-color: #fff0de;
+  border-radius: 10px;
+  padding: 0px;
+  width: max-content;
+  padding-top: 16px;
 }
 
-/* Mobile Responsiveness */
+.play-card-solved,
+.play-card-goals {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Responsive Styling */
 @media (max-width: 768px) {
-  .knowledge-hub,
-  .learn-and-play {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 576px) {
-  .knowledge-hub {
-    display: flex; /* Change grid to flex for horizontal layout */
-    flex-wrap: nowrap; /* Prevent wrapping */
-    overflow-x: auto; /* Enable horizontal scrolling */
-    gap: 10px; /* Add spacing between cards */
+  .section-title {
+    font-size: 18px;
   }
 
-  .knowledge-hub .card {
-    flex: 0 0 auto; /* Ensure fixed width for each card */
-    width: 80%; /* Adjust width for better visibility */
-    height: auto; /* Keep height responsive */
+  .play-section-title {
+    font-size: 18px;
   }
 
-  .knowledge-hub::-webkit-scrollbar {
-    display: none; /* Hide scrollbar for a cleaner look */
+  .play-card-title {
+    font-size: 14px;
+  }
+
+  .play-card-image-left {
+    width: 100px;
+    height: auto;
+  }
+  .play-card-solved,
+  .play-card-goals {
+    font-size: 12px;
+  }
+  .card-title {
+    font-size: 12px;
   }
 
   .header h1 {
     font-size: 20px;
   }
 
-  .section-title {
-    font-size: 18px;
+  .long-arrow {
+    width: 120px;
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 10px;
+  }
+
+  .card {
+    flex: 0 0 auto;
+    width: 40%;
+    height: auto;
+    padding: 10px;
+  }
+
+  .play-card-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+
+  .play-card {
+    width: 90%;
   }
 }

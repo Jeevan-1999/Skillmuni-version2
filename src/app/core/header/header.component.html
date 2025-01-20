@@ -1,14 +1,36 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light  shadow-nav">
-    <div class="container-fluid d-flex justify-content-between align-items-center">
-        <!-- Left Logo -->
-        <img src="assets/Layer_x0020_1.png" alt="Left Logo" class="logo-left" />
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-nav">
+    <div class="container-fluid">
+        <!-- Left Section: Logo -->
+        <div class="left-section d-flex align-items-center">
+            <img src="assets/icons/skillmuni-desktop-icon.png" routerLink="/dashboard" alt="Skillmuni Logo"
+                class="logo-left desktop-only" />
+            <img src="assets/icons/skillmuni-mobile-icon.png" routerLink="/dashboard" alt="Skillmuni Logo"
+                class="logo-left mobile-only" />
+        </div>
 
-        <!-- Right Logo and Name Logo -->
-        <div class="d-flex align-items-center">
-            <img src="assets/Group 494.png" alt="Right Logo" class="logo-right" />
-            <div class="name-logo ms-3"> <!-- Add spacing -->
-                S
-            </div>
+        <!-- Center Section: Navigation Links -->
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <i class="material-icons">home</i>
+                <a class="nav-link" routerLink="/home">
+                    My Home
+                </a>
+            </li>
+            <li class="nav-item"> <i class="material-icons">leaderboard</i>
+                <a class="nav-link" routerLink="/leaderboard">
+                    Leaderboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <i class="material-icons">dashboard</i>
+                <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+            </li>
+        </ul>
+
+        <!-- Right Section: Avatar and Profile Icon -->
+        <div class="right-section d-flex align-items-center">
+            <img src="assets/icons/chat-icon.png" alt="Profile Icon" class="profile-icon" />
+            <div class="name-logo">S</div>
         </div>
     </div>
 </nav>

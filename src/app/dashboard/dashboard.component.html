@@ -3,10 +3,10 @@
         <div class="greeting">
             <h1>Hello {{Name}}!</h1>
             <p>Explore the <span class="highlight">Zones of Possibility.</span></p>
-            <img src="assets/icons/long arrow.png" alt="arrow">
+            <img src="assets/icons/long-arrow.png" alt="arrow">
         </div>
         <div class="zone-container">
-            <div class="zone" *ngFor="let zone of zones">
+            <div class="zone" *ngFor="let zone of zones" (click)="navigateToZone(zone.name)">
                 <div class="content">
                     <div class="zone-content">
                         <h2>{{ zone.name }} <span class="arrow">→</span></h2>
@@ -26,7 +26,7 @@
                     <img src="assets/icons/learning-zone-logo.png" alt="Learning Zone Logo" class="zone-logo" />
                     <h2>Learning Zone</h2>
                 </div>
-                <a href="#" class="see-all-link">See All &gt;</a>
+                <a [routerLink]="'/learning-zone'" class="see-all-link">See All &gt;</a>
             </div>
             <div class="card-container">
                 <div class="card" *ngFor="let card of learningZoneCards.slice(0, 3)">
@@ -42,7 +42,7 @@
                     <img src="assets/icons/skill-zone-logo.png" alt="Skill Zone Logo" class="zone-logo" />
                     <h2>Skill Zone</h2>
                 </div>
-                <a href="#" class="see-all-link">See All &gt;</a>
+                <a [routerLink]="'/skill-zone'" class="see-all-link">See All &gt;</a>
             </div>
             <div class="card-container">
                 <div class="card" *ngFor="let card of skillZoneCards.slice(0, 3)">
