@@ -2,8 +2,7 @@
 .navbar {
   border-radius: 0 0 20px 20px; /* Rounded corners */
   background-color: #f5f5f5; /* Light background */
-  width: 100vw; /* Full width */
-  z-index: 1; /* Stack above other elements */
+  width: 100%;
 }
 
 /* Left Section: Logo Styling */
