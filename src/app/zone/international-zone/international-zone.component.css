@@ -1,12 +1,9 @@
 .international-zone-container {
-  font-family: "Arial", sans-serif;
   width: 100%; /* Prevents overflow caused by scrollbars */
   min-height: 100vh;
   padding: 0;
   box-sizing: border-box;
-  margin-bottom: 10px;
 }
-
 .header {
   display: flex;
   align-items: center;
@@ -44,15 +41,18 @@
 }
 
 @media (max-width: 768px) {
-  .card-container {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 20px !important;
+  .international-zone-container .card-container {
+    /* Add more specificity to override conflicting styles */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 10px;
   }
 
   .card {
-    width: 170px !important; /* Medium width for tablets */
+    width: 100%; /* Ensure the card width adjusts to the container */
+    max-width: 150px; /* Limit the card width for smaller screens */
+    margin: auto; /* Center align the cards */
   }
-
   .header h1 {
     font-size: 20px; /* Adjust font size of header */
   }
@@ -64,6 +64,7 @@
   .section-header .section-title {
     font-size: 16px; /* Adjust section title font size */
     color: black; /* Ensure readability on mobile */
+    padding-top: 5px;
   }
 }
 .quick-access {

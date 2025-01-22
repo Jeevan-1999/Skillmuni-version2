@@ -1,6 +1,5 @@
 /* Main container */
 .learning-zone-container {
-  font-family: "Arial", sans-serif;
   width: 100%;
   min-height: 100vh; /* Ensure full height */
   padding: 0;
