@@ -13,7 +13,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 10px 0;  background: linear-gradient(to right, #d2dbff, #f7f9ff, #e7ecff);
+  padding: 20px 10px 0;
+  background: linear-gradient(to right, #d2dbff, #f7f9ff, #e7ecff);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   height: 85px;
   margin-top: -20px;
@@ -202,19 +203,20 @@
 
 .play-card-stats {
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
+  justify-content: space-between; /* Keeps items aligned on the same row */
   background-color: #fff0de;
   border-radius: 10px;
-  padding: 16px 10px 0 10px;
-  width: max-content;
-  padding-top: 16px;
+  gap: 20px;
+  padding: 8px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .play-card-solved,
 .play-card-goals {
   font-size: 14px;
   color: #666;
+  margin: 0; /* Remove default margin between <p> tags */
 }
 
 /* Responsive Styling */
@@ -225,10 +227,6 @@
 
   .play-section-title {
     font-size: 18px;
-  }
-
-  .play-card-title {
-    font-size: 14px;
   }
 
   .play-card-image-left {

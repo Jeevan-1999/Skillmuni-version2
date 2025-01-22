@@ -11,19 +11,25 @@
         <!-- Center Section: Navigation Links -->
         <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-                <i class="material-icons">home</i>
-                <a class="nav-link" routerLink="/home">
-                    My Home
-                </a>
-            </li>
-            <li class="nav-item"> <i class="material-icons">leaderboard</i>
-                <a class="nav-link" routerLink="/leaderboard">
-                    Leaderboard
+                <a class="nav-link" [ngClass]="{'active': activeLink === 'home'}" (click)="setActiveLink('home')"
+                    routerLink="/home">
+                    <i class="material-icons">home</i>
+                    <span>My Home</span>
                 </a>
             </li>
             <li class="nav-item">
-                <i class="material-icons">dashboard</i>
-                <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+                <a class="nav-link" [ngClass]="{'active': activeLink === 'leaderboard'}"
+                    (click)="setActiveLink('leaderboard')" routerLink="/leaderboard">
+                    <i class="material-icons">leaderboard</i>
+                    <span>Leaderboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [ngClass]="{'active': activeLink === 'dashboard'}"
+                    (click)="setActiveLink('dashboard')" routerLink="/dashboard">
+                    <i class="material-icons">dashboard</i>
+                    <span>Dashboard</span>
+                </a>
             </li>
         </ul>
 

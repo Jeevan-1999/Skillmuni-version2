@@ -1,90 +1,89 @@
 /* General Navbar Styling */
 .navbar {
-  border-radius: 0 0 20px 20px; /* Rounded corners */
-  background-color: #f5f5f5; /* Light background */
+  border-radius: 0 0 20px 20px;
+  background-color: #f5f5f5;
   width: 100%;
 }
 
-/* Left Section: Logo Styling */
+/* Left Section: Logo */
 .logo-left {
   height: 40px;
   object-fit: contain;
 }
 
 .mobile-only {
-  display: none; /* Hidden by default */
+  display: none;
 }
 
 .desktop-only {
-  display: block; /* Visible on larger screens */
+  display: block;
 }
 
 /* Center Section: Navigation Links */
 .navbar-nav {
-  list-style: none;
   display: flex;
-  gap: 20px; /* Spacing between links */
+  gap: 30px; /* Spacing between items */
+  align-items: center;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
 }
 
 .nav-link {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #2c3e50; /* Dark text color */
-  font-size: 16px; /* Adjusted font size */
+  color: #2c3e50;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #e67c00; /* Highlight on hover */
+}
+
+.nav-link i {
+  margin-right: 8px; /* Space between icon and text */
+  font-size: 20px;
+}
+
+.nav-link span {
+  font-size: 15px;
   font-weight: bold;
 }
-.nav-item {
-  display: flex; /* Use flexbox for horizontal alignment */
-  align-items: center; /* Vertically center items */
-  gap: 5px; /* Add space between the icon and the link */
+
+/* Active Link Styles */
+.nav-link.active i,
+.nav-link.active span {
+  color: #f7931e; /* Active color */
 }
 
-.material-icons {
-  font-size: 20px; /* Adjust the icon size if needed */
-  color: #555; /* Set the icon color */
-}
-
-.nav-link {
-  text-decoration: none; /* Remove underline from the link */
-  color: #000; /* Set the text color */
-  font-weight: 500; /* Optional: Add weight to the text */
-}
-
-.material-icons .navbar-light .navbar-nav .nav-link:focus,
-.navbar-light .navbar-nav .nav-link:hover {
-  color: #e67c00;
-}
-
-.icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 8px; /* Spacing between icon and text */
-}
-
-/* Right Section: Profile Icon and Name Logo */
+/* Right Section */
 .right-section {
   display: flex;
   align-items: center;
 }
 
 .profile-icon {
-  height: 50px; /* Profile icon size */
-  margin-right: 15px; /* Spacing before name logo */
+  height: 40px;
+  margin-right: 15px;
 }
 
 .name-logo {
-  width: 40px; /* Circle size */
+  width: 40px;
   height: 40px;
-  background-color: #2c3e50; /* Dark blue */
-  color: #fff; /* White text */
+  background-color: #2c3e50;
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%; /* Circle shape */
-  font-size: 18px; /* Font size for initial */
-  font-weight: bold; /* Bold text */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Navbar Shadow */
@@ -95,32 +94,32 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .navbar-nav {
-    display: none; /* Completely hide navigation links */
-  }
-  .mobile-only {
-    display: block; /* Show on small screens */
+    display: none;
   }
 
-  .desktop-only {
-    display: none; /* Hide on small screens */
+  .nav-link {
+    font-size: 14px;
   }
 
-  .navbar-nav {
-    gap: 10px; /* Reduce spacing for smaller screens */
-  }
-
-  .icon {
-    width: 18px;
-    height: 18px;
+  .nav-link i {
+    font-size: 18px;
   }
 
   .profile-icon {
-    height: 40px; /* Adjust profile icon size */
+    height: 35px;
   }
 
   .name-logo {
-    width: 35px; /* Adjust circle size */
+    width: 35px;
     height: 35px;
-    font-size: 16px; /* Adjust font size */
+    font-size: 16px;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .desktop-only {
+    display: none;
   }
 }

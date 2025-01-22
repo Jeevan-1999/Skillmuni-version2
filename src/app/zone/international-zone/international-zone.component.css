@@ -4,8 +4,9 @@
   min-height: 100vh;
   padding: 0;
   box-sizing: border-box;
-  background-color: #f5f7fb;
+  margin-bottom: 10px;
 }
+
 .header {
   display: flex;
   align-items: center;
@@ -41,12 +42,180 @@
   height: 30px;
   cursor: pointer;
 }
+
 @media (max-width: 768px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  .card {
+    width: 170px !important; /* Medium width for tablets */
+  }
+
   .header h1 {
-    font-size: 20px;
+    font-size: 20px; /* Adjust font size of header */
   }
 
   .long-arrow {
-    width: 120px;
+    width: 120px; /* Resize arrow for smaller screens */
   }
+
+  .section-header .section-title {
+    font-size: 16px; /* Adjust section title font size */
+    color: black; /* Ensure readability on mobile */
+  }
+}
+.quick-access {
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  display: none; /* Hidden by default */
+} /* Show Quick Access only for screens below 1024px (mobile and tablet) */
+@media (max-width: 1024px) {
+  .card-container {
+    grid-template-columns: repeat(
+      6,
+      1fr
+    ); /* Display 6 cards per row on desktops */
+    gap: 25px;
+  }
+
+  .card {
+    width: 220px; /* Standard width for desktop cards */
+  }
+  .quick-access {
+    display: block; /* Visible only for smaller screens */
+  }
+}
+
+.quick-access-title {
+  font-size: 16px;
+  margin-bottom: 2px;
+  text-align: start;
+}
+
+/* Horizontal Scroll for Quick Access List */
+.quick-access-list {
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  gap: 10px;
+  padding: 5px 0;
+  scroll-behavior: smooth;
+}
+
+.quick-access-list::-webkit-scrollbar {
+  height: 6px; /* Height of the horizontal scrollbar */
+}
+
+.quick-access-list::-webkit-scrollbar-thumb {
+  background: #d1d1d1; /* Scrollbar thumb color */
+  border-radius: 4px;
+}
+
+.quick-access-list::-webkit-scrollbar-thumb:hover {
+  background: #b5b5b5; /* Scrollbar thumb hover color */
+}
+
+/* Quick Access Item Styling */
+.quick-access-item {
+  padding: 5px;
+  background: linear-gradient(to bottom, #ffffff, #f0f3ff);
+  font-size: 12px;
+  text-align: center;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  margin-right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0; /* Prevent items from shrinking in the scroll container */
+}
+
+.quick-access-item:hover {
+  background-color: #f7931e;
+  color: #ffffff;
+}
+
+/* Container styling */
+.international-zone {
+  margin: 10px;
+}
+
+/* Card container */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(220px, 1fr)
+  ); /* Default layout for larger screens */
+  gap: 20px;
+  justify-items: center;
+}
+
+/* Learn and Play Section */
+.section-header {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+  gap: 10px;
+}
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #34437a;
+}
+.highlight {
+  color: #f7931e;
+}
+.section-line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #f7931e;
+}
+
+/* Card styling */
+.card {
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  width: 220px; /* Default card width for larger screens */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Image container */
+.image-container {
+  background-color: #ffffff;
+  border-radius: 15px 15px 0 0;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 15px 15px 0 0;
+  padding: 10px;
+}
+
+/* Card title styling */
+
+.card-title {
+  padding: 10px;
+  font-size: 14px;
+  color: #2c3e50;
+  background-color: #fdf5e6;
+  border-radius: 0 0 15px 15px;
+  text-align: start;
+  margin: 8px;
 }

@@ -125,18 +125,18 @@
 .play-card-stats {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
   background-color: #fff0de;
   border-radius: 10px;
-  padding: 16px 10px 0 10px;
-  width: max-content;
-  padding-top: 16px;
+  gap: 20px;
+  padding: 8px;
+  box-sizing: border-box;
 }
 
 .play-card-solved,
 .play-card-goals {
   font-size: 14px;
   color: #666;
+  margin: 0;
 }
 
 .coming-soon {
