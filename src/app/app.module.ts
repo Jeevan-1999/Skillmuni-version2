@@ -14,6 +14,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { InternationalZoneComponent } from './zone/international-zone/international-zone.component';
 import { EnterpreneurZoneComponent } from './zone/enterpreneur-zone/enterpreneur-zone.component';
 import { PlacementZoneComponent } from './zone/placement-zone/placement-zone.component';
+import { InternationalZoneDetailsComponent } from './zone/international-zone/international-zone-details/international-zone-details.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { PlacementZoneComponent } from './zone/placement-zone/placement-zone.com
     InternationalZoneComponent,
     EnterpreneurZoneComponent,
     PlacementZoneComponent,
+    InternationalZoneDetailsComponent,
   ],
   imports: [
     BrowserModule,

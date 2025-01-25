@@ -8,6 +8,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { InternationalZoneComponent } from './zone/international-zone/international-zone.component';
 import { EnterpreneurZoneComponent } from './zone/enterpreneur-zone/enterpreneur-zone.component';
 import { PlacementZoneComponent } from './zone/placement-zone/placement-zone.component';
+import { InternationalZoneDetailsComponent } from './zone/international-zone/international-zone-details/international-zone-details.component';
 
 const routes: Routes = [
   {
@@ -15,9 +16,15 @@ const routes: Routes = [
     component: DashboardComponent, // Default path redirects to Dashboard
   },
   {
+    path: 'dashboard',
+    component: DashboardComponent, // Default path redirects to Dashboard
+  },
+  {
     path: 'international-zone',
     component: InternationalZoneComponent,
   },
+  { path: 'international-zone/:placeName', component: InternationalZoneDetailsComponent },
+
   {
     path: 'enterpreneur-zone',
     component: EnterpreneurZoneComponent,

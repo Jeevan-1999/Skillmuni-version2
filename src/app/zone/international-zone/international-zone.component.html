@@ -20,7 +20,8 @@
     <div class="quick-access">
         <h2 class="quick-access-title">Quick Access</h2>
         <div class="quick-access-list">
-            <div *ngFor="let place of places.slice(4, 10)" class="quick-access-item">
+            <div *ngFor="let place of places.slice(4, 10)" class="quick-access-item"
+                [routerLink]="'/international-zone/' + place.name">
                 {{ place.name }}
             </div>
         </div>
@@ -30,7 +31,7 @@
     <div class="international-zone">
 
         <div class="card-container">
-            <div class="card" *ngFor="let place of places">
+            <div class="card" *ngFor="let place of places" [routerLink]="'/international-zone/' + place.name">
                 <div class="image-container">
                     <img [src]="place.image" [alt]="place.name" />
                 </div>

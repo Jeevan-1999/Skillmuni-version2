@@ -1,0 +1,57 @@
+<div class="details-container">
+    <div class="header">
+        <img src="assets/icons/back-arrow.png" alt="Back Icon" routerLink="/international-zone" class="back-button" />
+        <div class="title-container">
+            <h1>International Zone</h1>
+            <img src="assets/icons/long-arrow.png" alt="Arrow" class="long-arrow" />
+            <h2>{{ placeName }}</h2>
+        </div>
+        <img src="assets/icons/category.png" alt="Category Icon" class="header-icon" />
+    </div>
+
+    <div class="content">
+        <div class="sub-header">
+            <div class="stat-box">
+                <img src="assets/icons/article-icon.png" alt="Article Icon" class="stat-icon" />
+                <p>
+                    Articles: 1 / <span>20 Solved</span>
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h2>About {{ placeName }}</h2>
+                <div class="header-icons">
+                    <img src="assets/icons/bookmark-icon.png" alt="Bookmark" class="header-icon" />
+                    <img src="assets/icons/share-icon.png" alt="Share" class="header-icon" />
+                </div>
+            </div>
+            <div class="card-body">
+                <img [src]="imagePath" alt="{{ placeName }}" class="card-image"
+                    onerror="this.src='assets/icons/placeholder.png'; console.log('Image not found, using placeholder')" />
+                <div class="card-content">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure quae impedit assumenda vero
+                        placeat! Beatae amet at ducimus eveniet sint iste, esse quis similique illum corrupti error
+                        earum reiciendis dignissimos autem eos enim quod deserunt delectus soluta rem ut! Eveniet,
+                        ducimus praesentium. Porro facilis commodi repellat ipsum culpa reprehenderit illum.</p>
+                    <button class="register-button">
+                        Register my Interest
+                    </button>
+                </div>
+            </div>
+            <div class="card-footer">
+                <p>
+                    Please scroll up for more
+                    <span class="material-icons">arrow_upward</span>
+                </p>
+                <div class="footer-icons">
+                    <span class="material-icons ">thumb_up</span>
+                    <span class="material-icons">thumb_down</span>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

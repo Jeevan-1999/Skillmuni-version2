@@ -1,9 +1,12 @@
+/* Global container for the international zone */
 .international-zone-container {
-  width: 100%; /* Prevents overflow caused by scrollbars */
+  width: 100%;
   min-height: 100vh;
   padding: 0;
   box-sizing: border-box;
 }
+
+/* Header section styling */
 .header {
   display: flex;
   align-items: center;
@@ -14,10 +17,12 @@
   height: 85px;
   margin-top: -20px;
 }
+
 .title-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 50px;
 }
 
 .header h1 {
@@ -34,61 +39,44 @@
 .header-icon {
   max-width: 80px;
 }
+
 .back-button {
   width: 30px;
   height: 30px;
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  .international-zone-container .card-container {
-    /* Add more specificity to override conflicting styles */
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    padding: 10px;
-  }
-
-  .card {
-    width: 100%; /* Ensure the card width adjusts to the container */
-    max-width: 150px; /* Limit the card width for smaller screens */
-    margin: auto; /* Center align the cards */
-  }
-  .header h1 {
-    font-size: 20px; /* Adjust font size of header */
-  }
-
-  .long-arrow {
-    width: 120px; /* Resize arrow for smaller screens */
-  }
-
-  .section-header .section-title {
-    font-size: 16px; /* Adjust section title font size */
-    color: black; /* Ensure readability on mobile */
-    padding-top: 5px;
-  }
+/* Section header for learn and play */
+.section-header {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+  gap: 10px;
 }
+
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #34437a;
+}
+
+.highlight {
+  color: #f7931e;
+}
+
+.section-line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #f7931e;
+}
+
+/* Quick access section */
 .quick-access {
   text-align: center;
   padding: 10px 20px;
   border-radius: 15px;
   margin-bottom: 20px;
-  display: none; /* Hidden by default */
-} /* Show Quick Access only for screens below 1024px (mobile and tablet) */
-@media (max-width: 1024px) {
-  .card-container {
-    grid-template-columns: repeat(
-      6,
-      1fr
-    ); /* Display 6 cards per row on desktops */
-    gap: 25px;
-  }
-
-  .card {
-    width: 220px; /* Standard width for desktop cards */
-  }
-  .quick-access {
-    display: block; /* Visible only for smaller screens */
-  }
+  display: none;
 }
 
 .quick-access-title {
@@ -97,29 +85,27 @@
   text-align: start;
 }
 
-/* Horizontal Scroll for Quick Access List */
 .quick-access-list {
   display: flex;
-  overflow-x: auto; /* Enable horizontal scrolling */
+  overflow-x: auto;
   gap: 10px;
   padding: 5px 0;
   scroll-behavior: smooth;
 }
 
 .quick-access-list::-webkit-scrollbar {
-  height: 6px; /* Height of the horizontal scrollbar */
+  height: 6px;
 }
 
 .quick-access-list::-webkit-scrollbar-thumb {
-  background: #d1d1d1; /* Scrollbar thumb color */
+  background: #d1d1d1;
   border-radius: 4px;
 }
 
 .quick-access-list::-webkit-scrollbar-thumb:hover {
-  background: #b5b5b5; /* Scrollbar thumb hover color */
+  background: #b5b5b5;
 }
 
-/* Quick Access Item Styling */
 .quick-access-item {
   padding: 5px;
   background: linear-gradient(to bottom, #ffffff, #f0f3ff);
@@ -128,14 +114,13 @@
   border-radius: 50%;
   width: 70px;
   height: 70px;
-  margin-right: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: all 0.3s ease;
-  flex-shrink: 0; /* Prevent items from shrinking in the scroll container */
+  flex-shrink: 0;
 }
 
 .quick-access-item:hover {
@@ -143,58 +128,37 @@
   color: #ffffff;
 }
 
-/* Container styling */
+.quick-access {
+  display: none; /* Hidden by default */
+}
+
+/* Main container styling */
 .international-zone {
   margin: 10px;
 }
 
-/* Card container */
 .card-container {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(220px, 1fr)
-  ); /* Default layout for larger screens */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
   justify-items: center;
 }
 
-/* Learn and Play Section */
-.section-header {
-  display: flex;
-  align-items: center;
-  margin: 20px;
-  gap: 10px;
-}
-.section-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: #34437a;
-}
-.highlight {
-  color: #f7931e;
-}
-.section-line {
-  flex-grow: 1;
-  height: 2px;
-  background-color: #f7931e;
-}
-
-/* Card styling */
+/* Card styles */
 .card {
   border-radius: 20px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
   overflow: hidden;
-  width: 220px; /* Default card width for larger screens */
+  width: 220px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .card:hover {
   transform: translateY(-8px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Image container */
 .image-container {
   background-color: #ffffff;
   border-radius: 15px 15px 0 0;
@@ -207,9 +171,8 @@
   object-fit: cover;
   border-radius: 15px 15px 0 0;
   padding: 10px;
+  padding-bottom: 0;
 }
-
-/* Card title styling */
 
 .card-title {
   padding: 10px;
@@ -219,4 +182,34 @@
   border-radius: 0 0 15px 15px;
   text-align: start;
   margin: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 150px;
+    margin: auto;
+  }
+
+  .header h1 {
+    font-size: 18px;
+  }
+  .long-arrow {
+    width: 120px;
+  }
+
+  .section-header .section-title {
+    font-size: 16px;
+    padding-top: 5px;
+  }
+  .quick-access {
+    display: block;
+  }
 }
