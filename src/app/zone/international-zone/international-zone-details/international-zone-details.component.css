@@ -111,14 +111,14 @@
   color: #f7931e;
 }
 
-.header-icons {
+.article-icons {
   display: flex;
   align-items: center;
   gap: 15px;
   margin-left: auto;
 }
 
-.article-icon {
+.header-article-icon {
   width: auto;
   height: 18px;
   cursor: pointer;
