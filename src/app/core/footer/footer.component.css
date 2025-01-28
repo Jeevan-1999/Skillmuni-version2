@@ -1,14 +1,14 @@
 .footer {
-  display: none; /* Initially hide the footer */
-  position: fixed; /* Fix the footer at the bottom */
-  bottom: 0;
+  position: relative; /* Allows the footer to sit within the normal flow */
+  bottom: 0; /* Ensures it stays at the bottom of its container */
   left: 0;
-  width: 100%; /* Full width */
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #f5f5f5;
-  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Full width of the parent container */
+  display: flex; /* Flexbox layout */
+  justify-content: space-around; /* Space between items */
+  align-items: center; /* Center items vertically */
+  background-color: #f5f5f5; /* Light gray background */
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
+  padding: 10px 0; /* Optional: Add padding for better spacing inside the footer */
 }
 
 .footer-item {

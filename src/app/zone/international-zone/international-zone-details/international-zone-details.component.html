@@ -6,7 +6,7 @@
             <img src="assets/icons/long-arrow.png" alt="Arrow" class="long-arrow" />
             <h2>{{ placeName }}</h2>
         </div>
-        <img src="assets/icons/category.png" alt="Category Icon" class="header-icon" />
+        <img src="assets/icons/category-icon.png" alt="Category Icon" class="header-icon" />
     </div>
 
     <div class="content">
@@ -14,27 +14,24 @@
             <div class="stat-box">
                 <img src="assets/icons/article-icon.png" alt="Article Icon" class="stat-icon" />
                 <p>
-                    Articles: 1 / <span>20 Solved</span>
+                    Articles: {{ articles.length }} / <span>20 Solved</span>
                 </p>
             </div>
         </div>
-        <div class="card">
+
+        <div *ngFor="let article of articles" class="card">
             <div class="card-header">
-                <h2>About {{ placeName }}</h2>
+                <h2>{{ article.articleTitle }}</h2>
                 <div class="article-icons">
                     <img src="assets/icons/bookmark-icon.png" alt="Bookmark" class="header-article-icon" />
                     <img src="assets/icons/share-icon.png" alt="Share" class="header-article-icon" />
                 </div>
             </div>
             <div class="card-body">
-                <img [src]="imagePath" alt="{{ placeName }}" class="card-image"
-                    onerror="this.src='assets/icons/placeholder.png'; console.log('Image not found, using placeholder')" />
+                <img [src]="article.articleImage" alt="{{ article.articleTitle }}" class="card-image" />
                 <div class="card-content">
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure quae impedit assumenda vero
-                        placeat! Beatae amet at ducimus eveniet sint iste, esse quis similique illum corrupti error
-                        earum reiciendis dignissimos autem eos enim quod deserunt delectus soluta rem ut! Eveniet,
-                        ducimus praesentium. Porro facilis commodi repellat ipsum culpa reprehenderit illum.</p>
-                    <button class="register-button">
+                    <p>{{ article.articleContent }}</p>
+                    <button class="register-button" (click)="navigateToRegister()">
                         Register my Interest
                     </button>
                 </div>
@@ -45,13 +42,10 @@
                     <span class="material-icons">arrow_upward</span>
                 </p>
                 <div class="footer-icons">
-                    <span class="material-icons ">thumb_up</span>
+                    <span class="material-icons">thumb_up</span>
                     <span class="material-icons">thumb_down</span>
                 </div>
             </div>
         </div>
-
-
     </div>
-
 </div>

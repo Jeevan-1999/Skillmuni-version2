@@ -1,0 +1,220 @@
+.entrepreneur-zone-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f5f7fb;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 10px 0;
+  background: linear-gradient(to right, #d2dbff, #f7f9ff, #e7ecff);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 85px;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: -20px;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 50px;
+}
+
+.header h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #34437a;
+  margin: 0;
+}
+
+.long-arrow {
+  width: 160px;
+  max-width: 100%;
+}
+
+.header-icon {
+  max-width: 80px;
+}
+
+.back-button {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+/* Section Title */
+.Entrepreneur {
+  width: 50%;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+  gap: 10px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #34437a;
+  margin: 0;
+}
+
+.section-line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #f7931e;
+}
+
+.highlight {
+  color: #f7931e;
+}
+
+.eq-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 20px;
+}
+
+.eq-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+}
+
+.eq-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.eq-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f7931e;
+}
+
+.opportunities-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.opportunity-card {
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  width: 400px;
+  height: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(to bottom, #ffffff, #f0f3ff);
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.opportunity-image {
+  width: 40%;
+  height: auto;
+  margin-right: 15px;
+  object-fit: cover;
+}
+
+.card-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.opportunity-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #34437a;
+}
+
+.opportunity-description {
+  font-size: 12px;
+  color: #6b6b6b;
+}
+
+.card-explore {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  background-color: #fff4e6;
+  border-top: 4px solid #f7931e;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  max-width: 100%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.opportunity-card:hover {
+  background-color: #ffe6cc;
+  transform: translateY(-2px);
+}
+.card-explore .explore-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f7931e;
+}
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .long-arrow {
+    width: 120px;
+  }
+
+  .opportunity-card {
+    width: 100%;
+  }
+
+  .section-title {
+    font-size: 16px;
+  }
+
+  .Entrepreneur {
+    width: 100%;
+  }
+
+  .eq-content {
+    height: 200px;
+  }
+  .eq-title {
+    font-size: 14px;
+  }
+}

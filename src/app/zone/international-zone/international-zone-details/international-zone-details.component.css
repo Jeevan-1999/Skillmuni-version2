@@ -74,6 +74,7 @@
 }
 
 .card {
+  margin-bottom: 30px; /* Adds space between cards */
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -133,10 +134,15 @@
 }
 
 .card-image {
-  width: 35%;
+  width: 50%;
   border-radius: 12px;
   object-fit: cover;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-image img {
+  width: 2048px;
+  height: 1379px;
 }
 
 .card-content {
@@ -268,5 +274,10 @@
   .card-body {
     flex-direction: column;
     align-items: center;
+  }
+
+  .card-header h2 {
+    left: auto;
+    transform: none;
   }
 }

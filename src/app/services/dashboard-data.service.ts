@@ -17,7 +17,7 @@ export class DashboardDataService {
       description:
         'Test your Entrepreneurial Quotient, share ideas, find collaborators, and explore new paths!',
       img: 'assets/zones/Entrepreneur zone.png',
-      route: 'enterpreneur-zone',
+      route: 'entrepreneur-zone',
     },
     {
       name: 'Placement Zone',

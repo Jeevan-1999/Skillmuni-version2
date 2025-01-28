@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router'; // Import this
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,9 +13,11 @@ import { LearningCategoryDetailComponent } from './zone/learning-zone/learning-c
 import { SkillZoneCategoryComponent } from './zone/skill-zone/skill-zone-category/skill-zone-category.component';
 import { LoginComponent } from './auth/login/login.component';
 import { InternationalZoneComponent } from './zone/international-zone/international-zone.component';
-import { EnterpreneurZoneComponent } from './zone/enterpreneur-zone/enterpreneur-zone.component';
 import { PlacementZoneComponent } from './zone/placement-zone/placement-zone.component';
 import { InternationalZoneDetailsComponent } from './zone/international-zone/international-zone-details/international-zone-details.component';
+import { RegistrationComponent } from './zone/international-zone/registration/registration.component';
+import { FormsModule } from '@angular/forms';
+import { EntrepreneurZoneComponent } from './zone/entrepreneur-zone/entrepreneur-zone.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +31,16 @@ import { InternationalZoneDetailsComponent } from './zone/international-zone/int
     SkillZoneCategoryComponent,
     LoginComponent,
     InternationalZoneComponent,
-    EnterpreneurZoneComponent,
     PlacementZoneComponent,
     InternationalZoneDetailsComponent,
+    RegistrationComponent,
+    EntrepreneurZoneComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
