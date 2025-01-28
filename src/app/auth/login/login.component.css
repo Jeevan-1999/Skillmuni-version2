@@ -4,6 +4,7 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  background: linear-gradient(to bottom, #f7f9ff, #e7ecff, #d2dbff);
 }
 
 /* Background image */
@@ -13,21 +14,21 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("/assets/desktop-login-bg.png");
-  background-size: cover;
-  background-position: center;
+  background: url("/assets/world-bg.png") no-repeat center center;
   z-index: 1;
+  background-size: 70%;
+  background-position: bottom center;
 }
 
 /* Login content */
 .login-content {
   position: absolute;
   top: 50%;
-  right: 10%;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 30%; /* Adjusted width for balance */
   background: linear-gradient(to bottom, #ffffff, #f0f3ff);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: rgb(210, 219, 255) 1.95px 1.95px 2.6px;
   border-radius: 20px;
   padding: 40px 30px;
   text-align: center;
@@ -74,6 +75,6 @@
   .login-content {
     top: 31%;
     right: 13%;
-    width: 73%;
+    width: 70%;
   }
 }
