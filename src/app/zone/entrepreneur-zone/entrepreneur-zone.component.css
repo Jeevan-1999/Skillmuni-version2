@@ -1,3 +1,4 @@
+/* General Styles */
 .entrepreneur-zone-container {
   width: 100%;
   min-height: 100vh;
@@ -6,6 +7,7 @@
   background-color: #f5f7fb;
 }
 
+/* Header */
 .header {
   display: flex;
   align-items: center;
@@ -48,10 +50,7 @@
   cursor: pointer;
 }
 
-/* Section Title */
-.Entrepreneur {
-  width: 50%;
-}
+/* Section Titles */
 .section-header {
   display: flex;
   align-items: center;
@@ -76,6 +75,11 @@
   color: #f7931e;
 }
 
+/* Entrepreneurial Quotient Banner */
+
+.Entrepreneur {
+  width: 50%;
+}
 .eq-banner {
   display: flex;
   justify-content: center;
@@ -113,12 +117,12 @@
   color: #f7931e;
 }
 
-.opportunities-container {
+/* Opportunities Section */
+.card-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 20px;
+  gap: 10px;
+  padding: 20px;
 }
 
 .opportunity-card {
@@ -128,16 +132,14 @@
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   padding: 10px;
   width: 400px;
-  height: auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   background: linear-gradient(to bottom, #ffffff, #f0f3ff);
 }
 
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 20px;
+.opportunity-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .card-content {
@@ -147,7 +149,7 @@
 }
 
 .opportunity-image {
-  width: 40%;
+  width: 50%;
   height: auto;
   margin-right: 15px;
   object-fit: cover;
@@ -169,6 +171,7 @@
   color: #6b6b6b;
 }
 
+/* Explore Button */
 .card-explore {
   display: flex;
   justify-content: flex-end;
@@ -178,18 +181,17 @@
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   max-width: 100%;
+  margin-top: auto;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.opportunity-card:hover {
-  background-color: #ffe6cc;
-  transform: translateY(-2px);
-}
 .card-explore .explore-text {
   font-size: 14px;
   font-weight: 600;
   color: #f7931e;
 }
+
+/* Responsive Styles */
 @media (max-width: 768px) {
   .header h1 {
     font-size: 20px;
@@ -214,6 +216,7 @@
   .eq-content {
     height: 200px;
   }
+
   .eq-title {
     font-size: 14px;
   }
