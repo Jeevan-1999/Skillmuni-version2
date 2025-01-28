@@ -23,7 +23,7 @@
 /* Center Section: Navigation Links */
 .navbar-nav {
   display: flex;
-  gap: 30px; /* Spacing between items */
+  gap: 30px;
   align-items: center;
 }
 
