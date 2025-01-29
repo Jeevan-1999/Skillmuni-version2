@@ -1,16 +1,28 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ZoneService } from 'src/app/services/zone.service';
 
 @Component({
   selector: 'app-opportunity-detail',
   templateUrl: './opportunity-detail.component.html',
   styleUrls: ['./opportunity-detail.component.css']
 })
-export class OpportunityDetailComponent {
-  title: string | null = null;
-  constructor(private route: ActivatedRoute) { }
+export class OpportunityDetailComponent implements OnInit {
+  opportunity: any; // Holds the selected opportunity
+
+  constructor(private route: ActivatedRoute, private zoneService: ZoneService, private router: Router,) { }
 
   ngOnInit(): void {
-    this.title = this.route.snapshot.paramMap.get('title');
+    // Get title from the URL
+    const title = this.route.snapshot.paramMap.get('title');
+
+    // Find the matching opportunity
+    this.opportunity = this.zoneService.getOpportunities().find(
+      (opportunity) => opportunity.title === title
+    );
+  }
+
+  navigateToRegister(): void {
+    this.router.navigate(['entrepreneur-zone/article/register']);
   }
 }

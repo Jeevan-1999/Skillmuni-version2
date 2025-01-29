@@ -8,31 +8,50 @@ import { LoginComponent } from './auth/login/login.component';
 import { InternationalZoneComponent } from './zone/international-zone/international-zone.component';
 import { PlacementZoneComponent } from './zone/placement-zone/placement-zone.component';
 import { InternationalZoneDetailsComponent } from './zone/international-zone/international-zone-details/international-zone-details.component';
-import { RegistrationComponent } from './zone/international-zone/registration/registration.component';
 import { EntrepreneurZoneComponent } from './zone/entrepreneur-zone/entrepreneur-zone.component';
 import { EntrepreneurialQuotientComponent } from './zone/entrepreneur-zone/entrepreneurial-quotient/entrepreneurial-quotient.component';
 import { OpportunityDetailComponent } from './zone/entrepreneur-zone/opportunity-detail/opportunity-detail.component';
+import { InternationalRegistrationComponent } from './zone/international-zone/international-registration/international-registration.component';
+import { EntrepreneurRegistrationComponent } from './zone/entrepreneur-zone/entrepreneur-registration/entrepreneur-registration.component';
 
 const routes: Routes = [
+
+  // {
+  //   path: '', redirectTo: 'login',
+  //   pathMatch: 'full'
+  // },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
   {
     path: '',
     component: DashboardComponent, // Default path redirects to Dashboard
   },
   {
     path: 'dashboard',
-    component: DashboardComponent, // Default path redirects to Dashboard
+    component: DashboardComponent,
   },
   {
     path: 'international-zone',
     component: InternationalZoneComponent,
   },
-  { path: 'international-zone/:placeName', component: InternationalZoneDetailsComponent },
-
-  { path: 'register', component: RegistrationComponent },
-
+  {
+    path: 'international-zone/:placeName',
+    component: InternationalZoneDetailsComponent
+  },
+  {
+    path: 'international-zone/article/register',
+    component: InternationalRegistrationComponent
+  },
   {
     path: 'entrepreneur-zone',
     component: EntrepreneurZoneComponent,
+  },
+
+  {
+    path: 'entrepreneur-zone/article/register',
+    component: EntrepreneurRegistrationComponent
   },
   {
     path: 'placement-zone',
@@ -59,13 +78,7 @@ const routes: Routes = [
     path: 'entrepreneur-zone/opportunity/:title',
     component: OpportunityDetailComponent, // Ensure you have this component
   },
-  // {
-  //   path: '**',
-  //   redirectTo: '', // Fallback route redirects to Dashboard
-  // },
 
-  { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: 'login', pathMatch: 'full' }, // Default route to login
 ];
 
 @NgModule({

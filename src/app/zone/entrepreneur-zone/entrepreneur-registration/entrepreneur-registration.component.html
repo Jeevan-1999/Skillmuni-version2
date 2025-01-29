@@ -1,8 +1,8 @@
 <div class="register-container">
     <div class="header">
-        <img src="assets/icons/back-arrow.png" alt="Back Icon" routerLink="/international-zone" class="back-button" />
+        <img src="assets/icons/back-arrow.png" alt="Back Icon" routerLink="/entrepreneur-zone" class="back-button" />
         <div class="title-container">
-            <h1>International Zone</h1>
+            <h1>Entrepreneur Zone</h1>
             <img src="assets/icons/long-arrow.png" alt="Arrow" class="long-arrow" />
             <h2>Register interest</h2>
         </div>
@@ -11,11 +11,11 @@
 
     <div *ngIf="isFormSubmitted; else registrationForm" class="success-screen">
         <div class="success-content">
-            <img src="assets/registration-bg.png" alt="Illustration" class="registration-bg" />
-            <h2>Interest received!</h2>
-            <p>We'll be in touch soon.</p>
-            <p>Meanwhile, feel free to explore our International Zone.</p>
-            <button class="explore-button" routerLink="/international-zone">
+            <img src="assets/registration-bg.png" alt="registration-bg" class="registration-bg" />
+            <h2>Wish received!</h2>
+            <h3>We'll be in touch soon.</h3>
+            <p>Meanwhile, feel free to explore our Entrepreneur Zone.</p>
+            <button class="explore-button" routerLink="/entrepreneur-zone">
                 Explore
                 <span class="arrow">&rarr;</span>
             </button>
@@ -30,17 +30,6 @@
                         Hello, {{ userName }}! Just mention your interest, and we'll get back to you at
                         <span class="highlight">{{ email }}</span> or <span class="highlight">{{ phone }}</span>.
                     </p>
-                    <label for="inquiry">What's your inquiry about?</label>
-                    <select id="inquiry" name="inquiry" required>
-                        <option value="">Select your Inquiry</option>
-                        <option value="study">Study Abroad</option>
-                        <option value="immigration">Immigration</option>
-                        <option value="visitor">Visitor Visa</option>
-                        <option value="business">Business Immigration</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
                     <label for="message">Your Message</label>
                     <textarea id="message" name="message" placeholder="Type about your interest here..."
                         required></textarea>
@@ -49,7 +38,7 @@
                 <button type="submit">Send my wish</button>
             </form>
             <div class="illustration">
-                <img src="assets/icons/illustration.png" alt="Illustration">
+                <img src="assets/icons/entrepreneurial-form.png" alt="entrepreneurial-form.png">
             </div>
         </div>
     </ng-template>

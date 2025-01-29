@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css']
+  selector: 'app-international-registration',
+  templateUrl: './international-registration.component.html',
+  styleUrls: ['./international-registration.component.css']
 })
-export class RegistrationComponent {
-  userName = 'John Doe';
-  email = 'johndoe@example.com';
+export class InternationalRegistrationComponent {
+
+  userName = 'Jeevan';
+  email = 'jeevan@tgc.com';
   phone = '123-456-7890';
   selectedInquiry = ''; // Bind this to track the selected option
   isFormSubmitted = false; // Track form submission state

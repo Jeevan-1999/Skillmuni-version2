@@ -15,11 +15,12 @@ import { LoginComponent } from './auth/login/login.component';
 import { InternationalZoneComponent } from './zone/international-zone/international-zone.component';
 import { PlacementZoneComponent } from './zone/placement-zone/placement-zone.component';
 import { InternationalZoneDetailsComponent } from './zone/international-zone/international-zone-details/international-zone-details.component';
-import { RegistrationComponent } from './zone/international-zone/registration/registration.component';
 import { FormsModule } from '@angular/forms';
 import { EntrepreneurZoneComponent } from './zone/entrepreneur-zone/entrepreneur-zone.component';
 import { EntrepreneurialQuotientComponent } from './zone/entrepreneur-zone/entrepreneurial-quotient/entrepreneurial-quotient.component';
 import { OpportunityDetailComponent } from './zone/entrepreneur-zone/opportunity-detail/opportunity-detail.component';
+import { EntrepreneurRegistrationComponent } from './zone/entrepreneur-zone/entrepreneur-registration/entrepreneur-registration.component';
+import { InternationalRegistrationComponent } from './zone/international-zone/international-registration/international-registration.component';
 
 @NgModule({
   declarations: [
@@ -35,10 +36,11 @@ import { OpportunityDetailComponent } from './zone/entrepreneur-zone/opportunity
     InternationalZoneComponent,
     PlacementZoneComponent,
     InternationalZoneDetailsComponent,
-    RegistrationComponent,
     EntrepreneurZoneComponent,
     EntrepreneurialQuotientComponent,
     OpportunityDetailComponent,
+    EntrepreneurRegistrationComponent,
+    InternationalRegistrationComponent,
   ],
   imports: [
     BrowserModule,

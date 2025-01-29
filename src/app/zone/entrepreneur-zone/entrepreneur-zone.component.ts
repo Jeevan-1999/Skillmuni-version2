@@ -22,6 +22,5 @@ export class EntrepreneurZoneComponent implements OnInit {
 
   navigateToOpportunity(title: string) {
     this.router.navigate(['/entrepreneur-zone/opportunity', title]);
-
   }
 }

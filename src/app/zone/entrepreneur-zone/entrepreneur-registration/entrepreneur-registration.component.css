@@ -1,3 +1,4 @@
+/* ---------- Global Styles ---------- */
 .register-container {
   width: 100%;
   min-height: 100vh;
@@ -5,6 +6,8 @@
   box-sizing: border-box;
   background-color: #f5f7fb;
 }
+
+/* ---------- Header Section ---------- */
 .header {
   display: flex;
   align-items: center;
@@ -15,6 +18,7 @@
   height: 85px;
   margin-top: -20px;
 }
+
 .header h1 {
   font-size: 24px;
   font-weight: bold;
@@ -24,6 +28,8 @@
 
 .header h2 {
   font-size: 15px;
+  font-weight: 500;
+  text-transform: uppercase;
   color: #34437a;
   margin: 0;
 }
@@ -49,6 +55,7 @@
   cursor: pointer;
 }
 
+/* ---------- Form Section ---------- */
 .form-container {
   max-width: 900px;
   margin: 25px auto;
@@ -94,24 +101,23 @@ label {
   margin-bottom: 8px;
   display: block;
   text-align: left;
+  padding-top: 20px;
 }
 
-select,
 textarea {
   width: 100%;
+  height: 100px;
   padding: 12px 15px;
   border: 1px solid #ccc;
   border-radius: 12px;
   background: #fff;
   font-size: 14px;
-}
-
-textarea {
-  height: 100px;
   resize: none;
 }
 
-button {
+/* ---------- Button Styling ---------- */
+button,
+.explore-button {
   background-color: #f7931e;
   color: #fff;
   padding: 10px 20px;
@@ -120,13 +126,66 @@ button {
   border: none;
   border-radius: 25px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s ease-in-out;
 }
 
-button:hover {
+button:hover,
+.explore-button:hover {
   background-color: #e3673b;
 }
 
+.arrow {
+  margin-left: 5px;
+}
+
+/* ---------- Success Screen Section ---------- */
+.success-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 90px;
+  position: relative;
+}
+
+.success-content {
+  width: 900px;
+  padding: 175px 20px 20px;
+  text-align: center;
+  background: linear-gradient(to right, #d2dbff, #f7f9ff, #e7ecff);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: visible;
+}
+
+/* Registration Background Image Positioning */
+.registration-bg {
+  width: 80%;
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+/* ---------- Text Styling ---------- */
+.success-content h2 {
+  color: #f7931e;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.success-content h3 {
+  color: #34437a;
+  font-weight: 600;
+}
+
+.success-content p {
+  color: #34437a;
+  margin-bottom: 10px;
+}
+
+/* ---------- Illustration Section ---------- */
 .illustration {
   position: absolute;
   bottom: 0;
@@ -138,6 +197,7 @@ button:hover {
   height: auto;
 }
 
+/* ---------- Responsive Design ---------- */
 @media (max-width: 768px) {
   .header h1 {
     font-size: 18px;
@@ -146,9 +206,11 @@ button:hover {
   .long-arrow {
     width: 120px;
   }
+
   .form-container {
     width: 90%;
   }
+
   .form-group {
     width: 100%;
   }
@@ -159,58 +221,21 @@ button:hover {
   }
 
   .success-screen {
-    width: 90%;
+    width: 85%;
+    margin: auto;
   }
-}
+  .success-screen .success-content {
+    padding: 90px 20px 20px;
+  }
 
-.success-screen {
-  margin: 25px auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f5f7fb;
-}
+  .success-content .registration-bg {
+    width: 90%;
+    top: -12%;
+  }
 
-.success-content {
-  text-align: center;
-  background: linear-gradient(to right, #d2dbff, #f7f9ff, #e7ecff);
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  width: 900px;
-}
-
-.registration-bg {
-  width: 300px;
-  margin-bottom: 10px;
-}
-
-h2 {
-  color: #f7931e;
-  font-size: 24px;
-}
-
-p {
-  color: #34437a;
-  margin-bottom: 10px;
-}
-
-.explore-button {
-  background-color: #f7931e;
-  color: #fff;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: bold;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.explore-button:hover {
-  background-color: #e3673b;
-}
-
-.arrow {
-  margin-left: 5px;
+  .success-content h2,
+  .success-content h3,
+  .success-content p {
+    font-size: 16px;
+  }
 }

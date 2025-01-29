@@ -30,6 +30,6 @@ export class InternationalZoneDetailsComponent implements OnInit {
   }
 
   navigateToRegister(): void {
-    this.router.navigate(['register']);
+    this.router.navigate(['international-zone/article/register']);
   }
 }

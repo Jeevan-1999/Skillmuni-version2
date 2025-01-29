@@ -15,4 +15,7 @@ app-footer {
   app-footer {
     display: block;
   }
+  .container {
+    padding-bottom: 60px;
+  }
 }
