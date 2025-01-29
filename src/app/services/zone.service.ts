@@ -226,7 +226,67 @@ export class ZoneService {
     },
   ];
 
+
+  opportunityCards = [
+    {
+      title: 'Social Entrepreneur',
+      description: 'Want to become a Social Entrepreneur?',
+      image: 'assets/cards/social.png',
+      articles: [
+        {
+          articleTitle: 'What is Social Entrepreneurship?',
+          articleImage: 'assets/cards/social-article1.png',
+          articleContent: 'Social entrepreneurship focuses on creating businesses that solve societal problems while maintaining financial sustainability.',
+        },
+        {
+          articleTitle: 'How to Start as a Social Entrepreneur?',
+          articleImage: 'assets/cards/social-article2.png',
+          articleContent: 'Starting as a social entrepreneur requires identifying a problem, designing a solution, and securing funding to make an impact.',
+        }
+      ]
+    },
+    {
+      title: 'Gamification Consultant',
+      description: 'Step Into Corporate Gamification Consulting!',
+      image: 'assets/cards/gamification.png',
+      articles: [
+        {
+          articleTitle: 'What is Gamification?',
+          articleImage: 'assets/cards/gamification-article1.png',
+          articleContent: 'Gamification is the application of game elements in non-gaming contexts to enhance engagement and motivation.',
+        },
+        {
+          articleTitle: 'How Gamification Helps Businesses?',
+          articleImage: 'assets/cards/gamification-article2.png',
+          articleContent: 'Gamification can improve employee productivity, customer engagement, and overall business performance through interactive experiences.',
+        }
+      ]
+    },
+    {
+      title: 'Your Fintech Idea',
+      description: 'Want to bring your Fintech idea to life?',
+      image: 'assets/cards/fintech-idea.png',
+      articles: [
+        {
+          articleTitle: 'Understanding Fintech Innovations',
+          articleImage: 'assets/cards/fintech-article1.png',
+          articleContent: 'Fintech innovations include digital payments, blockchain technology, and AI-driven financial services.',
+        },
+        {
+          articleTitle: 'How to Launch a Fintech Startup?',
+          articleImage: 'assets/cards/fintech-article2.png',
+          articleContent: 'Launching a fintech startup requires regulatory compliance, funding, and a strong technological foundation.',
+        }
+      ]
+    }
+  ];
+
+
   getPlaces() {
     return this.places;
+  }
+
+  getOpportunities() {
+    return this.opportunityCards;
   }
 }

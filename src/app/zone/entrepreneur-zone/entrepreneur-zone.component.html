@@ -18,55 +18,29 @@
             <div class="section-line"></div> <!-- Horizontal line in the same row -->
         </div>
 
-        <div class="eq-banner">
+        <div class="eq-banner" (click)="navigateToEntrepreneurialQuotient()">
             <div class="eq-content">
                 <img src="assets/cards/entrepreneurial-quotient.jpg" alt="Entrepreneurial Quotient" class="eq-image" />
                 <p class="eq-title">Are You Born to Lead? Find Out! <span>→</span></p>
             </div>
         </div>
+
     </div>
     <br>
 
     <div class="section">
         <div class="section-header">
-            <h2 class="section-title">
-                Explore <span class="highlight">Opportunities</span>
-            </h2>
-            <div class="section-line"></div> <!-- Horizontal line in the same row -->
+            <h2 class="section-title">Explore <span class="highlight">Opportunities</span></h2>
+            <div class="section-line"></div>
         </div>
+
         <div class="card-container">
-            <div class="opportunity-card">
+            <div *ngFor="let card of opportunityCards" class="opportunity-card">
                 <div class="card-content">
-                    <img class="opportunity-image" src="assets/cards/social.png" alt="Social Entrepreneur" />
+                    <img class="opportunity-image" [src]="card.image" [alt]="card.title" />
                     <div class="card-details">
-                        <p class="opportunity-title">Social Entrepreneur</p>
-                        <p class="opportunity-description">Want to become a Social Entrepreneur?</p>
-                        <div class="card-explore">
-                            <span class="explore-text">Explore →</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="opportunity-card">
-                <div class="card-content">
-                    <img class="opportunity-image" src="assets/cards/gamification.png" alt="Gamification Consultant" />
-                    <div class="card-details">
-                        <p class="opportunity-title">Gamification Consultant</p>
-                        <p class="opportunity-description">Step Into Corporate Gamification Consulting!</p>
-                        <div class="card-explore">
-                            <span class="explore-text">Explore →</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="opportunity-card">
-                <div class="card-content">
-                    <img class="opportunity-image" src="assets/cards/fintech-idea.png" alt="Social Entrepreneur" />
-                    <div class="card-details">
-                        <p class="opportunity-title">Your Fintech Idea</p>
-                        <p class="opportunity-description">Want to bring your Fintech idea to life?</p>
+                        <p class="opportunity-title">{{ card.title }}</p>
+                        <p class="opportunity-description">{{ card.description }}</p>
                         <div class="card-explore">
                             <span class="explore-text">Explore →</span>
                         </div>

@@ -89,6 +89,14 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   margin: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer; /* Indicate it's clickable */
+}
+
+.eq-banner:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .eq-content {
@@ -102,6 +110,11 @@
   height: 250px;
   overflow: hidden;
   position: relative;
+}
+
+.eq-content {
+  transform: scale(1.05);
+  background: linear-gradient(to bottom, #ffffff, #f0f3ff);
 }
 
 .eq-image {

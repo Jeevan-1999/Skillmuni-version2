@@ -18,6 +18,8 @@ import { InternationalZoneDetailsComponent } from './zone/international-zone/int
 import { RegistrationComponent } from './zone/international-zone/registration/registration.component';
 import { FormsModule } from '@angular/forms';
 import { EntrepreneurZoneComponent } from './zone/entrepreneur-zone/entrepreneur-zone.component';
+import { EntrepreneurialQuotientComponent } from './zone/entrepreneur-zone/entrepreneurial-quotient/entrepreneurial-quotient.component';
+import { EntrepreneurOpportunitiesComponent } from './zone/entrepreneur-zone/entrepreneur-opportunities/entrepreneur-opportunities.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { EntrepreneurZoneComponent } from './zone/entrepreneur-zone/entrepreneur
     InternationalZoneDetailsComponent,
     RegistrationComponent,
     EntrepreneurZoneComponent,
+    EntrepreneurialQuotientComponent,
+    EntrepreneurOpportunitiesComponent,
   ],
   imports: [
     BrowserModule,

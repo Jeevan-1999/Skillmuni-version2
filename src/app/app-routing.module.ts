@@ -10,6 +10,7 @@ import { PlacementZoneComponent } from './zone/placement-zone/placement-zone.com
 import { InternationalZoneDetailsComponent } from './zone/international-zone/international-zone-details/international-zone-details.component';
 import { RegistrationComponent } from './zone/international-zone/registration/registration.component';
 import { EntrepreneurZoneComponent } from './zone/entrepreneur-zone/entrepreneur-zone.component';
+import { EntrepreneurialQuotientComponent } from './zone/entrepreneur-zone/entrepreneurial-quotient/entrepreneurial-quotient.component';
 
 const routes: Routes = [
   {
@@ -45,8 +46,12 @@ const routes: Routes = [
     component: LearningZoneComponent,
   },
   {
-    path: 'skill-zone-category/:title', // Path with a parameter for category titles
+    path: 'skill-zone-category/:title',
     component: SkillZoneCategoryComponent,
+  },
+  {
+    path: 'entrepreneur-zone/entrepreneurial-quotient',
+    component: EntrepreneurialQuotientComponent,
   },
   // {
   //   path: '**',
