@@ -35,7 +35,8 @@
         </div>
 
         <div class="card-container">
-            <div *ngFor="let card of opportunityCards" class="opportunity-card">
+            <div *ngFor="let card of opportunityCards" class="opportunity-card"
+                (click)="navigateToOpportunity(card.title)">
                 <div class="card-content">
                     <img class="opportunity-image" [src]="card.image" [alt]="card.title" />
                     <div class="card-details">

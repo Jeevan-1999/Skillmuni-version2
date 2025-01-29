@@ -19,4 +19,9 @@ export class EntrepreneurZoneComponent implements OnInit {
   navigateToEntrepreneurialQuotient() {
     this.router.navigate(['entrepreneur-zone/entrepreneurial-quotient']);
   }
+
+  navigateToOpportunity(title: string) {
+    this.router.navigate(['/entrepreneur-zone/opportunity', title]);
+
+  }
 }
