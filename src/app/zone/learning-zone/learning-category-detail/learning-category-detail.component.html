@@ -1,1 +1,15 @@
-<p>learning-category-detail works!</p>
+<div [ngSwitch]="categoryTitle">
+    <div *ngSwitchCase="'GLOBAL GYAN'">
+        <h1>Global Gyan</h1>
+        <img src="assets/details/global-gyan-detail.png" alt="Global Gyan" />
+        <p>Expand your knowledge with global insights.</p>
+    </div>
+    <div *ngSwitchCase="'BRAIN VITA'">
+        <h1>Brain Vita</h1>
+        <p>Sharpen your mind with tricky puzzles.</p>
+    </div>
+    <div *ngSwitchDefault>
+        <h1>Coming Soon</h1>
+        <p>Content for this section is not available yet.</p>
+    </div>
+</div>

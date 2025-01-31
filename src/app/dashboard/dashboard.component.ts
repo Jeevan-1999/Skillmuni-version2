@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DashboardDataService } from '../services/dashboard-data.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +13,9 @@ export class DashboardComponent implements OnInit {
   zones: any[] = [];
   learningZoneCards: any[] = [];
   skillZoneCards: any[] = [];
-
+  auth = inject(AuthService)
+  name = JSON.parse(sessionStorage.getItem('loggedInUser')!).name;
+  userProfileImg = JSON.parse(sessionStorage.getItem('loggedInUser')!).picture;
   constructor(
     private router: Router,
     private dashboardDataService: DashboardDataService
@@ -30,5 +33,13 @@ export class DashboardComponent implements OnInit {
     if (selectedZone) {
       this.router.navigate([selectedZone.route]);
     }
+  }
+
+  navigateToLearningDetail(cardTitle: string) {
+    this.router.navigate(['/learning-category-detail', cardTitle]);
+  }
+
+  navigateToSkillDetail(cardTitle: string) {
+    this.router.navigate(['/skill-zone-category', cardTitle]);
   }
 }

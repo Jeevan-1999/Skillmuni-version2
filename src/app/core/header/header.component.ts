@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +8,17 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   activeLink: string = '';
+  userProfileImg = JSON.parse(sessionStorage.getItem('loggedInUser')!).picture;
 
   setActiveLink(link: string): void {
     this.activeLink = link;
+  }
+
+  // logout or signout to login page function
+  auth = inject(AuthService)
+
+  signOut() {
+    sessionStorage.removeItem("loggedInUser")
+    this.auth.signOut();
   }
 }

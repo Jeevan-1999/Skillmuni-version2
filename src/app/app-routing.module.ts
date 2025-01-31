@@ -13,25 +13,26 @@ import { EntrepreneurialQuotientComponent } from './zone/entrepreneur-zone/entre
 import { OpportunityDetailComponent } from './zone/entrepreneur-zone/opportunity-detail/opportunity-detail.component';
 import { InternationalRegistrationComponent } from './zone/international-zone/international-registration/international-registration.component';
 import { EntrepreneurRegistrationComponent } from './zone/entrepreneur-zone/entrepreneur-registration/entrepreneur-registration.component';
+import { LearningCategoryDetailComponent } from './zone/learning-zone/learning-category-detail/learning-category-detail.component';
 
 const routes: Routes = [
 
-  // {
-  //   path: '', redirectTo: 'login',
-  //   pathMatch: 'full'
-  // },
+  {
+    path: '', redirectTo: 'login',
+    pathMatch: 'full'
+  },
   {
     path: 'login',
     component: LoginComponent
   },
-  {
-    path: '',
-    component: DashboardComponent, // Default path redirects to Dashboard
-  },
+
   {
     path: 'dashboard',
-    component: DashboardComponent,
+    component: DashboardComponent, // Default path redirects to Dashboard
   },
+
+
+
   {
     path: 'international-zone',
     component: InternationalZoneComponent,
@@ -66,6 +67,10 @@ const routes: Routes = [
     component: LearningZoneComponent,
   },
   {
+    path: 'learning-category-detail/:title',
+    component: LearningCategoryDetailComponent
+  },
+  {
     path: 'skill-zone-category/:title',
     component: SkillZoneCategoryComponent,
   },
@@ -76,7 +81,7 @@ const routes: Routes = [
 
   {
     path: 'entrepreneur-zone/opportunity/:title',
-    component: OpportunityDetailComponent, // Ensure you have this component
+    component: OpportunityDetailComponent,
   },
 
 ];

@@ -23,5 +23,9 @@ export class LearningZoneComponent {
     { title: 'SURGICAL STRIKE', image: 'assets/cards/surgical-strike.png', solved: '1/106', goals: '3' },
   ];
 
+  constructor(private router: Router) { }
 
+  navigateToDetail(cardTitle: string) {
+    this.router.navigate(['/learning-category-detail', cardTitle]);
+  }
 }
