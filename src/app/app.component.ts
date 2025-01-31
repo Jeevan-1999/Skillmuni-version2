@@ -19,29 +19,16 @@ export class AppComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         this.ngZone.run(() => {
           this.showHeaderFooter = this.shouldShowHeader(event.url);
-
-          // Force UI update
           this.cdr.detectChanges();
-
-          // Scroll to top
-          window.scrollTo(0, 0);
         });
       }
     });
   }
 
-  // Check if a user is logged in based on session storage
   private checkLoginState(): void {
     const loggedInUser = sessionStorage.getItem('loggedInUser');
-    const currentUrl = this.router.url;
+    this.showHeaderFooter = loggedInUser ? this.shouldShowHeader(this.router.url) : false;
 
-    if (loggedInUser) {
-      this.showHeaderFooter = this.shouldShowHeader(currentUrl);
-    } else {
-      this.showHeaderFooter = false;
-    }
-
-    // Force UI update
     this.cdr.detectChanges();
   }
 

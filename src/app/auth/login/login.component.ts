@@ -9,22 +9,21 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   private router = inject(Router);
-  private ngZone = inject(NgZone); // Inject NgZone
+  private ngZone = inject(NgZone);
 
   ngOnInit(): void {
-    google.accounts.id.initialize({
-      client_id: '572766942851-mgjc033rh59hgjp604u5mjidf4kok555.apps.googleusercontent.com',
-      callback: (resp: any) => this.handleLogin(resp),
+    this.loadGoogleScript().then(() => {
+      google.accounts.id.initialize({
+        client_id: '572766942851-mgjc033rh59hgjp604u5mjidf4kok555.apps.googleusercontent.com',
+        callback: (resp: any) => this.handleLogin(resp)
+      });
 
-
-      // remove later used for temporary for netlify
-      // ux_mode: 'redirect', // Ensure redirect mode works
-      // redirect_uri: 'https://lovely-daffodil-dae9cc.netlify.app',
-      // scope: 'openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile'
-
+      this.renderGoogleButton();
     });
+  }
 
-    setTimeout(() => { // Ensure element exists before rendering
+  private renderGoogleButton(): void {
+    setTimeout(() => {
       const googleBtn = document.getElementById("google-btn");
       if (googleBtn) {
         google.accounts.id.renderButton(googleBtn, {
@@ -35,7 +34,22 @@ export class LoginComponent implements OnInit {
           width: "250"
         });
       }
-    }, 0);
+    }, 100);
+  }
+
+  private loadGoogleScript(): Promise<void> {
+    return new Promise((resolve) => {
+      if (document.getElementById('google-js')) {
+        resolve();
+        return;
+      }
+
+      const script = document.createElement('script');
+      script.id = 'google-js';
+      script.src = "https://accounts.google.com/gsi/client";
+      script.onload = () => resolve();
+      document.head.appendChild(script);
+    });
   }
 
   private decodeToken(token: string) {
@@ -52,7 +66,6 @@ export class LoginComponent implements OnInit {
 
       this.ngZone.run(() => {
         this.router.navigate(['/dashboard']).then(() => {
-          // Force UI update after navigation
           window.location.reload();
         });
       });
