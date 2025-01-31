@@ -14,7 +14,14 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     google.accounts.id.initialize({
       client_id: '572766942851-mgjc033rh59hgjp604u5mjidf4kok555.apps.googleusercontent.com',
-      callback: (resp: any) => this.handleLogin(resp)
+      callback: (resp: any) => this.handleLogin(resp),
+
+
+      // remove later used for temporary for netlify
+      // ux_mode: 'redirect', // Ensure redirect mode works
+      // redirect_uri: 'https://lovely-daffodil-dae9cc.netlify.app',
+      // scope: 'openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile'
+
     });
 
     setTimeout(() => { // Ensure element exists before rendering
@@ -25,7 +32,7 @@ export class LoginComponent implements OnInit {
           theme: 'outline',
           size: 'large',
           shape: 'circle',
-          width: "300"
+          width: "250"
         });
       }
     }, 0);
