@@ -1,5 +1,5 @@
 declare var google: any;
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private router = inject(Router)
+  private router = inject(Router);
+  private ngZone = inject(NgZone); // Inject NgZone
+
   ngOnInit(): void {
     google.accounts.id.initialize({
       client_id: '572766942851-mgjc033rh59hgjp604u5mjidf4kok555.apps.googleusercontent.com',
@@ -29,21 +31,24 @@ export class LoginComponent implements OnInit {
     }, 0);
   }
 
-
   private decodeToken(token: string) {
-    return JSON.parse(atob(token.split(".")[1]))
+    return JSON.parse(atob(token.split(".")[1]));
   }
+
   handleLogin(response: any) {
     if (response) {
       const payLoad = this.decodeToken(response.credential);
       sessionStorage.setItem("loggedInUser", JSON.stringify(payLoad));
       console.log(payLoad);
 
-      console.log('Navigating to dashboard...'); // Add this line
-      this.router.navigate(['dashboard']);
+      console.log('Navigating to dashboard...');
+
+      this.ngZone.run(() => {
+        this.router.navigate(['/dashboard']).then(() => {
+          // Force UI update after navigation
+          window.location.reload();
+        });
+      });
     }
   }
-
-
-
 }
