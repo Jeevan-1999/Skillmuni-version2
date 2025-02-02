@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DashboardDataService } from '../services/dashboard-data.service';
 import { AuthService } from '../services/auth.service';
+import { ZoneService } from '../services/zone.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,16 +16,17 @@ export class DashboardComponent implements OnInit {
   auth = inject(AuthService)
   name = JSON.parse(sessionStorage.getItem('loggedInUser')!).name;
   userProfileImg = JSON.parse(sessionStorage.getItem('loggedInUser')!).picture;
+
   constructor(
     private router: Router,
-    private dashboardDataService: DashboardDataService
+    private zoneService: ZoneService
   ) { }
 
   ngOnInit(): void {
     // Fetch data from the service
-    this.zones = this.dashboardDataService.getZones();
-    this.learningZoneCards = this.dashboardDataService.getLearningZoneCards();
-    this.skillZoneCards = this.dashboardDataService.getSkillZoneCards();
+    this.zones = this.zoneService.getZones();
+    this.learningZoneCards = this.zoneService.getlearningZoneCards();
+    this.skillZoneCards = this.zoneService.getSkillZoneCards();
   }
 
   navigateToZone(zoneName: string): void {

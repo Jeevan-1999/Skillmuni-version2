@@ -40,7 +40,7 @@
             <div class="play-section-line"></div>
         </div>
         <div class="play-card-container">
-            <div class="play-card" *ngFor="let card of learnAndPlayCards" (click)="navigateToDetail(card.title)">
+            <div class="play-card" *ngFor="let card of learningZoneCards" (click)="navigateToDetail(card.title)">
                 <div class="play-card-content">
                     <img [src]="card.image" alt="{{ card.title }}" class="play-card-image-left" />
                     <div class="play-card-details">

@@ -7,6 +7,133 @@ export class ZoneService {
 
   constructor() { }
 
+  zones = [
+    {
+      name: 'International Zone',
+      description:
+        'Compare countries, find top institutes, and register your interest – we’ll guide you all the way!',
+      img: 'assets/zones/International zone.png',
+      route: 'international-zone',
+    },
+    {
+      name: 'Entrepreneur Zone',
+      description:
+        'Test your Entrepreneurial Quotient, share ideas, find collaborators, and explore new paths!',
+      img: 'assets/zones/Entrepreneur zone.png',
+      route: 'entrepreneur-zone',
+    },
+    {
+      name: 'Placement Zone',
+      description:
+        'Take assessments to match jobs with your skills and needs. Opportunities are waiting!',
+      img: 'assets/zones/Placement zone.png',
+      route: 'placement-zone',
+    },
+  ];
+
+  learningZoneCards = [
+    {
+      title: 'BRAIN VITA', image: 'assets/cards/brain-vita.png', solved: '1/106', goals: '3',
+      categories: [
+        { categorytitle: 'VERBAL REASONING', categoryImage: 'assets/cards/verbal-reasoning.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'NON VERBAL REASONING', categoryImage: 'assets/cards/non-verbal-reasoning.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'ARITHMETICAL ABILITY', categoryImage: 'assets/cards/arithmetic.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'DATA INTERPRETATION', categoryImage: 'assets/cards/data-interpretation.png', solved: '1/51', goals: '3' },
+      ],
+    },
+    {
+      title: 'ENGLISH VINGLISH', image: 'assets/cards/english-vinglish.png', solved: '1/106', goals: '3',
+      categories: [
+        { categorytitle: 'VERBAL REASONING', categoryImage: 'assets/cards/verbal-reasoning.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'NON VERBAL REASONING', categoryImage: 'assets/cards/non-verbal-reasoning.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'ARITHMETICAL ABILITY', categoryImage: 'assets/cards/arithmetic.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'DATA INTERPRETATION', categoryImage: 'assets/cards/data-interpretation.png', solved: '1/51', goals: '3' },
+      ],
+    },
+    {
+      title: 'SHARP SHOOTER', image: 'assets/cards/sharp-shooter.png', solved: '1/106', goals: '3',
+      categories: [
+        { categorytitle: 'VERBAL REASONING', categoryImage: 'assets/cards/verbal-reasoning.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'NON VERBAL REASONING', categoryImage: 'assets/cards/non-verbal-reasoning.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'ARITHMETICAL ABILITY', categoryImage: 'assets/cards/arithmetic.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'DATA INTERPRETATION', categoryImage: 'assets/cards/data-interpretation.png', solved: '1/51', goals: '3' },
+      ],
+    },
+    {
+      title: 'ITS MY STYLE', image: 'assets/cards/its-my-style.png', solved: '1 / 106', goals: '3',
+      categories: [
+        { categorytitle: 'VERBAL REASONING', categoryImage: 'assets/cards/verbal-reasoning.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'NON VERBAL REASONING', categoryImage: 'assets/cards/non-verbal-reasoning.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'ARITHMETICAL ABILITY', categoryImage: 'assets/cards/arithmetic.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'DATA INTERPRETATION', categoryImage: 'assets/cards/data-interpretation.png', solved: '1/51', goals: '3' },
+      ],
+    },
+    {
+      title: 'HAPPINESS BAROMETER', image: 'assets/cards/happiness-barometer.png', solved: '1/106', goals: '3',
+      categories: [
+        { categorytitle: 'VERBAL REASONING', categoryImage: 'assets/cards/verbal-reasoning.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'NON VERBAL REASONING', categoryImage: 'assets/cards/non-verbal-reasoning.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'ARITHMETICAL ABILITY', categoryImage: 'assets/cards/arithmetic.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'DATA INTERPRETATION', categoryImage: 'assets/cards/data-interpretation.png', solved: '1/51', goals: '3' },
+      ],
+    },
+    {
+      title: 'SURGICAL STRIKE', image: 'assets/cards/surgical-strike.png', solved: '1/106', goals: '3',
+      categories: [
+        { categorytitle: 'VERBAL REASONING', categoryImage: 'assets/cards/verbal-reasoning.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'NON VERBAL REASONING', categoryImage: 'assets/cards/non-verbal-reasoning.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'ARITHMETICAL ABILITY', categoryImage: 'assets/cards/arithmetic.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'DATA INTERPRETATION', categoryImage: 'assets/cards/data-interpretation.png', solved: '1/51', goals: '3' },
+      ],
+    },
+  ];
+
+  knowledgeHubCards = [
+    { title: 'GLOBAL GYAN', image: 'assets/cards/global-gyan.png' },
+    { title: 'WHAT’S THE GOOD WORD', image: 'assets/cards/good-word.png' },
+    { title: 'YOUR WISHLIST', image: 'assets/cards/your-wishlist.png' },
+    { title: 'NATION WANTS TO KNOW', image: 'assets/cards/nation-knows.png' },
+  ];
+
+  skillZoneCards = [
+    {
+      title: 'INSURANCE', image: 'assets/cards/insurance.png', solved: '1/106', goals: '3',
+      categories: [
+        { categorytitle: 'VERBAL REASONING', categoryImage: 'assets/cards/verbal-reasoning.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'NON VERBAL REASONING', categoryImage: 'assets/cards/non-verbal-reasoning.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'ARITHMETICAL ABILITY', categoryImage: 'assets/cards/arithmetic.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'DATA INTERPRETATION', categoryImage: 'assets/cards/data-interpretation.png', solved: '1/51', goals: '3' },
+      ],
+    },
+    {
+      title: 'BANKING', image: 'assets/cards/banking.png', solved: '1/106', goals: '3',
+      categories: [
+        { categorytitle: 'VERBAL REASONING', categoryImage: 'assets/cards/verbal-reasoning.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'NON VERBAL REASONING', categoryImage: 'assets/cards/non-verbal-reasoning.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'ARITHMETICAL ABILITY', categoryImage: 'assets/cards/arithmetic.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'DATA INTERPRETATION', categoryImage: 'assets/cards/data-interpretation.png', solved: '1/51', goals: '3' },
+      ],
+    },
+    {
+      title: 'HOSPITALITY', image: 'assets/cards/hospitality.png', solved: '1/106', goals: '3',
+      categories: [
+        { categorytitle: 'VERBAL REASONING', categoryImage: 'assets/cards/verbal-reasoning.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'NON VERBAL REASONING', categoryImage: 'assets/cards/non-verbal-reasoning.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'ARITHMETICAL ABILITY', categoryImage: 'assets/cards/arithmetic.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'DATA INTERPRETATION', categoryImage: 'assets/cards/data-interpretation.png', solved: '1/51', goals: '3' },
+      ],
+    },
+    {
+      title: 'IT GYAN', image: 'assets/cards/it-gyan.png', solved: '1/106', goals: '3',
+      categories: [
+        { categorytitle: 'VERBAL REASONING', categoryImage: 'assets/cards/verbal-reasoning.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'NON VERBAL REASONING', categoryImage: 'assets/cards/non-verbal-reasoning.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'ARITHMETICAL ABILITY', categoryImage: 'assets/cards/arithmetic.png', solved: '1/51', goals: '3' },
+        { categorytitle: 'DATA INTERPRETATION', categoryImage: 'assets/cards/data-interpretation.png', solved: '1/51', goals: '3' },
+      ],
+    },
+  ];
+
   places = [
     {
       name: 'Eastern Europe',
@@ -226,7 +353,6 @@ export class ZoneService {
     },
   ];
 
-
   opportunityCards = [
     {
       title: 'Social Entrepreneur',
@@ -266,6 +392,21 @@ export class ZoneService {
     }
   ];
 
+  getZones() {
+    return this.zones;
+  }
+
+  getlearningZoneCards() {
+    return this.learningZoneCards;
+  }
+
+  getknowledgeHubCards() {
+    return this.knowledgeHubCards;
+  }
+
+  getSkillZoneCards() {
+    return this.skillZoneCards;
+  }
 
   getPlaces() {
     return this.places;

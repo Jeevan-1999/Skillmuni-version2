@@ -1,14 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LearnAndPlayService } from 'src/app/services/learn-and-play.service';
+import { ZoneService } from 'src/app/services/zone.service';
 
-// Define an interface for the learnAndPlayCard
-interface LearnAndPlayCard {
-  title: string;
-  image: string;
-  solved: string;
-  goals: string;
-}
 
 @Component({
   selector: 'app-skill-zone',
@@ -16,15 +9,15 @@ interface LearnAndPlayCard {
   styleUrls: ['./skill-zone.component.css']
 })
 export class SkillZoneComponent implements OnInit {
-  learnAndPlayCards: LearnAndPlayCard[] = [];  // Specify the type here
+  skillZoneCards: any[] = [];
 
   constructor(
     private router: Router,
-    private learnAndPlayService: LearnAndPlayService
+    private zoneService: ZoneService
   ) { }
 
   ngOnInit(): void {
-    this.learnAndPlayCards = this.learnAndPlayService.getLearnAndPlayCards();
+    this.skillZoneCards = this.zoneService.getSkillZoneCards();
   }
 
   navigateToCategory(title: string) {
