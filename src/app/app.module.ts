@@ -21,6 +21,8 @@ import { EntrepreneurialQuotientComponent } from './zone/entrepreneur-zone/entre
 import { OpportunityDetailComponent } from './zone/entrepreneur-zone/opportunity-detail/opportunity-detail.component';
 import { EntrepreneurRegistrationComponent } from './zone/entrepreneur-zone/entrepreneur-registration/entrepreneur-registration.component';
 import { InternationalRegistrationComponent } from './zone/international-zone/international-registration/international-registration.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -41,12 +43,14 @@ import { InternationalRegistrationComponent } from './zone/international-zone/in
     OpportunityDetailComponent,
     EntrepreneurRegistrationComponent,
     InternationalRegistrationComponent,
+    LeaderboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

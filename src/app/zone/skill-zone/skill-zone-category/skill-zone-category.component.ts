@@ -10,10 +10,45 @@ export class SkillZoneCategoryComponent implements OnInit {
   title: string | null = null;
 
   learnAndPlayCards = [
-    { title: 'VERBAL REASONING', image: 'assets/cards/verbal-reasoning.png', solved: '1/106', goals: '3' },
-    { title: 'NON VERBAL REASONING', image: 'assets/cards/non-verbal-reasoning.png', solved: '1/106', goals: '3' },
-    { title: 'ARITHMETICAL ABILITY', image: 'assets/cards/arithmetic.png', solved: '1/106', goals: '3' },
-    { title: 'DATA INTERPRETATION', image: 'assets/cards/data-interpretation.png', solved: '1/106', goals: '3' },
+    {
+      title: 'VERBAL REASONING', image: 'assets/cards/verbal-reasoning.png', solved: '1/106', goals: '3',
+      articles: [
+        {
+          articleTitle: 'Masti - Ghar Ghar Mein Pathshala',
+          articleImage: 'assets/cards/Pathshala.png',
+          articleContent: 'Social entrepreneurship focuses on creating businesses that solve societal problems while maintaining financial sustainability.',
+        }
+      ]
+    },
+    {
+      title: 'NON VERBAL REASONING', image: 'assets/cards/non-verbal-reasoning.png', solved: '1/106', goals: '3',
+      articles: [
+        {
+          articleTitle: 'Masti - Ghar Ghar Mein Pathshala',
+          articleImage: 'assets/cards/Pathshala.png',
+          articleContent: 'Social entrepreneurship focuses on creating businesses that solve societal problems while maintaining financial sustainability.',
+        }
+      ]
+    },
+    {
+      title: 'ARITHMETICAL ABILITY', image: 'assets/cards/arithmetic.png', solved: '1/106', goals: '3',
+      articles: [
+        {
+          articleTitle: 'Masti - Ghar Ghar Mein Pathshala',
+          articleImage: 'assets/cards/Pathshala.png',
+          articleContent: 'Social entrepreneurship focuses on creating businesses that solve societal problems while maintaining financial sustainability.',
+        }
+      ]
+    },
+    {
+      title: 'DATA INTERPRETATION', image: 'assets/cards/data-interpretation.png', solved: '1/106', goals: '3', articles: [
+        {
+          articleTitle: 'Masti - Ghar Ghar Mein Pathshala',
+          articleImage: 'assets/cards/Pathshala.png',
+          articleContent: 'Social entrepreneurship focuses on creating businesses that solve societal problems while maintaining financial sustainability.',
+        }
+      ]
+    },
   ];
 
   constructor(private route: ActivatedRoute) { }

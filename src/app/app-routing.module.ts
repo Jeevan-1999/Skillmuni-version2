@@ -14,6 +14,7 @@ import { OpportunityDetailComponent } from './zone/entrepreneur-zone/opportunity
 import { InternationalRegistrationComponent } from './zone/international-zone/international-registration/international-registration.component';
 import { EntrepreneurRegistrationComponent } from './zone/entrepreneur-zone/entrepreneur-registration/entrepreneur-registration.component';
 import { LearningCategoryDetailComponent } from './zone/learning-zone/learning-category-detail/learning-category-detail.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 const routes: Routes = [
 
@@ -83,6 +84,10 @@ const routes: Routes = [
     path: 'entrepreneur-zone/opportunity/:title',
     component: OpportunityDetailComponent,
   },
+
+
+  { path: 'leaderboard', component: LeaderboardComponent },
+
 
 ];
 

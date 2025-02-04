@@ -8,4 +8,50 @@
         </div>
         <img src="assets/icons/world-icon.png" alt="World Icon" class="header-icon" />
     </div>
+
+
+    <div class="career-sections">
+        <div class="career-prep">
+            <h3>Career <span class="highlight">Prep</span></h3>
+            <div class="career-cards">
+                <div class="card">
+                    <h4>STEP 1</h4>
+                    <h5>Your Job Profile</h5>
+                    <p>For suggestions that are personalized to your needs.</p>
+                    <button class="cta-btn">Add it →</button>
+                </div>
+                <div class="card locked">
+                    <h4>STEP 1</h4>
+                    <h5>Your Career Evaluation</h5>
+                    <p>Understanding your strengths and weaknesses can help you get a great job.</p>
+                    <button class="cta-btn" disabled>Evaluate 🔒</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="career-opportunities">
+            <h3>Career <span class="highlight">Opportunities</span></h3>
+            <div class="card">
+                <h5>Career Fest</h5>
+                <p>Discover exciting career opportunities at college career fests.</p>
+                <button class="cta-btn">Explore →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- View All Jobs -->
+    <div class="view-all-jobs">
+        <button class="view-btn">VIEW ALL JOBS →</button>
+    </div>
+
+    <!-- Industry Wise Jobs -->
+    <div class="industry-jobs">
+        <h3>View Industry-Wise Jobs</h3>
+        <div class="job-list">
+            <div *ngFor="let job of jobCategories" class="job-card">
+                <img [src]="job.icon" alt="{{ job.name }}" />
+                <h4>{{ job.name }}</h4>
+            </div>
+        </div>
+    </div>
 </div>

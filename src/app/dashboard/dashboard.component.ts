@@ -1,6 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
 import { ZoneService } from '../services/zone.service';
 
 @Component({
@@ -13,7 +12,6 @@ export class DashboardComponent implements OnInit {
   zones: any[] = [];
   learningZoneCards: any[] = [];
   skillZoneCards: any[] = [];
-  auth = inject(AuthService)
   name = JSON.parse(sessionStorage.getItem('loggedInUser')!).name;
   userProfileImg = JSON.parse(sessionStorage.getItem('loggedInUser')!).picture;
 

@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -13,18 +12,19 @@ export class HeaderComponent {
 
   constructor(private router: Router) { }
 
-  setActiveLink(link: string): void {
-    this.activeLink = link;
-  }
 
-  // logout or signout to login page function
-  auth = inject(AuthService)
+
+
 
   signOut() {
     sessionStorage.removeItem("loggedInUser");
-    this.auth.signOut();
     this.router.navigate(['/login']).then(() => {
       window.location.reload(); // Ensures `showHeaderFooter` is updated correctly
     });
+  }
+
+  setActiveLink(link: string) {
+    this.activeLink = link;
+    this.router.navigate([`/${link}`]); // Navigate to the selected route
   }
 }

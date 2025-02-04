@@ -50,3 +50,41 @@
     width: 120px;
   }
 }
+
+.career-sections {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.career-prep,
+.career-opportunities {
+  flex: 1;
+  margin: 0 10px;
+}
+
+h3 {
+  font-size: 20px;
+  text-align: left;
+  padding-bottom: 5px;
+  border-bottom: 2px solid orange;
+}
+
+.highlight {
+  color: orange;
+}
+
+/* Career Cards */
+.career-cards {
+  display: flex;
+  gap: 15px;
+}
+
+.card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 280px;
+  text-align: left;
+}
