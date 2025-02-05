@@ -78,5 +78,6 @@
 @media (max-width: 768px) {
   .login-content {
     width: 90%;
+    top: 40%;
   }
 }
