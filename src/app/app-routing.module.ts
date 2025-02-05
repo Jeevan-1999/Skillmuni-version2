@@ -28,7 +28,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'dashboard',
+    path: 'home',
     component: DashboardComponent, // Default path redirects to Dashboard
   },
 

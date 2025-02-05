@@ -2,9 +2,9 @@
     <div class="container-fluid">
         <!-- Left Section: Logo -->
         <div class="left-section d-flex align-items-center">
-            <img src="assets/icons/skillmuni-desktop-icon.png" routerLink="/dashboard" alt="Skillmuni Logo"
+            <img src="assets/icons/skillmuni-desktop-icon.png" routerLink="/home" alt="Skillmuni Logo"
                 class="logo-left desktop-only" />
-            <img src="assets/icons/skillmuni-mobile-icon.png" routerLink="/dashboard" alt="Skillmuni Logo"
+            <img src="assets/icons/skillmuni-mobile-icon.png" routerLink="/home" alt="Skillmuni Logo"
                 class="logo-left mobile-only" />
         </div>
 
@@ -26,7 +26,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" [ngClass]="{'active': activeLink === 'dashboard'}"
-                    (click)="setActiveLink('dashboard')" routerLink="/dashboard">
+                    (click)="setActiveLink('dashboard')" routerLink="/home">
                     <i class="material-icons">dashboard</i>
                     <span>Dashboard</span>
                 </a>
