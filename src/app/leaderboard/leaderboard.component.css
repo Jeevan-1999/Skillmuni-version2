@@ -252,3 +252,17 @@
   font-weight: bold;
   color: #34437a;
 }
+
+@media (max-width: 768px) {
+  .tabs-container {
+    width: 350px;
+  }
+  .header-item.name {
+    padding-left: 5px;
+    font-size: 13px;
+  }
+  .header-item.rank {
+    font-size: 13px;
+    padding-left: 5px;
+  }
+}
