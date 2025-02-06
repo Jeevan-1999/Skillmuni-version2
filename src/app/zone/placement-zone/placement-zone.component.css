@@ -90,79 +90,150 @@
 .career-cards {
   display: flex;
   gap: 20px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* Ensures no wrapping, forcing cards to stay in one line */
+  justify-content: space-between; /* Adjusts spacing between the cards */
+  width: 100%;
 }
 
 .card {
   background: #ffffff;
-  padding: 20px;
+  padding: 5px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  flex: 1;
-  min-width: 200px;
-  text-align: left;
-  margin-top: 10px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
 }
 
-.card .content {
+.content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
 }
 
-.card .text-content {
+.text-content {
   flex: 1;
+  margin-right: 20px;
 }
 
-.card h4 {
+.text-content h4 {
   font-size: 14px;
   color: #7a8ba2;
+  margin-bottom: 5px;
 }
 
-.card h5 {
+.text-content h5 {
   font-size: 20px;
   font-weight: bold;
   color: #34437a;
-  margin-top: 5px;
+  margin: 5px 0;
 }
 
-.card p {
+.text-content p {
   font-size: 14px;
   color: #6e7a93;
-  margin: 10px 0;
 }
 
-.card .icon-container {
-  flex-shrink: 0;
-  text-align: right;
-  max-width: 35%;
+.icon-container {
+  max-width: 120px;
 }
 
-.card .icon-container img {
-  width: 120px;
-  height: auto;
+.opportunity-card .icon-container {
+  max-width: 150px;
 }
 
-.card .icon-container.card-img img {
-  width: 150px;
+.icon-container img {
+  width: 100%;
   height: auto;
 }
 
 .card-explore {
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px 20px;
-  background-color: #fff4e6;
+  margin-top: auto; /* Pushes the section to the bottom */
+  background: #fff4e6;
+  padding: 12px;
   border-top: 4px solid #f7931e;
+  text-align: right;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  max-width: 100%;
-  margin-top: auto;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.card-explore:hover {
+  background: #fdefe0;
 }
 
 .card-explore .explore-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f7931e;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Career Opportunities Cards */
+.career-opportunities-cards {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.opportunity-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.opportunity-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+.opportunity-card .content {
+  background-color: #e3e9ff;
+}
+
+.content {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+}
+
+.text-content {
+  flex: 1;
+}
+
+.text-content h5 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #34437a;
+  margin-bottom: 10px;
+}
+
+.text-content p {
+  font-size: 14px;
+  color: #6e7a93;
+  margin: 0;
+}
+
+.opportunity-explore {
+  border-top: 4px solid #f7931e;
+  text-align: center;
+  cursor: pointer;
+  text-align: right;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.opportunity-explore:hover {
+  background: #fdefe0;
+}
+
+.opportunity-explore .explore-text {
   font-size: 14px;
   font-weight: 600;
   color: #f7931e;
