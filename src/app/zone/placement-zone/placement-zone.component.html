@@ -81,19 +81,27 @@
 
     <!-- View All Jobs -->
     <div class="view-all-jobs">
-        <div class="view-btn"><img src="assets/icons/view-all-icon.png" alt="">
-            <span>VIEW ALL JOBS →</span>
+        <div class="view-all-job-content">
+            <div class="view-all-job-icon">
+                <img src="assets/icons/view-all-icon.png" alt="View All Icon">
+            </div>
+            <span class="view-all-text">VIEW ALL JOBS</span>
+            <span class="explore-text">Explore →</span>
         </div>
     </div>
 
+
     <!-- Industry Wise Jobs -->
     <div class="industry-jobs">
-        <h3>View Industry-Wise Jobs</h3>
+        <h3 class="industry-jobs-title">VIEW INDUSTRY-WISE JOBS</h3>
         <div class="job-list">
             <div *ngFor="let job of jobCategories" class="job-card">
-                <img [src]="job.icon" alt="{{ job.name }}" />
-                <h4>{{ job.name }}</h4>
+                <div class="job-icon">
+                    <img [src]="job.icon" alt="{{ job.name }}">
+                </div>
+                <h4 class="job-name">{{ job.name }}</h4>
             </div>
         </div>
     </div>
+
 </div>
