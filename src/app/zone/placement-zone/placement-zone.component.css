@@ -104,6 +104,12 @@
   display: flex;
   flex-direction: column;
   width: 50%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 .content {
@@ -151,7 +157,7 @@
 .card-explore {
   margin-top: auto; /* Pushes the section to the bottom */
   background: #fff4e6;
-  padding: 12px;
+  padding: 10px;
   border-top: 4px solid #f7931e;
   text-align: right;
   cursor: pointer;
@@ -182,7 +188,7 @@
   display: flex;
   flex-direction: column;
   background: #ffffff;
-  border-radius: 16px;
+  border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   max-width: 700px;
   overflow: hidden;
@@ -195,6 +201,8 @@
 }
 .opportunity-card .content {
   background-color: #e3e9ff;
+  height: 185px;
+  gap: 30px;
 }
 
 .content {
@@ -222,7 +230,6 @@
 
 .opportunity-explore {
   border-top: 4px solid #f7931e;
-  text-align: center;
   cursor: pointer;
   text-align: right;
   padding: 10px;
@@ -242,7 +249,8 @@
 /* View All Jobs */
 .view-all-jobs {
   text-align: center;
-  margin: 30px 0;
+  margin: 20px;
+  max-width: 100%;
 }
 
 .view-btn {

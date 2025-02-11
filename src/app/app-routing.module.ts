@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { SkillZoneComponent } from './zone/skill-zone/skill-zone.component';
 import { LearningZoneComponent } from './zone/learning-zone/learning-zone.component';
 import { SkillZoneCategoryComponent } from './zone/skill-zone/skill-zone-category/skill-zone-category.component';
@@ -15,6 +14,7 @@ import { InternationalRegistrationComponent } from './zone/international-zone/in
 import { EntrepreneurRegistrationComponent } from './zone/entrepreneur-zone/entrepreneur-registration/entrepreneur-registration.component';
 import { LearningCategoryDetailComponent } from './zone/learning-zone/learning-category-detail/learning-category-detail.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
 
@@ -29,10 +29,8 @@ const routes: Routes = [
 
   {
     path: 'home',
-    component: DashboardComponent, // Default path redirects to Dashboard
+    component: HomeComponent, // Default path redirects to home/manin page
   },
-
-
 
   {
     path: 'international-zone',

@@ -27,7 +27,8 @@ export class AuthService {
     this.loggedInUserSubject.next(null);
   }
 
-  getLoggedInUser() {
-    return this.loggedInUserSubject.value;
+  getLoggedInUser(): any {
+    const user = localStorage.getItem('loggedInUser');
+    return user ? JSON.parse(user) : null;
   }
 }

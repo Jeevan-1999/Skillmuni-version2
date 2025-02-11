@@ -23,6 +23,7 @@ import { EntrepreneurRegistrationComponent } from './zone/entrepreneur-zone/entr
 import { InternationalRegistrationComponent } from './zone/international-zone/international-registration/international-registration.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { HttpClientModule } from '@angular/common/http';
     EntrepreneurRegistrationComponent,
     InternationalRegistrationComponent,
     LeaderboardComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
