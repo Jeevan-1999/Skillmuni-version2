@@ -59,7 +59,7 @@
 
 .logo-section p {
   font-size: 16px;
-  color: #7d7d7d;
+  color: #677193;
   margin-bottom: 30px;
   padding: 8px;
 }
@@ -79,5 +79,6 @@
   .login-content {
     width: 90%;
     top: 40%;
+    border: none;
   }
 }
