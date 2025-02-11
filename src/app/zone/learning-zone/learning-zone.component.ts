@@ -16,8 +16,23 @@ export class LearningZoneComponent implements OnInit {
   constructor(private router: Router, private zoneService: ZoneService) { }
 
   ngOnInit(): void {
-    this.learningZoneCards = this.zoneService.getlearningZoneCards();
+    this.fetchLearningZoneCards();
     this.knowledgeHubCards = this.zoneService.getknowledgeHubCards();
+  }
+
+  fetchLearningZoneCards() {
+    this.zoneService.getLearningZoneCards().subscribe((data: any[]) => {
+      this.learningZoneCards = data.map(item => ({
+        title: item.tile_name,
+        image: item.tile_image,
+        solved: '0/0',  // Replace with actual data if available
+        goals: '0'       // Replace with actual data if available
+      }));
+    },
+      (error) => {
+        console.error('Error fetching learning zone cards:', error);
+      }
+    );
   }
 
   navigateToDetail(cardTitle: string) {

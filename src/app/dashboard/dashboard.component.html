@@ -1,56 +1,50 @@
-<div class="main-container">
-    <div class="welcome-section">
-        <div class="greeting">
-            <h1>Hello {{name}}!</h1>
-            <p>Explore the <span class="highlight">Zones of Possibility.</span></p>
-            <img src="assets/icons/long-arrow.png" alt="arrow">
+<div class="performance-section">
+    <div class="heading-section">
+        <div class="section-header">
+            <div class="section-line"></div> <!-- Horizontal line in the same row -->
+            <h2 class="section-title">
+                My Performance
+            </h2>
+            <div class="section-line"></div> <!-- Horizontal line in the same row -->
         </div>
-        <div class="zone-container">
-            <div class="zone" *ngFor="let zone of zones" (click)="navigateToZone(zone.name)">
-                <div class="content">
-                    <div class="zone-content">
-                        <h2>{{ zone.name }} <span class="arrow">→</span></h2>
-                        <p class="zone-description">{{zone.description}}</p>
-                        <img [src]="zone.img" [alt]="zone.name" />
-                    </div>
-                </div>
+        <div class="profile-card">
+            <div class="profile-info">
+                <div class="profile-picture">S</div>
+                <h3>Saakshi Shetty</h3>
+                <p class="profile-level">GRADUATE LEVEL</p>
             </div>
         </div>
     </div>
 
-    <!-- New Zones Section -->
-    <div class="new-zones-section">
-        <div class="zone-card-container">
-            <div class="zone-header">
-                <div class="zone-title">
-                    <img src="assets/icons/learning-zone-logo.png" alt="Learning Zone Logo" class="zone-logo" />
-                    <h2>Learning Zone</h2>
-                </div>
-                <a [routerLink]="'/learning-zone'" class="see-all-link">See All &gt;</a>
-            </div>
-            <div class="card-container">
-                <div class="card" *ngFor="let card of learningZoneCards.slice(0, 3)"
-                    (click)="navigateToLearningDetail(card.title)">
-                    <img [src]="card.image" alt="{{card.title}}" />
-                    <p>{{card.title}}</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="zone-card-container">
-            <div class="zone-header">
-                <div class="zone-title">
-                    <img src="assets/icons/skill-zone-logo.png" alt="Skill Zone Logo" class="zone-logo" />
-                    <h2>Skill Zone</h2>
-                </div>
-                <a [routerLink]="'/skill-zone'" class="see-all-link">See All &gt;</a>
-            </div>
-            <div class="card-container">
-                <div class="card" *ngFor="let card of skillZoneCards.slice(0, 3)"
-                    (click)="navigateToSkillDetail(card.title)">
-                    <img [src]="card.image" alt="{{card.title}}" />
-                    <p>{{card.title}}</p>
-                </div>
-            </div>
+
+    <div class="stats-container">
+        <div class="stat-card">
+            <img src="assets/badge-gold.png" alt="Badge Gold">
+            <p>0</p>
+            <span>Badges Won</span>
+        </div>
+        <div class="stat-card">
+            <img src="assets/goal-icon.png" alt="Goals">
+            <p>0</p>
+            <span>Goals</span>
+        </div>
+        <div class="stat-card">
+            <img src="assets/gem-icon.png" alt="Gems">
+            <p>0</p>
+            <span>Gems</span>
+        </div>
+        <div class="stat-card">
+            <img src="assets/wallet-icon.png" alt="Wallet">
+            <p>0</p>
+            <span>Wallet</span>
         </div>
     </div>
+
+    <div class="action-buttons">
+        <div class="action-button">View Bookmarked</div>
+        <div class="action-button">View Available Rewards</div>
+        <div class="action-button">Assessment Score</div>
+        <div class="action-button">Rewards Redeemed</div>
+    </div>
+</div>

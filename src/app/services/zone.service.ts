@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ZoneService {
-
-  constructor() { }
+  private apiUrl = 'https://www.skillmuni.in/SkillmuniApi2022/api/GetAcademicTiles?UID=2509&OID=130';
+  constructor(private http: HttpClient) { }
 
   zones = [
     {
@@ -396,8 +398,8 @@ export class ZoneService {
     return this.zones;
   }
 
-  getlearningZoneCards() {
-    return this.learningZoneCards;
+  getLearningZoneCards(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
   }
 
   getknowledgeHubCards() {

@@ -15,6 +15,7 @@ import { EntrepreneurRegistrationComponent } from './zone/entrepreneur-zone/entr
 import { LearningCategoryDetailComponent } from './zone/learning-zone/learning-category-detail/learning-category-detail.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { HomeComponent } from './home/home.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
 
@@ -30,6 +31,12 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent, // Default path redirects to home/manin page
+  },
+
+
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
   },
 
   {
