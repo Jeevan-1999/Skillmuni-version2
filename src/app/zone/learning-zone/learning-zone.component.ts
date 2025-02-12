@@ -26,6 +26,7 @@ export class LearningZoneComponent implements OnInit {
       this.knowledgeHubCards = data
         .filter(item => item.status === "A" && item.theme_id === 2) // For .card (theme_id = 2)
         .map(item => ({
+          id_academic_tile: item.id_academic_tile,
           title: item.tile_name,
           image: item.tile_image,
           solved: '0/0',
@@ -35,6 +36,7 @@ export class LearningZoneComponent implements OnInit {
       this.learningZoneCards = data
         .filter(item => item.status === "A" && item.theme_id === 1) // For .play-card (theme_id = 1)
         .map(item => ({
+          id_academic_tile: item.id_academic_tile,
           title: item.tile_name,
           image: item.tile_image,
           solved: '0/0',
@@ -48,7 +50,8 @@ export class LearningZoneComponent implements OnInit {
   }
 
 
-  navigateToDetail(cardTitle: string) {
-    this.router.navigate(['/learning-category-detail', cardTitle]);
+  navigateToDetail(card: any) {
+    this.router.navigate(['/learning-zone-category', card.id_academic_tile, encodeURIComponent(card.title)]);
   }
+
 }

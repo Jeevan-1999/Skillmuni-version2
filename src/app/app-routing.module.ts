@@ -12,10 +12,10 @@ import { EntrepreneurialQuotientComponent } from './zone/entrepreneur-zone/entre
 import { OpportunityDetailComponent } from './zone/entrepreneur-zone/opportunity-detail/opportunity-detail.component';
 import { InternationalRegistrationComponent } from './zone/international-zone/international-registration/international-registration.component';
 import { EntrepreneurRegistrationComponent } from './zone/entrepreneur-zone/entrepreneur-registration/entrepreneur-registration.component';
-import { LearningCategoryDetailComponent } from './zone/learning-zone/learning-category-detail/learning-category-detail.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LearningZoneCategoryComponent } from './zone/learning-zone/learning-zone-category/learning-zone-category.component';
 
 const routes: Routes = [
 
@@ -72,13 +72,15 @@ const routes: Routes = [
     path: 'learning-zone',
     component: LearningZoneComponent,
   },
-  {
-    path: 'learning-category-detail/:title',
-    component: LearningCategoryDetailComponent
-  },
+
   {
     path: 'skill-zone-category/:id/:title',
     component: SkillZoneCategoryComponent,
+  },
+
+  {
+    path: 'learning-zone-category/:id/:title',
+    component: LearningZoneCategoryComponent,
   },
   {
     path: 'entrepreneur-zone/entrepreneurial-quotient',

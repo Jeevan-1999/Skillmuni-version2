@@ -10,6 +10,8 @@ export class ZoneService {
 
   private skillZoneApiUrl = 'https://www.skillmuni.in/SkillmuniApi2022/api/GetSkillTiles?UID=2509&OID=130';
 
+  private countryApiUrl = 'https://www.skillmuni.in/SkillmuniApi2022/api/getCategoryTileListForNonLearning?UID=2509&OID=130&tile_type=2';
+
   constructor(private http: HttpClient) { }
 
   zones = [
@@ -322,8 +324,13 @@ export class ZoneService {
     return this.http.get<any[]>(briefTilesApiUrl);
   }
 
-  getPlaces() {
-    return this.places;
+  getPlaces(): Observable<any> {
+    return this.http.get<any>(this.countryApiUrl);
+  }
+
+  getBriefListForStudyAbroad(tileCode: string): Observable<any> {
+    const apiUrl = `https://www.skillmuni.in/SkillmuniApi2022/api/getBriefListForStudyAbroad?UID=2509&OID=130&ENC=${tileCode}`;
+    return this.http.get<any>(apiUrl);
   }
 
   getOpportunities() {

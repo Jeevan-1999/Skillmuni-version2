@@ -8,7 +8,8 @@ import { ZoneService } from 'src/app/services/zone.service';
   styleUrls: ['./international-zone-details.component.css'],
 })
 export class InternationalZoneDetailsComponent implements OnInit {
-  placeName: string = '';
+  tileCode: string = '';
+  placeName: string = ''; // Add this line
   articles: any[] = [];
 
   constructor(
@@ -18,14 +19,32 @@ export class InternationalZoneDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.placeName = this.route.snapshot.paramMap.get('placeName') || '';
-    const places = this.zoneService.getPlaces();
-    const selectedPlace = places.find(
-      (place) => place.name.toLowerCase() === this.placeName.toLowerCase()
-    );
+    this.tileCode = this.route.snapshot.paramMap.get('placeName') || '';
 
-    if (selectedPlace) {
-      this.articles = selectedPlace.articles;
+    if (this.tileCode) {
+      this.zoneService.getPlaces().subscribe((response) => {
+        if (response.Status === 'SUCCESS' && response.Tile) {
+          const selectedPlace = response.Tile.find((tile: any) => tile.tile_code === this.tileCode);
+          if (selectedPlace) {
+            this.placeName = selectedPlace.category_tile; // Set placeName dynamically
+          }
+        }
+      });
+
+      this.zoneService.getBriefListForStudyAbroad(this.tileCode).subscribe(
+        (response) => {
+          if (response.BriefList) {
+            this.articles = response.BriefList.map((item: any) => ({
+              articleTitle: item.brief_title,
+              articleContent: item.briefResource.find((res: any) => res.resource_type === 1)?.resouce_data || 'No content available',
+              articleImage: `https://www.skillmuni.in${item.briefResource.find((res: any) => res.resource_type === 2)?.brief_destination || ''}${item.briefResource.find((res: any) => res.resource_type === 2)?.resouce_data || ''}`
+            }));
+          }
+        },
+        (error) => {
+          console.error('Error fetching brief list:', error);
+        }
+      );
     }
   }
 

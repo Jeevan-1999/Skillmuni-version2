@@ -10,15 +10,6 @@
     </div>
 
     <div class="content">
-        <div class="sub-header">
-            <div class="stat-box">
-                <img src="assets/icons/article-icon.png" alt="Article Icon" class="stat-icon" />
-                <p>
-                    Articles: {{ articles.length }} / <span>20 Solved</span>
-                </p>
-            </div>
-        </div>
-
         <div *ngFor="let article of articles" class="card">
             <div class="card-header">
                 <h2>{{ article.articleTitle }}</h2>
@@ -36,6 +27,7 @@
                     </button>
                 </div>
             </div>
+
             <div class="card-footer">
                 <p>
                     Please scroll up for more
@@ -46,6 +38,7 @@
                     <span class="material-icons">thumb_down</span>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

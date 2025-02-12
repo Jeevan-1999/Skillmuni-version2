@@ -9,7 +9,6 @@ import { FooterComponent } from './core/footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LearningZoneComponent } from './zone/learning-zone/learning-zone.component';
 import { SkillZoneComponent } from './zone/skill-zone/skill-zone.component';
-import { LearningCategoryDetailComponent } from './zone/learning-zone/learning-category-detail/learning-category-detail.component';
 import { SkillZoneCategoryComponent } from './zone/skill-zone/skill-zone-category/skill-zone-category.component';
 import { LoginComponent } from './auth/login/login.component';
 import { InternationalZoneComponent } from './zone/international-zone/international-zone.component';
@@ -24,6 +23,7 @@ import { InternationalRegistrationComponent } from './zone/international-zone/in
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { LearningZoneCategoryComponent } from './zone/learning-zone/learning-zone-category/learning-zone-category.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,6 @@ import { HomeComponent } from './home/home.component';
     DashboardComponent,
     LearningZoneComponent,
     SkillZoneComponent,
-    LearningCategoryDetailComponent,
     SkillZoneCategoryComponent,
     LoginComponent,
     InternationalZoneComponent,
@@ -46,6 +45,7 @@ import { HomeComponent } from './home/home.component';
     InternationalRegistrationComponent,
     LeaderboardComponent,
     HomeComponent,
+    LearningZoneCategoryComponent,
   ],
   imports: [
     BrowserModule,

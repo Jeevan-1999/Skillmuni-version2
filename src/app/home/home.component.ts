@@ -29,6 +29,7 @@ export class HomeComponent {
   fetchLearningZoneCards() {
     this.zoneService.getLearningZoneCards().subscribe((data: any[]) => {
       this.learningZoneCards = data.map(item => ({
+        id_academic_tile: item.id_academic_tile,
         title: item.tile_name,
         image: item.tile_image,
         solved: '0/0',
@@ -43,7 +44,7 @@ export class HomeComponent {
   fetchSkillZoneCards() {
     this.zoneService.getSkillZoneCards().subscribe((data: any[]) => {
       this.skillZoneCards = data.map(item => ({
-        id_academic_tile: item.id_academic_tile, // ✅ Add ID here
+        id_academic_tile: item.id_academic_tile,
         title: item.tile_name,
         image: item.tile_image,
         solved: '0/0',
@@ -61,8 +62,8 @@ export class HomeComponent {
     }
   }
 
-  navigateToLearningDetail(cardTitle: string) {
-    this.router.navigate(['/learning-category-detail', cardTitle]);
+  navigateToLearningDetail(card: any) {
+    this.router.navigate(['/learning-zone-category', card.id_academic_tile, encodeURIComponent(card.title)]);
   }
 
   navigateToSkillDetail(card: any) {
