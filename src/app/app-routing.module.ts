@@ -77,7 +77,7 @@ const routes: Routes = [
     component: LearningCategoryDetailComponent
   },
   {
-    path: 'skill-zone-category/:title',
+    path: 'skill-zone-category/:id/:title',
     component: SkillZoneCategoryComponent,
   },
   {

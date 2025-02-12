@@ -8,7 +8,7 @@ import { ZoneService } from '../services/zone.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  Name: string = 'Saakshi'; // Replace with dynamic data if needed
+  Name: string = 'Saakshi';
   zones: any[] = [];
   learningZoneCards: any[] = [];
   skillZoneCards: any[] = [];
@@ -21,10 +21,9 @@ export class HomeComponent {
   ) { }
 
   ngOnInit(): void {
-    // Fetch data from the service
     this.zones = this.zoneService.getZones();
     this.fetchLearningZoneCards();
-    this.skillZoneCards = this.zoneService.getSkillZoneCards();
+    this.fetchSkillZoneCards();
   }
 
   fetchLearningZoneCards() {
@@ -32,17 +31,29 @@ export class HomeComponent {
       this.learningZoneCards = data.map(item => ({
         title: item.tile_name,
         image: item.tile_image,
-        solved: '0/0',  // Replace with actual data if available
-        goals: '0'       // Replace with actual data if available
+        solved: '0/0',
+        goals: '0'
       }));
     },
       (error) => {
         console.error('Error fetching learning zone cards:', error);
-      }
-    );
+      });
   }
 
-
+  fetchSkillZoneCards() {
+    this.zoneService.getSkillZoneCards().subscribe((data: any[]) => {
+      this.skillZoneCards = data.map(item => ({
+        id_academic_tile: item.id_academic_tile, // ✅ Add ID here
+        title: item.tile_name,
+        image: item.tile_image,
+        solved: '0/0',
+        goals: '0'
+      }));
+    },
+      (error) => {
+        console.error('Error fetching skill zone cards:', error);
+      });
+  }
   navigateToZone(zoneName: string): void {
     const selectedZone = this.zones.find((zone) => zone.name === zoneName);
     if (selectedZone) {
@@ -54,7 +65,7 @@ export class HomeComponent {
     this.router.navigate(['/learning-category-detail', cardTitle]);
   }
 
-  navigateToSkillDetail(cardTitle: string) {
-    this.router.navigate(['/skill-zone-category', cardTitle]);
+  navigateToSkillDetail(card: any) {
+    this.router.navigate(['/skill-zone-category', card.id_academic_tile, encodeURIComponent(card.title)]);
   }
 }

@@ -21,7 +21,7 @@
         <div class="card-container">
             <div class="card" *ngFor="let item of knowledgeHubCards" (click)="navigateToDetail(item.title)">
                 <div class="card-heading">
-                    <p class="card-title">{{ item.title }}</p>
+                    <p class="card-title">{{ item.title| uppercase }}</p>
                     <div class="card-arrow">
                         <span>→</span>
                     </div>
@@ -44,7 +44,7 @@
                 <div class="play-card-content">
                     <img [src]="card.image" alt="{{ card.title }}" class="play-card-image-left" />
                     <div class="play-card-details">
-                        <p class="play-card-title">{{ card.title }}</p>
+                        <p class="play-card-title">{{ card.title| uppercase }}</p>
                         <div class="play-card-stats">
                             <p class="play-card-solved">🏆 {{ card.solved }} SOLVED</p>
                             <p class="play-card-goals">⚽ {{ card.goals }} GOALS</p>

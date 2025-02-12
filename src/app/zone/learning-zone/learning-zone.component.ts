@@ -17,23 +17,36 @@ export class LearningZoneComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchLearningZoneCards();
-    this.knowledgeHubCards = this.zoneService.getknowledgeHubCards();
+    // this.knowledgeHubCards = this.zoneService.getknowledgeHubCards();
   }
 
   fetchLearningZoneCards() {
     this.zoneService.getLearningZoneCards().subscribe((data: any[]) => {
-      this.learningZoneCards = data.map(item => ({
-        title: item.tile_name,
-        image: item.tile_image,
-        solved: '0/0',  // Replace with actual data if available
-        goals: '0'       // Replace with actual data if available
-      }));
+      // Separate data based on theme_id
+      this.knowledgeHubCards = data
+        .filter(item => item.status === "A" && item.theme_id === 2) // For .card (theme_id = 2)
+        .map(item => ({
+          title: item.tile_name,
+          image: item.tile_image,
+          solved: '0/0',
+          goals: '0'
+        }));
+
+      this.learningZoneCards = data
+        .filter(item => item.status === "A" && item.theme_id === 1) // For .play-card (theme_id = 1)
+        .map(item => ({
+          title: item.tile_name,
+          image: item.tile_image,
+          solved: '0/0',
+          goals: '0'
+        }));
     },
       (error) => {
         console.error('Error fetching learning zone cards:', error);
       }
     );
   }
+
 
   navigateToDetail(cardTitle: string) {
     this.router.navigate(['/learning-category-detail', cardTitle]);

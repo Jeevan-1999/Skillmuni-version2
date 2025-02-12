@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ZoneService } from 'src/app/services/zone.service';
 
 @Component({
   selector: 'app-skill-zone-category',
@@ -8,52 +9,34 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SkillZoneCategoryComponent implements OnInit {
   title: string | null = null;
+  id_academic_tile: string | null = null;
+  learnAndPlayCards: any[] = [];
 
-  learnAndPlayCards = [
-    {
-      title: 'VERBAL REASONING', image: 'assets/cards/verbal-reasoning.png', solved: '1/106', goals: '3',
-      articles: [
-        {
-          articleTitle: 'Masti - Ghar Ghar Mein Pathshala',
-          articleImage: 'assets/cards/Pathshala.png',
-          articleContent: 'Social entrepreneurship focuses on creating businesses that solve societal problems while maintaining financial sustainability.',
-        }
-      ]
-    },
-    {
-      title: 'NON VERBAL REASONING', image: 'assets/cards/non-verbal-reasoning.png', solved: '1/106', goals: '3',
-      articles: [
-        {
-          articleTitle: 'Masti - Ghar Ghar Mein Pathshala',
-          articleImage: 'assets/cards/Pathshala.png',
-          articleContent: 'Social entrepreneurship focuses on creating businesses that solve societal problems while maintaining financial sustainability.',
-        }
-      ]
-    },
-    {
-      title: 'ARITHMETICAL ABILITY', image: 'assets/cards/arithmetic.png', solved: '1/106', goals: '3',
-      articles: [
-        {
-          articleTitle: 'Masti - Ghar Ghar Mein Pathshala',
-          articleImage: 'assets/cards/Pathshala.png',
-          articleContent: 'Social entrepreneurship focuses on creating businesses that solve societal problems while maintaining financial sustainability.',
-        }
-      ]
-    },
-    {
-      title: 'DATA INTERPRETATION', image: 'assets/cards/data-interpretation.png', solved: '1/106', goals: '3', articles: [
-        {
-          articleTitle: 'Masti - Ghar Ghar Mein Pathshala',
-          articleImage: 'assets/cards/Pathshala.png',
-          articleContent: 'Social entrepreneurship focuses on creating businesses that solve societal problems while maintaining financial sustainability.',
-        }
-      ]
-    },
-  ];
-
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private zoneService: ZoneService) { }
 
   ngOnInit(): void {
-    this.title = this.route.snapshot.paramMap.get('title');
+    this.id_academic_tile = this.route.snapshot.paramMap.get('id');
+    this.title = decodeURIComponent(this.route.snapshot.paramMap.get('title') || '');
+
+    if (this.id_academic_tile) {
+      this.fetchBriefTiles(this.id_academic_tile);
+    }
+  }
+
+
+  fetchBriefTiles(id_academic_tile: string) {
+    this.zoneService.getBriefTiles(id_academic_tile).subscribe(
+      (data: any[]) => {
+        this.learnAndPlayCards = data.map(item => ({
+          title: item.category_tile,
+          image: item.tile_image,
+          solved: '0/51', // Placeholder, modify if needed
+          goals: '0'
+        }));
+      },
+      error => {
+        console.error('Error fetching brief tiles:', error);
+      }
+    );
   }
 }

@@ -32,7 +32,7 @@
                 <div class="card" *ngFor="let card of learningZoneCards.slice(0, 3)"
                     (click)="navigateToLearningDetail(card.title)">
                     <img [src]="card.image" alt="{{card.title}}" />
-                    <p>{{card.title}}</p>
+                    <p>{{ card.title | uppercase }}</p>
                 </div>
             </div>
         </div>
@@ -46,10 +46,9 @@
                 <a [routerLink]="'/skill-zone'" class="see-all-link">See All &gt;</a>
             </div>
             <div class="card-container">
-                <div class="card" *ngFor="let card of skillZoneCards.slice(0, 3)"
-                    (click)="navigateToSkillDetail(card.title)">
+                <div class="card" *ngFor="let card of skillZoneCards.slice(0, 3)" (click)="navigateToSkillDetail(card)">
                     <img [src]="card.image" alt="{{card.title}}" />
-                    <p>{{card.title}}</p>
+                    <p>{{card.title| uppercase}}</p>
                 </div>
             </div>
         </div>

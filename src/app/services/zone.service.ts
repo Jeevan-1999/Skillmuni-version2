@@ -6,7 +6,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ZoneService {
-  private apiUrl = 'https://www.skillmuni.in/SkillmuniApi2022/api/GetAcademicTiles?UID=2509&OID=130';
+  private learningZoneApiUrl = 'https://www.skillmuni.in/SkillmuniApi2022/api/GetAcademicTiles?UID=2509&OID=130';
+
+  private skillZoneApiUrl = 'https://www.skillmuni.in/SkillmuniApi2022/api/GetSkillTiles?UID=2509&OID=130';
+
   constructor(private http: HttpClient) { }
 
   zones = [
@@ -33,63 +36,6 @@ export class ZoneService {
     },
   ];
 
-  learningZoneCards = [
-    {
-      title: 'BRAIN VITA', image: 'assets/cards/brain-vita.png', solved: '1/106', goals: '3',
-      categories: [
-        { categorytitle: 'VERBAL REASONING', categoryImage: 'assets/cards/verbal-reasoning.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'NON VERBAL REASONING', categoryImage: 'assets/cards/non-verbal-reasoning.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'ARITHMETICAL ABILITY', categoryImage: 'assets/cards/arithmetic.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'DATA INTERPRETATION', categoryImage: 'assets/cards/data-interpretation.png', solved: '1/51', goals: '3' },
-      ],
-    },
-    {
-      title: 'ENGLISH VINGLISH', image: 'assets/cards/english-vinglish.png', solved: '1/106', goals: '3',
-      categories: [
-        { categorytitle: 'VERBAL REASONING', categoryImage: 'assets/cards/verbal-reasoning.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'NON VERBAL REASONING', categoryImage: 'assets/cards/non-verbal-reasoning.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'ARITHMETICAL ABILITY', categoryImage: 'assets/cards/arithmetic.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'DATA INTERPRETATION', categoryImage: 'assets/cards/data-interpretation.png', solved: '1/51', goals: '3' },
-      ],
-    },
-    {
-      title: 'SHARP SHOOTER', image: 'assets/cards/sharp-shooter.png', solved: '1/106', goals: '3',
-      categories: [
-        { categorytitle: 'VERBAL REASONING', categoryImage: 'assets/cards/verbal-reasoning.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'NON VERBAL REASONING', categoryImage: 'assets/cards/non-verbal-reasoning.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'ARITHMETICAL ABILITY', categoryImage: 'assets/cards/arithmetic.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'DATA INTERPRETATION', categoryImage: 'assets/cards/data-interpretation.png', solved: '1/51', goals: '3' },
-      ],
-    },
-    {
-      title: 'ITS MY STYLE', image: 'assets/cards/its-my-style.png', solved: '1 / 106', goals: '3',
-      categories: [
-        { categorytitle: 'VERBAL REASONING', categoryImage: 'assets/cards/verbal-reasoning.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'NON VERBAL REASONING', categoryImage: 'assets/cards/non-verbal-reasoning.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'ARITHMETICAL ABILITY', categoryImage: 'assets/cards/arithmetic.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'DATA INTERPRETATION', categoryImage: 'assets/cards/data-interpretation.png', solved: '1/51', goals: '3' },
-      ],
-    },
-    {
-      title: 'HAPPINESS BAROMETER', image: 'assets/cards/happiness-barometer.png', solved: '1/106', goals: '3',
-      categories: [
-        { categorytitle: 'VERBAL REASONING', categoryImage: 'assets/cards/verbal-reasoning.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'NON VERBAL REASONING', categoryImage: 'assets/cards/non-verbal-reasoning.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'ARITHMETICAL ABILITY', categoryImage: 'assets/cards/arithmetic.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'DATA INTERPRETATION', categoryImage: 'assets/cards/data-interpretation.png', solved: '1/51', goals: '3' },
-      ],
-    },
-    {
-      title: 'SURGICAL STRIKE', image: 'assets/cards/surgical-strike.png', solved: '1/106', goals: '3',
-      categories: [
-        { categorytitle: 'VERBAL REASONING', categoryImage: 'assets/cards/verbal-reasoning.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'NON VERBAL REASONING', categoryImage: 'assets/cards/non-verbal-reasoning.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'ARITHMETICAL ABILITY', categoryImage: 'assets/cards/arithmetic.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'DATA INTERPRETATION', categoryImage: 'assets/cards/data-interpretation.png', solved: '1/51', goals: '3' },
-      ],
-    },
-  ];
-
   knowledgeHubCards = [
     { title: 'GLOBAL GYAN', image: 'assets/cards/global-gyan.png' },
     { title: 'WHAT’S THE GOOD WORD', image: 'assets/cards/good-word.png' },
@@ -97,44 +43,6 @@ export class ZoneService {
     { title: 'NATION WANTS TO KNOW', image: 'assets/cards/nation-knows.png' },
   ];
 
-  skillZoneCards = [
-    {
-      title: 'INSURANCE', image: 'assets/cards/insurance.png', solved: '1/106', goals: '3',
-      categories: [
-        { categorytitle: 'VERBAL REASONING', categoryImage: 'assets/cards/verbal-reasoning.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'NON VERBAL REASONING', categoryImage: 'assets/cards/non-verbal-reasoning.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'ARITHMETICAL ABILITY', categoryImage: 'assets/cards/arithmetic.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'DATA INTERPRETATION', categoryImage: 'assets/cards/data-interpretation.png', solved: '1/51', goals: '3' },
-      ],
-    },
-    {
-      title: 'BANKING', image: 'assets/cards/banking.png', solved: '1/106', goals: '3',
-      categories: [
-        { categorytitle: 'VERBAL REASONING', categoryImage: 'assets/cards/verbal-reasoning.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'NON VERBAL REASONING', categoryImage: 'assets/cards/non-verbal-reasoning.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'ARITHMETICAL ABILITY', categoryImage: 'assets/cards/arithmetic.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'DATA INTERPRETATION', categoryImage: 'assets/cards/data-interpretation.png', solved: '1/51', goals: '3' },
-      ],
-    },
-    {
-      title: 'HOSPITALITY', image: 'assets/cards/hospitality.png', solved: '1/106', goals: '3',
-      categories: [
-        { categorytitle: 'VERBAL REASONING', categoryImage: 'assets/cards/verbal-reasoning.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'NON VERBAL REASONING', categoryImage: 'assets/cards/non-verbal-reasoning.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'ARITHMETICAL ABILITY', categoryImage: 'assets/cards/arithmetic.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'DATA INTERPRETATION', categoryImage: 'assets/cards/data-interpretation.png', solved: '1/51', goals: '3' },
-      ],
-    },
-    {
-      title: 'IT GYAN', image: 'assets/cards/it-gyan.png', solved: '1/106', goals: '3',
-      categories: [
-        { categorytitle: 'VERBAL REASONING', categoryImage: 'assets/cards/verbal-reasoning.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'NON VERBAL REASONING', categoryImage: 'assets/cards/non-verbal-reasoning.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'ARITHMETICAL ABILITY', categoryImage: 'assets/cards/arithmetic.png', solved: '1/51', goals: '3' },
-        { categorytitle: 'DATA INTERPRETATION', categoryImage: 'assets/cards/data-interpretation.png', solved: '1/51', goals: '3' },
-      ],
-    },
-  ];
 
   places = [
     {
@@ -399,15 +307,19 @@ export class ZoneService {
   }
 
   getLearningZoneCards(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get<any[]>(this.learningZoneApiUrl);
   }
 
   getknowledgeHubCards() {
     return this.knowledgeHubCards;
   }
 
-  getSkillZoneCards() {
-    return this.skillZoneCards;
+  getSkillZoneCards(): Observable<any[]> {
+    return this.http.get<any[]>(this.skillZoneApiUrl);
+  }
+  getBriefTiles(id_academic_tile: string): Observable<any[]> {
+    const briefTilesApiUrl = `https://www.skillmuni.in/SkillmuniApi2022/api/getBriefTiles?UID=2509&OID=130&AcademicTileId=${id_academic_tile}`;
+    return this.http.get<any[]>(briefTilesApiUrl);
   }
 
   getPlaces() {
