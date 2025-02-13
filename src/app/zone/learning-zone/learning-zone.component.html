@@ -1,5 +1,5 @@
 <!-- Learning Zone Component HTML -->
-<div class="learning-zone-container">
+<div class="learning-zone-container" *ngIf="!showComingSoon">
     <!-- Header -->
     <div class="header">
         <img src="assets/icons/back-arrow.png" alt="Back Icon" routerLink="/home" class="back-button" />
@@ -55,3 +55,9 @@
         </div>
     </div>
 </div>
+
+<!-- Coming Soon Component -->
+<app-coming-soon *ngIf="showComingSoon" [zoneTitle]="comingSoonData.zoneTitle" [subtitle]="comingSoonData.subtitle"
+    [cardTitle]="comingSoonData.cardTitle" [imageUrl]="comingSoonData.imageUrl"
+    [description]="comingSoonData.description" (backClicked)="showComingSoon = false">
+</app-coming-soon>

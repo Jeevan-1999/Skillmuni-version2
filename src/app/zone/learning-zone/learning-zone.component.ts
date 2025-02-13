@@ -9,15 +9,21 @@ import { ZoneService } from 'src/app/services/zone.service';  // Import the Zone
 })
 export class LearningZoneComponent implements OnInit {
 
-
+  showComingSoon: boolean = false;  // Control the visibility of app-coming-soon
   learningZoneCards: any[] = [];
   knowledgeHubCards: any[] = [];
+  comingSoonData = {
+    zoneTitle: 'Learning Zone',
+    subtitle: 'NATION WANTS TO KNOW',
+    cardTitle: 'Get Ready for Something Big!',
+    imageUrl: 'assets/cards/rocket.png',
+    description: 'Nation Wants to Know is gearing up for an exciting debate competition. Stay tuned for updates and be the first to join!'
+  };
 
   constructor(private router: Router, private zoneService: ZoneService) { }
 
   ngOnInit(): void {
     this.fetchLearningZoneCards();
-    // this.knowledgeHubCards = this.zoneService.getknowledgeHubCards();
   }
 
   fetchLearningZoneCards() {
@@ -51,20 +57,35 @@ export class LearningZoneComponent implements OnInit {
 
 
   navigateToDetail(card: any) {
-    const specialCards = ["Global Gyan", "Whats the good word", "Nation wants to know"];
-
-    if (specialCards.includes(card.title)) {
-      this.zoneService.getLearningZoneCards().subscribe((data: any[]) => {
-        const selectedCard = data.find(item => item.tile_name === card.title);
-        if (selectedCard && selectedCard.url) {
-          this.router.navigate(['/learning-zone-category', card.id_academic_tile, encodeURIComponent(card.title)], {
-            queryParams: { url: selectedCard.url }
-          });
-        }
-      });
+    if (card.title.toLowerCase() === 'nation wants to know') {
+      this.comingSoonData = {
+        zoneTitle: 'Learning Zone',
+        subtitle: 'NATION WANTS TO KNOW',
+        cardTitle: 'Get Ready for Something Big!',
+        imageUrl: 'assets/cards/rocket.png',
+        description: 'Nation Wants to Know is gearing up for an exciting debate competition. Stay tuned for updates and be the first to join!'
+      };
+      this.showComingSoon = true;  // Show the coming-soon component
     } else {
-      this.router.navigate(['/learning-zone-category', card.id_academic_tile, encodeURIComponent(card.title)]);
+      const specialCards = ["Global Gyan", "Whats the good word"];
+      if (specialCards.includes(card.title)) {
+        this.zoneService.getLearningZoneCards().subscribe((data: any[]) => {
+          const selectedCard = data.find(item => item.tile_name === card.title);
+          if (selectedCard && selectedCard.url) {
+            this.router.navigate(['/learning-zone-category', card.id_academic_tile, encodeURIComponent(card.title)], {
+              queryParams: { url: selectedCard.url }
+            });
+          }
+        });
+      } else {
+        this.router.navigate(['/learning-zone-category', card.id_academic_tile, encodeURIComponent(card.title)]);
+      }
     }
+  }
+
+
+  navigateToComingSoon() {
+    this.showComingSoon = true;  // Show the coming-soon component
   }
 
 }

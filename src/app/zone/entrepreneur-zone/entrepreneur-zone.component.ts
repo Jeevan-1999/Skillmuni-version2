@@ -9,6 +9,16 @@ import { ZoneService } from 'src/app/services/zone.service';
 })
 export class EntrepreneurZoneComponent implements OnInit {
   opportunityCards: any[] = [];
+  showComingSoon: boolean = false;  // Control the visibility of app-coming-soon
+
+
+  comingSoonData = {
+    zoneTitle: 'Entrepreneur Zone',
+    subtitle: 'ASSESSMENT',
+    cardTitle: 'Something Exciting Coming Your Way!',
+    imageUrl: 'assets/cards/entrepreneurial-quotient.jpg',
+    description: 'Get ready to explore your entrepreneurial strengths and uncover the skills that set you apart. This assessment is designed to guide you on your journey to success. Coming soon!'
+  };
 
   constructor(private router: Router, private zoneService: ZoneService) { }
 
@@ -17,7 +27,7 @@ export class EntrepreneurZoneComponent implements OnInit {
   }
 
   navigateToEntrepreneurialQuotient() {
-    this.router.navigate(['entrepreneur-zone/entrepreneurial-quotient']);
+    this.showComingSoon = true;  // Show the coming-soon component
   }
 
   navigateToOpportunity(title: string) {

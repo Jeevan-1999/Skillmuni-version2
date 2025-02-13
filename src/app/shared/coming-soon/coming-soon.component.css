@@ -61,7 +61,7 @@
   align-items: center;
   gap: 15px;
   margin: 30px auto 0;
-  position: relative; /* Ensures absolute positioning works inside */
+  position: relative;
 }
 
 .card-container .title {
@@ -71,8 +71,7 @@
 }
 
 .card-container img {
-  width: 800px;
-  height: 400px;
+  width: 550px;
   border-radius: 10px;
 }
 

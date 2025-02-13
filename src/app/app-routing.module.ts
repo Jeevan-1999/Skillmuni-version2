@@ -8,7 +8,6 @@ import { InternationalZoneComponent } from './zone/international-zone/internatio
 import { PlacementZoneComponent } from './zone/placement-zone/placement-zone.component';
 import { InternationalZoneDetailsComponent } from './zone/international-zone/international-zone-details/international-zone-details.component';
 import { EntrepreneurZoneComponent } from './zone/entrepreneur-zone/entrepreneur-zone.component';
-import { EntrepreneurialQuotientComponent } from './zone/entrepreneur-zone/entrepreneurial-quotient/entrepreneurial-quotient.component';
 import { OpportunityDetailComponent } from './zone/entrepreneur-zone/opportunity-detail/opportunity-detail.component';
 import { InternationalRegistrationComponent } from './zone/international-zone/international-registration/international-registration.component';
 import { EntrepreneurRegistrationComponent } from './zone/entrepreneur-zone/entrepreneur-registration/entrepreneur-registration.component';
@@ -16,6 +15,7 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LearningZoneCategoryComponent } from './zone/learning-zone/learning-zone-category/learning-zone-category.component';
+import { ComingSoonComponent } from './shared/coming-soon/coming-soon.component';
 
 const routes: Routes = [
 
@@ -82,10 +82,6 @@ const routes: Routes = [
     path: 'learning-zone-category/:id/:title',
     component: LearningZoneCategoryComponent,
   },
-  {
-    path: 'entrepreneur-zone/entrepreneurial-quotient',
-    component: EntrepreneurialQuotientComponent,
-  },
 
   {
     path: 'entrepreneur-zone/opportunity/:title',
@@ -94,6 +90,7 @@ const routes: Routes = [
 
 
   { path: 'leaderboard', component: LeaderboardComponent },
+  { path: 'coming-soon', component: ComingSoonComponent },
 
 
 ];
