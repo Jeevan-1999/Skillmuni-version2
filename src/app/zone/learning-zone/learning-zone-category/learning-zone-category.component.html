@@ -1,5 +1,4 @@
 <div class="category-container">
-
     <div class="header">
         <img src="assets/icons/back-arrow.png" alt="Back Icon" routerLink="/learning-zone" class="back-button" />
         <div class="title-container">
@@ -10,41 +9,35 @@
         <img src="assets/icons/category-icon.png" alt="Category Icon" class="header-icon" />
     </div>
 
-    <!-- Total Stats Section -->
-    <div class="total-stats">
-        <div class="stat-box">
-            <img src="assets/icons/bulb-icon.png" alt="Quiz Icon" class="stat-icon" />
-            <p>Total<br><span>Quiz: 1 / 106 Solved</span></p>
-        </div>
-
-        <div class="stat-box">
-            <img src="assets/icons/ball-icon.png" alt="Goal Icon" class="stat-icon" />
-            <p>Total<br><span>Goal: 3 Scored</span></p>
-        </div>
+    <div *ngIf="externalUrl; else defaultContent">
+        <iframe [src]="externalUrl" width="100%" height="600px" frameborder="1"></iframe>
     </div>
 
-    <!-- Cards Section -->
-    <div class="cards-container">
-        <div class="card" *ngFor="let card of learnAndPlayCards">
-            <img [src]="card.image" alt="{{ card.title }}" class="card-image" />
-            <div class="card-content">
-                <p class="card-title">{{ card.title }}</p>
+    <ng-template #defaultContent>
+        <div class="total-stats">
+            <div class="stat-box">
+                <img src="assets/icons/bulb-icon.png" alt="Quiz Icon" class="stat-icon" />
+                <p>Total<br><span>Quiz: 1 / 106 Solved</span></p>
             </div>
-            <div class="card-stats">
-                <div class="card-stat">
-                    <img src="assets/icons/bulb-icon.png" alt="Lightbulb Icon" class="stat-icon" />
-                    <span>{{ card.solved }} / 51</span>
+            <div class="stat-box">
+                <img src="assets/icons/ball-icon.png" alt="Goal Icon" class="stat-icon" />
+                <p>Total<br><span>Goal: 3 Scored</span></p>
+            </div>
+        </div>
+
+        <div class="cards-container">
+            <div class="card" *ngFor="let card of learnAndPlayCards">
+                <div class="card-image-wrapper">
+                    <img [src]="card.image" alt="{{ card.title }}" class="card-image" />
                 </div>
-                <div class="card-stat">
-                    <img src="assets/icons/ball-icon.png" alt="Ball Icon" class="stat-icon" />
-                    <span>{{ card.goals }}</span>
+                <div class="card-content">
+                    <p class="card-title">{{ card.title | uppercase }}</p>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Coming Soon Section -->
-    <div class="coming-soon">
-        <img src="assets/icons/coming-soon.png" alt="Coming Soon Icon" class="coming-soon-image" />
-    </div>
+        <div class="coming-soon">
+            <img src="assets/icons/coming-soon.png" alt="Coming Soon Icon" class="coming-soon-image" />
+        </div>
+    </ng-template>
 </div>

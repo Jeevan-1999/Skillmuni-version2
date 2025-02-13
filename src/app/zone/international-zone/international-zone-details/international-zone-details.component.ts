@@ -37,7 +37,7 @@ export class InternationalZoneDetailsComponent implements OnInit {
             this.articles = response.BriefList.map((item: any) => ({
               articleTitle: item.brief_title,
               articleContent: item.briefResource.find((res: any) => res.resource_type === 1)?.resouce_data || 'No content available',
-              articleImage: `https://www.skillmuni.in${item.briefResource.find((res: any) => res.resource_type === 2)?.brief_destination || ''}${item.briefResource.find((res: any) => res.resource_type === 2)?.resouce_data || ''}`
+              articleImage: `https://www.skillmuni.in/sulcmsproduction${item.briefResource.find((res: any) => res.resource_type === 2)?.brief_destination}${item.briefResource.find((res: any) => res.resource_type === 2)?.resouce_data}`,
             }));
           }
         },

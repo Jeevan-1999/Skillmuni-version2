@@ -51,7 +51,20 @@ export class LearningZoneComponent implements OnInit {
 
 
   navigateToDetail(card: any) {
-    this.router.navigate(['/learning-zone-category', card.id_academic_tile, encodeURIComponent(card.title)]);
+    const specialCards = ["Global Gyan", "Whats the good word", "Nation wants to know"];
+
+    if (specialCards.includes(card.title)) {
+      this.zoneService.getLearningZoneCards().subscribe((data: any[]) => {
+        const selectedCard = data.find(item => item.tile_name === card.title);
+        if (selectedCard && selectedCard.url) {
+          this.router.navigate(['/learning-zone-category', card.id_academic_tile, encodeURIComponent(card.title)], {
+            queryParams: { url: selectedCard.url }
+          });
+        }
+      });
+    } else {
+      this.router.navigate(['/learning-zone-category', card.id_academic_tile, encodeURIComponent(card.title)]);
+    }
   }
 
 }

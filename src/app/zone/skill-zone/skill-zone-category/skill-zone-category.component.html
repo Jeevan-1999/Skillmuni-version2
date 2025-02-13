@@ -28,7 +28,7 @@
         <div class="card" *ngFor="let card of learnAndPlayCards">
             <img [src]="card.image" alt="{{ card.title }}" class="card-image" />
             <div class="card-content">
-                <p class="card-title">{{ card.title }}</p>
+                <p class="card-title">{{ card.title | uppercase }}</p>
             </div>
             <div class="card-stats">
                 <div class="card-stat">

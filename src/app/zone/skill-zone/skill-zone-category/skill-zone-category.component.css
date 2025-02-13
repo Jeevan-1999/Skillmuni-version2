@@ -121,10 +121,9 @@
 }
 
 .card-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   color: #34437a;
-  height: 50px;
   padding: 5px;
 }
 
@@ -138,8 +137,7 @@
   background-color: #fff0de;
   border-radius: 10px;
   padding: 5px 10px;
-  bottom: 15px;
-  left: 15px;
+  margin-top: auto;
 }
 
 .coming-soon {
