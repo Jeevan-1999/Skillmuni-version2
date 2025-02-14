@@ -16,7 +16,6 @@
         <div class="section-line"></div> <!-- Horizontal line in the same row -->
     </div>
 
-    <!-- Quick Access Section -->
     <div class="quick-access">
         <h2 class="quick-access-title">Quick Access</h2>
         <div class="quick-access-list">
@@ -40,6 +39,6 @@
 </div>
 
 <!-- Zone Details Component (Will be shown when selected) -->
-<app-zone-articles *ngIf="showZoneDetails" [tileCode]="selectedTileCode" [placeName]="selectedPlaceName"
+<app-zone-articles *ngIf="showZoneDetails" [title]="zoneTitle" [subtitle]="zoneSubtitle" [articles]="zoneArticles"
     (backClicked)="onBackClick()">
 </app-zone-articles>

@@ -2,9 +2,10 @@
     <div class="header">
         <img src="assets/icons/back-arrow.png" alt="Back Icon" class="back-button" (click)="onBackClick()" />
         <div class="title-container">
-            <h1>Zone Details</h1>
+            <!-- Dynamic title from Input -->
+            <h1>{{ title }}</h1> <!-- Dynamic h1 passed from parent -->
             <img src="assets/icons/long-arrow.png" alt="Arrow" class="long-arrow" />
-            <h2>{{ placeName }}</h2>
+            <h2>{{ subtitle }}</h2> <!-- Dynamic h2 passed from parent -->
         </div>
         <img src="assets/icons/category-icon.png" alt="Category Icon" class="header-icon" />
     </div>
@@ -13,7 +14,7 @@
     <div class="content">
         <div *ngFor="let article of articles" class="card">
             <div class="card-header">
-                <h2>{{ article.articleTitle }}</h2>
+                <h2>{{ article.articleTitle }}</h2> <!-- Article title -->
                 <div class="article-icons">
                     <img src="assets/icons/bookmark-icon.png" alt="Bookmark" class="header-article-icon" />
                     <img src="assets/icons/share-icon.png" alt="Share" class="header-article-icon" />
@@ -22,7 +23,7 @@
             <div class="card-body">
                 <img [src]="article.articleImage" alt="{{ article.articleTitle }}" class="card-image" />
                 <div class="card-content">
-                    <p>{{ article.articleContent }}</p>
+                    <p>{{ article.articleContent }}</p> <!-- Article content -->
                     <button class="register-button" (click)="navigateToRegister()">
                         Register my Interest
                     </button>
