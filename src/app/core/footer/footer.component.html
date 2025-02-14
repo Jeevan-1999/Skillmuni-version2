@@ -1,17 +1,20 @@
 <div class="footer">
-    <div class="footer-item" [ngClass]="{'active': activeLink === 'home'}" routerLink="/home">
+    <div class="footer-item" [ngClass]="{'active': activeLink === 'home'}" (click)="setActiveLink('home')"
+        routerLink="/home">
         <span class="footer-icon">
             <i class="material-icons">home</i>
         </span>
         <span class="footer-label">Home</span>
     </div>
-    <div class="footer-item" [ngClass]="{'active': activeLink === 'leaderboard'}" routerLink="/leaderboard">
+    <div class="footer-item" [ngClass]="{'active': activeLink === 'leaderboard'}" (click)="setActiveLink('leaderboard')"
+        routerLink="/leaderboard">
         <span class="footer-icon">
             <i class="material-icons">leaderboard</i>
         </span>
         <span class="footer-label">Leaderboard</span>
     </div>
-    <div class="footer-item" [ngClass]="{'active': activeLink === 'dashboard'}" routerLink="/dashboard">
+    <div class="footer-item" [ngClass]="{'active': activeLink === 'dashboard'}" (click)="setActiveLink('dashboard')"
+        routerLink="/dashboard">
         <span class="footer-icon">
             <i class="material-icons">dashboard</i>
         </span>

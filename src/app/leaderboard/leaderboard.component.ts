@@ -7,16 +7,16 @@ import { Component } from '@angular/core';
 })
 export class LeaderboardComponent {
 
-  userProfileImg = JSON.parse(sessionStorage.getItem('loggedInUser')!).picture;
-  name = JSON.parse(sessionStorage.getItem('loggedInUser')!).name;
-  nameInitial = this.name.charAt(0); // Extracts the first letter
+  userProfileImg = JSON.parse(localStorage.getItem('loggedInUser')!).picture;
+  name = JSON.parse(localStorage.getItem('loggedInUser')!).name;
+
   users = [
     { rank: 1, name: 'User Name', score1: 1, score2: 1, score3: 1 },
-    { rank: 1, name: 'User Name', score1: 1, score2: 1, score3: 1 },
-    { rank: 1, name: 'User Name', score1: 1, score2: 1, score3: 1 }, // Highlighted Row
-    { rank: 1, name: 'User Name', score1: 1, score2: 1, score3: 1 },
-    { rank: 1, name: 'User Name', score1: 1, score2: 1, score3: 1 },
-    { rank: 1, name: 'User Name', score1: 1, score2: 1, score3: 1 }
+    { rank: 2, name: 'User Name', score1: 1, score2: 1, score3: 1 },
+    { rank: 3, name: 'User Name', score1: 1, score2: 1, score3: 1 }, // Highlighted Row
+    { rank: 4, name: 'User Name', score1: 1, score2: 1, score3: 1 },
+    { rank: 5, name: 'User Name', score1: 1, score2: 1, score3: 1 },
+    { rank: 6, name: 'User Name', score1: 1, score2: 1, score3: 1 }
   ];
   tabs = ['My League', 'My College', 'My Country'];
   selectedTab = 0;

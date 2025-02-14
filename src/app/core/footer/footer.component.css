@@ -21,10 +21,10 @@
   text-decoration: none;
 }
 
-.footer-item.active {
+.footer-item.active i,
+.footer-item.active span {
   color: #f7931e;
 }
-
 .footer-item .footer-icon {
   font-size: 5px;
   margin-bottom: -2px;

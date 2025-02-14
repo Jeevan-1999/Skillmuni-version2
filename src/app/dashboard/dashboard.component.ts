@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
+  userProfileImg = JSON.parse(localStorage.getItem('loggedInUser')!).picture;
+  name = JSON.parse(localStorage.getItem('loggedInUser')!).name;
 
   constructor(
 

@@ -12,8 +12,8 @@ export class HomeComponent {
   zones: any[] = [];
   learningZoneCards: any[] = [];
   skillZoneCards: any[] = [];
-  name = JSON.parse(sessionStorage.getItem('loggedInUser')!).name;
-  userProfileImg = JSON.parse(sessionStorage.getItem('loggedInUser')!).picture;
+  name = JSON.parse(localStorage.getItem('loggedInUser')!).name;
+  userProfileImg = JSON.parse(localStorage.getItem('loggedInUser')!).picture;
 
   constructor(
     private router: Router,

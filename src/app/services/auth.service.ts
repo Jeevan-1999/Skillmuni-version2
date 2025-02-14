@@ -10,20 +10,20 @@ export class AuthService {
   loggedInUser$ = this.loggedInUserSubject.asObservable();
 
   constructor() {
-    // Initialize with the user from sessionStorage (if any)
-    const loggedInUser = sessionStorage.getItem('loggedInUser');
+    // Initialize with the user from localStorage (if any)
+    const loggedInUser = localStorage.getItem('loggedInUser');
     if (loggedInUser) {
       this.loggedInUserSubject.next(JSON.parse(loggedInUser));
     }
   }
 
   login(user: any) {
-    sessionStorage.setItem('loggedInUser', JSON.stringify(user));
+    localStorage.setItem('loggedInUser', JSON.stringify(user));
     this.loggedInUserSubject.next(user);
   }
 
   logout() {
-    sessionStorage.removeItem('loggedInUser');
+    localStorage.removeItem('loggedInUser');
     this.loggedInUserSubject.next(null);
   }
 
