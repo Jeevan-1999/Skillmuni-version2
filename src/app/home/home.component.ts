@@ -8,11 +8,10 @@ import { ZoneService } from '../services/zone.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  Name: string = 'Saakshi';
   zones: any[] = [];
   learningZoneCards: any[] = [];
   skillZoneCards: any[] = [];
-  name = JSON.parse(localStorage.getItem('loggedInUser')!).name;
+  name = JSON.parse(localStorage.getItem('loggedInUser')!).given_name;
   userProfileImg = JSON.parse(localStorage.getItem('loggedInUser')!).picture;
 
   constructor(
