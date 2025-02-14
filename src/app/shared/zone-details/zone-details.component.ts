@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ZoneService } from 'src/app/services/zone.service';
 
 @Component({
-  selector: 'app-international-zone-details',
-  templateUrl: './international-zone-details.component.html',
-  styleUrls: ['./international-zone-details.component.css'],
+  selector: 'app-zone-details',
+  templateUrl: './zone-details.component.html',
+  styleUrls: ['./zone-details.component.css'],
 })
-export class InternationalZoneDetailsComponent implements OnInit {
-  tileCode: string = '';
-  placeName: string = ''; // Add this line
+export class ZoneDetailsComponent implements OnInit {
+  @Input() tileCode: string = '';
+  @Input() placeName: string = '';
   articles: any[] = [];
+  @Output() backClicked = new EventEmitter<void>();
 
   constructor(
     private route: ActivatedRoute,
@@ -19,7 +20,9 @@ export class InternationalZoneDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.tileCode = this.route.snapshot.paramMap.get('placeName') || '';
+    if (!this.tileCode) {
+      this.tileCode = this.route.snapshot.paramMap.get('placeName') || '';
+    }
 
     if (this.tileCode) {
       this.zoneService.getPlaces().subscribe((response) => {
@@ -50,5 +53,10 @@ export class InternationalZoneDetailsComponent implements OnInit {
 
   navigateToRegister(): void {
     this.router.navigate(['international-zone/article/register']);
+  }
+
+  // This is where the back button click triggers the parent method
+  onBackClick() {
+    this.backClicked.emit();  // Emit the event to hide zone details and show international zone
   }
 }

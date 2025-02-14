@@ -13,7 +13,6 @@ import { SkillZoneCategoryComponent } from './zone/skill-zone/skill-zone-categor
 import { LoginComponent } from './auth/login/login.component';
 import { InternationalZoneComponent } from './zone/international-zone/international-zone.component';
 import { PlacementZoneComponent } from './zone/placement-zone/placement-zone.component';
-import { InternationalZoneDetailsComponent } from './zone/international-zone/international-zone-details/international-zone-details.component';
 import { FormsModule } from '@angular/forms';
 import { EntrepreneurZoneComponent } from './zone/entrepreneur-zone/entrepreneur-zone.component';
 import { OpportunityDetailComponent } from './zone/entrepreneur-zone/opportunity-detail/opportunity-detail.component';
@@ -25,6 +24,7 @@ import { HomeComponent } from './home/home.component';
 import { LearningZoneCategoryComponent } from './zone/learning-zone/learning-zone-category/learning-zone-category.component';
 import { SkillZoneContentComponent } from './zone/skill-zone/skill-zone-content/skill-zone-content.component';
 import { ComingSoonComponent } from './shared/coming-soon/coming-soon.component';
+import { ZoneDetailsComponent } from './shared/zone-details/zone-details.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,6 @@ import { ComingSoonComponent } from './shared/coming-soon/coming-soon.component'
     LoginComponent,
     InternationalZoneComponent,
     PlacementZoneComponent,
-    InternationalZoneDetailsComponent,
     EntrepreneurZoneComponent,
     OpportunityDetailComponent,
     EntrepreneurRegistrationComponent,
@@ -48,6 +47,7 @@ import { ComingSoonComponent } from './shared/coming-soon/coming-soon.component'
     LearningZoneCategoryComponent,
     SkillZoneContentComponent,
     ComingSoonComponent,
+    ZoneDetailsComponent,
   ],
   imports: [
     BrowserModule,

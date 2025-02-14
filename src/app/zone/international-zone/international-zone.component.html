@@ -1,4 +1,4 @@
-<div class="international-zone-container">
+<div class="international-zone-container" *ngIf="showInternationalZone">
     <!-- Header -->
     <div class="header">
         <img src="assets/icons/back-arrow.png" alt="Back Icon" routerLink="/home" class="back-button" />
@@ -15,6 +15,7 @@
         </h2>
         <div class="section-line"></div> <!-- Horizontal line in the same row -->
     </div>
+
     <!-- Quick Access Section -->
     <div class="quick-access">
         <h2 class="quick-access-title">Quick Access</h2>
@@ -26,9 +27,7 @@
         </div>
     </div>
 
-
     <div class="international-zone">
-
         <div class="card-container">
             <div class="card" *ngFor="let place of places" (click)="navigateToPlace(place)">
                 <div class="image-container">
@@ -37,9 +36,10 @@
                 <div class="card-title">{{ place.name }}</div>
             </div>
         </div>
-
     </div>
-
-
-
 </div>
+
+<!-- Zone Details Component (Will be shown when selected) -->
+<app-zone-details *ngIf="showZoneDetails" [tileCode]="selectedTileCode" [placeName]="selectedPlaceName"
+    (backClicked)="onBackClick()">
+</app-zone-details>

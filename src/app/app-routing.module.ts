@@ -6,7 +6,6 @@ import { SkillZoneCategoryComponent } from './zone/skill-zone/skill-zone-categor
 import { LoginComponent } from './auth/login/login.component';
 import { InternationalZoneComponent } from './zone/international-zone/international-zone.component';
 import { PlacementZoneComponent } from './zone/placement-zone/placement-zone.component';
-import { InternationalZoneDetailsComponent } from './zone/international-zone/international-zone-details/international-zone-details.component';
 import { EntrepreneurZoneComponent } from './zone/entrepreneur-zone/entrepreneur-zone.component';
 import { OpportunityDetailComponent } from './zone/entrepreneur-zone/opportunity-detail/opportunity-detail.component';
 import { InternationalRegistrationComponent } from './zone/international-zone/international-registration/international-registration.component';
@@ -43,10 +42,7 @@ const routes: Routes = [
     path: 'international-zone',
     component: InternationalZoneComponent,
   },
-  {
-    path: 'international-zone/:placeName',
-    component: InternationalZoneDetailsComponent
-  },
+
   {
     path: 'international-zone/article/register',
     component: InternationalRegistrationComponent

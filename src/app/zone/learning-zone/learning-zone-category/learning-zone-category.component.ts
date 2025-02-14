@@ -26,7 +26,8 @@ export class LearningZoneCategoryComponent implements OnInit {
     const url = this.route.snapshot.queryParamMap.get('url');
 
     if (url) {
-      window.location.href = url; //The issue is related to Content Security Policy (CSP), which would not open external site directly in app.
+      // window.location.href = url; //The issue is related to Content Security Policy (CSP), which would not open external site directly in app.
+      window.open(url, '_blank');
       this.externalUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
     }
 
