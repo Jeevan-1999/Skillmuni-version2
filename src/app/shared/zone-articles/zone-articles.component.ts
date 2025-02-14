@@ -3,11 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ZoneService } from 'src/app/services/zone.service';
 
 @Component({
-  selector: 'app-zone-details',
-  templateUrl: './zone-details.component.html',
-  styleUrls: ['./zone-details.component.css'],
+  selector: 'app-zone-articles',
+  templateUrl: './zone-articles.component.html',
+  styleUrls: ['./zone-articles.component.css']
 })
-export class ZoneDetailsComponent implements OnInit {
+export class ZoneArticlesComponent {
   @Input() tileCode: string = '';
   @Input() placeName: string = '';
   articles: any[] = [];

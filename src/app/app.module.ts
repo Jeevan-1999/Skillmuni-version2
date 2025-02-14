@@ -24,7 +24,7 @@ import { HomeComponent } from './home/home.component';
 import { LearningZoneCategoryComponent } from './zone/learning-zone/learning-zone-category/learning-zone-category.component';
 import { SkillZoneContentComponent } from './zone/skill-zone/skill-zone-content/skill-zone-content.component';
 import { ComingSoonComponent } from './shared/coming-soon/coming-soon.component';
-import { ZoneDetailsComponent } from './shared/zone-details/zone-details.component';
+import { ZoneArticlesComponent } from './shared/zone-articles/zone-articles.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,7 @@ import { ZoneDetailsComponent } from './shared/zone-details/zone-details.compone
     LearningZoneCategoryComponent,
     SkillZoneContentComponent,
     ComingSoonComponent,
-    ZoneDetailsComponent,
+    ZoneArticlesComponent,
   ],
   imports: [
     BrowserModule,
