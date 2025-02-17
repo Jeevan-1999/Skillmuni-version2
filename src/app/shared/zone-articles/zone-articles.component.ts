@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-zone-articles',
@@ -6,14 +7,36 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./zone-articles.component.css']
 })
 export class ZoneArticlesComponent {
-  @Input() title: string = ''; // Dynamic h1 content
-  @Input() subtitle: string = ''; // Dynamic h2 content
-  @Input() articles: any[] = []; // Articles data from parent
+  @Input() title: string = '';
+  @Input() subtitle: string = '';
+  @Input() articles: any[] = [];
   @Output() backClicked = new EventEmitter<void>(); // Back button event
+
+  constructor(private router: Router) { }
 
   onBackClick() {
     this.backClicked.emit();  // Emit event to parent when back is clicked
   }
 
-  navigateToRegister() { }
+  navigateToTest() {
+    this.router.navigate(['/assessment']);
+  }
+
+
+  assessmentQuestions = [
+    {
+      text: 'What is Angular?',
+      options: ['Framework', 'Library', 'Language', 'Tool'],
+      selectedOption: ''
+    },
+    {
+      text: 'Which is used for styling?',
+      options: ['HTML', 'CSS', 'JavaScript', 'TypeScript'],
+      selectedOption: ''
+    }
+  ];
+
+  onAssessmentSubmit(answers: any[]) {
+    console.log('User Submitted Answers:', answers);
+  }
 }

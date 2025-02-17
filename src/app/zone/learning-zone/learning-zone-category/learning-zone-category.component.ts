@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ZoneService } from 'src/app/services/zone.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
   selector: 'app-learning-zone-category',
@@ -9,24 +10,27 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   styleUrls: ['./learning-zone-category.component.css']
 })
 export class LearningZoneCategoryComponent implements OnInit {
-  title: string | null = null;
-  id_academic_tile: string | null = null;
+  title: string = '';
+  id_academic_tile: string = '';
   learnAndPlayCards: any[] = [];
+  articles: any[] = [];
   externalUrl: SafeResourceUrl | null = null;
+  isCardClicked: boolean = false;
+  selectedCardTitle: string = '';
 
   constructor(
     private route: ActivatedRoute,
     private zoneService: ZoneService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private loaderService: LoaderService
   ) { }
 
   ngOnInit(): void {
-    this.id_academic_tile = this.route.snapshot.paramMap.get('id');
+    this.id_academic_tile = this.route.snapshot.paramMap.get('id') || '';
     this.title = decodeURIComponent(this.route.snapshot.paramMap.get('title') || '');
     const url = this.route.snapshot.queryParamMap.get('url');
 
     if (url) {
-      // window.location.href = url; //The issue is related to Content Security Policy (CSP), which would not open external site directly in app.
       window.open(url, '_blank');
       this.externalUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
     }
@@ -42,6 +46,7 @@ export class LearningZoneCategoryComponent implements OnInit {
         this.learnAndPlayCards = data.map(item => ({
           title: item.category_tile,
           image: item.tile_image,
+          tileCode: item.tile_code,
           solved: '0/51', // Placeholder, modify if needed
           goals: '0'
         }));
@@ -50,5 +55,48 @@ export class LearningZoneCategoryComponent implements OnInit {
         console.error('Error fetching brief tiles:', error);
       }
     );
+  }
+
+  fetchBriefListWithAcademy(tileCode: string, id_academic_tile: string, cardTitle: string) {
+    this.loaderService.show();
+    this.selectedCardTitle = cardTitle; // Store selected card title
+    this.zoneService.getBriefListwithAcademy(tileCode, id_academic_tile).subscribe(
+      (data: any) => {
+        if (data.BriefList && data.BriefList.length > 0) {
+          this.articles = data.BriefList.map((brief: any) => {
+            const resource = brief.briefResource.find((res: any) => res.resource_type === 2);
+            let mediaUrl = resource?.resouce_data;
+            let isVideo = false;
+
+            if (mediaUrl?.startsWith('http')) {
+              isVideo = mediaUrl.includes('youtube.com') || mediaUrl.includes('youtu.be');
+            } else {
+              mediaUrl = `https://www.skillmuni.in/sulcmsproduction${resource?.brief_destination}${resource?.resouce_data}`;
+            }
+
+            return {
+              articleTitle: brief.brief_title,
+              articleContent: brief.briefResource.find((res: any) => res.resource_type === 1)?.resouce_data || 'No content available',
+              articleImage: mediaUrl,
+              isVideo: isVideo
+            };
+          });
+          this.isCardClicked = true;
+        }
+        this.loaderService.hide();
+      },
+      error => {
+        console.error('Error fetching brief list:', error);
+        this.loaderService.hide();
+      }
+    );
+  }
+
+  onBackClick() {
+    this.loaderService.show();
+    setTimeout(() => {
+      this.isCardClicked = false;
+      this.loaderService.hide();
+    }, 500); // Simulating a small delay for smoother transition
   }
 }

@@ -1,0 +1,36 @@
+<div class="assessment-container">
+    <div class="status-container">
+        <div class="status-card quiz-status">
+            <img src="assets/icons/bulb-icon.png" alt="Quiz Icon">
+            <span>Quiz: <b>1 / <span class="highlight">106</span> Solved</b></span>
+        </div>
+
+        <div class="status-card goal-status">
+            <img src="assets/icons/ball-icon.png" alt="Goal Icon">
+            <span>Goal: <b>3 <span class="highlight">Scored</span></b></span>
+        </div>
+    </div>
+
+    <div *ngFor="let question of questions; let i = index" class="question-card">
+        <div class="question-header">
+            <span class="question-number">{{ i + 1 }}</span>
+            <p class="question-text"><b>Q.</b> {{ question.text }}</p>
+        </div>
+
+        <div class="options-container">
+            <label *ngFor="let option of question.options; let j = index" class="option"
+                [class.selected]="question.selectedOption === option">
+                <span class="option-text">{{ option }}</span>
+                <input type="radio" [name]="'question-' + i" [value]="option" [(ngModel)]="question.selectedOption">
+            </label>
+        </div>
+    </div>
+
+    <!-- Centered Submit Button -->
+    <div class="submit-container">
+        <button class="submit-btn" (click)="submitAnswers()">
+            Submit
+            <span class="submit-icon">&#10132;</span>
+        </button>
+    </div>
+</div>

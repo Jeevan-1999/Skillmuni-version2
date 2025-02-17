@@ -114,9 +114,8 @@ export class ZoneService {
     const apiUrl = `https://www.skillmuni.in/SkillmuniApi2022/api/getBriefListForStudyAbroad?UID=2509&OID=130&ENC=${tileCode}`;
     return this.http.get<any>(apiUrl);
   }
-
   getBriefListwithAcademy(tileCode: string, id_academic_tile: string): Observable<any> {
-    const apiUrl = `https://www.skillmuni.in/SkillmuniApi2022/api/getBriefListwithAcademy?UID=2509&OID=130&ENC=${tileCode}&id_academy=${id_academic_tile}`;
+    const apiUrl = `https://www.skillmuni.in/SULAPIProduction_new/api/getBriefListwithAcademy?UID=2509&OID=130&ENC=${tileCode}&id_academy=${id_academic_tile}`;
     return this.http.get<any>(apiUrl);
   }
   getOpportunities() {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd, Event } from '@angular/router';
+import { Router, NavigationEnd, Event, NavigationStart, NavigationCancel, NavigationError } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { LoaderService } from './services/loader.service';
 
 @Component({
   selector: 'app-root',
@@ -10,16 +11,19 @@ import { filter } from 'rxjs/operators';
 export class AppComponent implements OnInit {
   showHeaderFooter = true;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private loaderService: LoaderService) { }
 
   ngOnInit(): void {
-    this.router.events
-      .pipe(filter((event: Event) => event instanceof NavigationEnd))
-      .subscribe((event: Event) => {
-        if (event instanceof NavigationEnd) {
-          this.showHeaderFooter = this.shouldShowHeader(event.urlAfterRedirects);
-        }
-      });
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) {
+        this.loaderService.show();
+      } else if (event instanceof NavigationEnd) {
+        this.loaderService.hide();
+        this.showHeaderFooter = this.shouldShowHeader(event.urlAfterRedirects);
+      } else if (event instanceof NavigationCancel || event instanceof NavigationError) {
+        this.loaderService.hide();
+      }
+    });
 
     this.showHeaderFooter = this.shouldShowHeader(this.router.url);
   }

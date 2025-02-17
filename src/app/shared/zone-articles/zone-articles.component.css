@@ -159,7 +159,7 @@
   margin-bottom: 15px;
 }
 
-.register-button {
+.test-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -177,11 +177,11 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-.register-button img {
+.test-button img {
   width: 16px;
 }
 
-.register-button:hover {
+.test-button:hover {
   background-color: #e67e22;
 }
 
@@ -280,4 +280,8 @@
     left: auto;
     transform: none;
   }
+}
+
+.card-body:has(iframe) {
+  flex-direction: column;
 }

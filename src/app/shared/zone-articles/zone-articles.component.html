@@ -21,11 +21,17 @@
                 </div>
             </div>
             <div class="card-body">
-                <img [src]="article.articleImage" alt="{{ article.articleTitle }}" class="card-image" />
+                <ng-container *ngIf="article.isVideo; else imageTemplate">
+                    <iframe [src]="article.articleImage | safeUrl" width="100%" height="300px" frameborder="0"
+                        allowfullscreen></iframe>
+                </ng-container>
+                <ng-template #imageTemplate>
+                    <img [src]="article.articleImage" alt="{{ article.articleTitle }}" class="card-image" />
+                </ng-template>
                 <div class="card-content">
-                    <p>{{ article.articleContent }}</p> <!-- Article content -->
-                    <button class="register-button" (click)="navigateToRegister()">
-                        Register my Interest
+                    <p>{{ article.articleContent }}</p>
+                    <button class="test-button" (click)="navigateToTest()">
+                        Test Yourself
                     </button>
                 </div>
             </div>

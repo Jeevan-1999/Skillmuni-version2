@@ -56,6 +56,8 @@ export class LearningZoneComponent implements OnInit {
   }
 
 
+
+
   navigateToDetail(card: any) {
     if (card.title.toLowerCase() === 'nation wants to know') {
       this.comingSoonData = {

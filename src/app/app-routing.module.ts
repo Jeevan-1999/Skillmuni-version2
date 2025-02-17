@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LearningZoneCategoryComponent } from './zone/learning-zone/learning-zone-category/learning-zone-category.component';
 import { ComingSoonComponent } from './shared/coming-soon/coming-soon.component';
+import { AssessmentComponent } from './shared/assessment/assessment.component';
 
 const routes: Routes = [
 
@@ -87,6 +88,8 @@ const routes: Routes = [
 
   { path: 'leaderboard', component: LeaderboardComponent },
   { path: 'coming-soon', component: ComingSoonComponent },
+  { path: 'assessment', component: AssessmentComponent },
+
 
 
 ];

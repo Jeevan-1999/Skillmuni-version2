@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router'; // Import this
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,12 +20,16 @@ import { OpportunityDetailComponent } from './zone/entrepreneur-zone/opportunity
 import { EntrepreneurRegistrationComponent } from './zone/entrepreneur-zone/entrepreneur-registration/entrepreneur-registration.component';
 import { InternationalRegistrationComponent } from './zone/international-zone/international-registration/international-registration.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
-import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { LearningZoneCategoryComponent } from './zone/learning-zone/learning-zone-category/learning-zone-category.component';
 import { SkillZoneContentComponent } from './zone/skill-zone/skill-zone-content/skill-zone-content.component';
 import { ComingSoonComponent } from './shared/coming-soon/coming-soon.component';
 import { ZoneArticlesComponent } from './shared/zone-articles/zone-articles.component';
+import { LoaderComponent } from './shared/loader/loader.component';
+import { LoaderService } from './services/loader.service';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { SafeUrlPipe } from './shared/safe-url.pipe';
+import { AssessmentComponent } from './shared/assessment/assessment.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +53,9 @@ import { ZoneArticlesComponent } from './shared/zone-articles/zone-articles.comp
     SkillZoneContentComponent,
     ComingSoonComponent,
     ZoneArticlesComponent,
+    LoaderComponent,
+    SafeUrlPipe,
+    AssessmentComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +64,10 @@ import { ZoneArticlesComponent } from './shared/zone-articles/zone-articles.comp
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    LoaderService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
