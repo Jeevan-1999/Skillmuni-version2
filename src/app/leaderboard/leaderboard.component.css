@@ -217,15 +217,15 @@
   clip-path: polygon(0 0, 100% 0, 100% 100%);
 }
 
-/* Medals */
-.medals {
+/* badge */
+.badge {
   display: flex;
   gap: 10px;
   justify-content: center;
   margin-top: 10px;
 }
 
-.medals img {
+.badge img {
   width: 45px;
 }
 

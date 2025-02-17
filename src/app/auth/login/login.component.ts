@@ -1,4 +1,3 @@
-// login.component.ts
 import { Component, OnInit } from '@angular/core';
 import { GoogleLoginService } from 'src/app/services/google-login.service';
 

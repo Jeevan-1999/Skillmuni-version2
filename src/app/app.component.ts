@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd, Event, NavigationStart, NavigationCancel, NavigationError } from '@angular/router';
-import { filter } from 'rxjs/operators';
 import { LoaderService } from './services/loader.service';
 
 @Component({

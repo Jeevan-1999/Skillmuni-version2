@@ -1,8 +1,8 @@
-// google-login.service.ts
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import * as $ from 'jquery';  // Import jQuery
+import { LoaderService } from './loader.service'; // Import LoaderService
 
 declare var google: any;
 
@@ -15,7 +15,8 @@ export class GoogleLoginService {
   constructor(
     private router: Router,
     private ngZone: NgZone,
-    private authService: AuthService
+    private authService: AuthService,
+    private loaderService: LoaderService // Inject LoaderService
   ) { }
 
   initializeGoogleLogin(callback: (response: any) => void): Promise<void> {
@@ -81,7 +82,7 @@ export class GoogleLoginService {
       // Update AuthService with the logged-in user
       this.authService.login(payload);
 
-      // Create userData with payload values; others will be empty or null
+      // Create userData with payload values
       const userData = {
         ID_CODE: 0,
         ID_ORGANIZATION: 0,
@@ -90,8 +91,8 @@ export class GoogleLoginService {
         PASSWORD: '',
         FBSOCIALID: '',
         GPSOCIALID: payload.sub || '',
-        STATUS: 'A', // Default status
-        EXPIRY_DATE: '2025-12-31T00:00:00', // Default date if required
+        STATUS: 'A',
+        EXPIRY_DATE: '2025-12-31T00:00:00',
         EMPLOYEEID: '',
         user_department: '',
         user_designation: '',
@@ -111,7 +112,7 @@ export class GoogleLoginService {
         DESIGNATION: '',
         CITY: '',
         OFFICE_ADDRESS: '',
-        DATE_OF_BIRTH: '1900-01-01T00:00:00', // Default date
+        DATE_OF_BIRTH: '1900-01-01T00:00:00',
         DATE_OF_JOINING: '1900-01-01T00:00:00',
         REPORTING_MANAGER: '',
         PROFILE_IMAGE: payload.picture || '',
@@ -143,9 +144,12 @@ export class GoogleLoginService {
   private storeUserData(user: any): void {
     console.log('Sending user data to backend:', user);
 
+    // ✅ Show loader before making API call
+    this.loaderService.show();
+
     // Using jQuery AJAX instead of HttpClient
     $.ajax({
-      url: this.apiUrl, // The API endpoint
+      url: this.apiUrl,
       type: 'POST',
       contentType: 'application/json',
       data: JSON.stringify(user),
@@ -154,7 +158,9 @@ export class GoogleLoginService {
 
         // ✅ Navigate to home page after a successful response
         this.ngZone.run(() => {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home']).then(() => {
+            this.loaderService.hide(); // ✅ Hide loader after navigation is complete
+          });
         });
       },
       error: (xhr: any, status: string, error: string) => {
@@ -168,14 +174,13 @@ export class GoogleLoginService {
 
           // ✅ Allow login for existing users
           this.ngZone.run(() => {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/home']).then(() => {
+              this.loaderService.hide(); // ✅ Hide loader after navigation is complete
+            });
           });
-        } else if (xhr.status === 500) {
-          console.error('Internal Server Error: Check backend logs.');
-        } else if (xhr.status === 404) {
-          console.error('API Not Found: Verify API URL.');
         } else {
-          console.error('Unknown error:', error);
+          console.error('Login failed:', error);
+          this.loaderService.hide(); // ✅ Ensure loader hides even on failure
         }
       },
     });
