@@ -66,4 +66,10 @@ export class ZoneService {
   getEntrepreneurOpportunities(): Observable<any> {
     return this.http.get<any>(this.entrepreneurApiUrl);
   }
+
+  getAssessmentData(briefCode: string): Observable<any> {
+    const assessmentApiUrl = `${this.apiBaseUrlSul}/AssesmentJSON?brfcode=${briefCode}&UID=7836&OID=130&ACID=28&BriefTileID=122`;
+    return this.http.get<any>(assessmentApiUrl);
+  }
+
 }

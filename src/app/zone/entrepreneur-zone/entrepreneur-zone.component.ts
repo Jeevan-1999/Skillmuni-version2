@@ -50,8 +50,8 @@ export class EntrepreneurZoneComponent implements OnInit {
   }
 
   // Fetch Articles when Opportunity is Clicked
-  fetchBriefListWithAcademy(tileCode: string, cardTitle: string) {
-    const id_academic_tile = '36';  // Manually set the ID
+  fetchBriefListWithAcademy(tileCode: string, cardTitle: string, id_academic_tile: string) {
+    // const id_academic_tile = '36';  // Manually set the ID
 
     this.loaderService.show();
     this.selectedCardTitle = cardTitle;

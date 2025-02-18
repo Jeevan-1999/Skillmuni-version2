@@ -15,28 +15,23 @@ export class ZoneArticlesComponent {
   constructor(private router: Router) { }
 
   onBackClick() {
-    this.backClicked.emit();  // Emit event to parent when back is clicked
+    this.backClicked.emit(); // Emit event to parent when back is clicked
   }
 
-  navigateToTest() {
-    this.router.navigate(['/assessment']);
-  }
-
-
-  assessmentQuestions = [
-    {
-      text: 'What is Angular?',
-      options: ['Framework', 'Library', 'Language', 'Tool'],
-      selectedOption: ''
-    },
-    {
-      text: 'Which is used for styling?',
-      options: ['HTML', 'CSS', 'JavaScript', 'TypeScript'],
-      selectedOption: ''
+  navigateToTest(article: any) {
+    if (!article?.brief_code) {
+      console.error("Error: Missing article or brief_code", article);
+      return;
     }
-  ];
 
-  onAssessmentSubmit(answers: any[]) {
-    console.log('User Submitted Answers:', answers);
+    console.log("Navigating to assessment with brief_code:", article.brief_code);
+
+    this.router.navigate(['/assessment'], {
+      queryParams: {
+        brfcode: article.brief_code,
+        title: this.title,
+        subtitle: this.subtitle
+      }
+    });
   }
 }

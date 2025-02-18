@@ -51,13 +51,15 @@ export class SkillZoneCategoryComponent implements OnInit {
 
   fetchBriefListWithAcademy(tileCode: string, id_academic_tile: string, cardTitle: string) {
     this.loaderService.show();
-    this.selectedCardTitle = cardTitle; // Store selected card title
+    this.selectedCardTitle = cardTitle;
 
     this.zoneService.getBriefListwithAcademy(tileCode, id_academic_tile).subscribe(
       (data: any) => {
+        console.log("Fetched Brief List Data:", data); // Debugging Log
+
         if (data.BriefList && data.BriefList.length > 0) {
           this.articles = data.BriefList.map((brief: any) => {
-            const resource = brief.briefResource.find((res: any) => res.resource_type === 2);
+            const resource = brief.briefResource?.find((res: any) => res.resource_type === 2);
             let mediaUrl = resource?.resouce_data;
             let isVideo = false;
 
@@ -69,21 +71,28 @@ export class SkillZoneCategoryComponent implements OnInit {
 
             return {
               articleTitle: brief.brief_title,
-              articleContent: brief.briefResource.find((res: any) => res.resource_type === 1)?.resouce_data || 'No content available',
+              articleContent: brief.briefResource?.find((res: any) => res.resource_type === 1)?.resouce_data || 'No content available',
               articleImage: mediaUrl,
-              isVideo: isVideo
+              isVideo: isVideo,
+              brief_code: brief.brief_code // Ensure brief_code is included
             };
           });
+
+          console.log("Updated Articles with brief_code:", this.articles); // Debugging Log
           this.isCardClicked = true;
+        } else {
+          console.warn("No articles found for this tile.");
         }
+
         this.loaderService.hide();
       },
       error => {
-        console.error('Error fetching brief list:', error);
+        console.error("Error fetching brief list:", error);
         this.loaderService.hide();
       }
     );
   }
+
 
   onBackClick() {
     this.loaderService.show();

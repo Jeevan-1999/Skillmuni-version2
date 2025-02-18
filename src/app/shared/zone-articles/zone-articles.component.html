@@ -2,24 +2,23 @@
     <div class="header">
         <img src="assets/icons/back-arrow.png" alt="Back Icon" class="back-button" (click)="onBackClick()" />
         <div class="title-container">
-            <!-- Dynamic title from Input -->
-            <h1>{{ title }}</h1> <!-- Dynamic h1 passed from parent -->
+            <h1>{{ title }}</h1> <!-- Dynamic Title -->
             <img src="assets/icons/long-arrow.png" alt="Arrow" class="long-arrow" />
-            <h2>{{ subtitle }}</h2> <!-- Dynamic h2 passed from parent -->
+            <h2>{{ subtitle }}</h2> <!-- Dynamic Subtitle -->
         </div>
         <img src="assets/icons/category-icon.png" alt="Category Icon" class="header-icon" />
     </div>
 
-    <!-- Content goes here -->
     <div class="content">
         <div *ngFor="let article of articles" class="card">
             <div class="card-header">
-                <h2>{{ article.articleTitle }}</h2> <!-- Article title -->
+                <h2>{{ article.articleTitle }}</h2>
                 <div class="article-icons">
                     <img src="assets/icons/bookmark-icon.png" alt="Bookmark" class="header-article-icon" />
                     <img src="assets/icons/share-icon.png" alt="Share" class="header-article-icon" />
                 </div>
             </div>
+
             <div class="card-body">
                 <ng-container *ngIf="article.isVideo; else imageTemplate">
                     <iframe [src]="article.articleImage | safeUrl" width="100%" height="300px" frameborder="0"
@@ -28,9 +27,10 @@
                 <ng-template #imageTemplate>
                     <img [src]="article.articleImage" alt="{{ article.articleTitle }}" class="card-image" />
                 </ng-template>
+
                 <div class="card-content">
                     <p>{{ article.articleContent }}</p>
-                    <button class="test-button" (click)="navigateToTest()">
+                    <button class="test-button" (click)="navigateToTest(article)">
                         Test Yourself
                     </button>
                 </div>
