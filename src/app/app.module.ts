@@ -21,7 +21,6 @@ import { InternationalRegistrationComponent } from './zone/international-zone/in
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { HomeComponent } from './home/home.component';
 import { LearningZoneCategoryComponent } from './zone/learning-zone/learning-zone-category/learning-zone-category.component';
-import { SkillZoneContentComponent } from './zone/skill-zone/skill-zone-content/skill-zone-content.component';
 import { ComingSoonComponent } from './shared/coming-soon/coming-soon.component';
 import { ZoneArticlesComponent } from './shared/zone-articles/zone-articles.component';
 import { LoaderComponent } from './shared/loader/loader.component';
@@ -48,7 +47,6 @@ import { AssessmentComponent } from './shared/assessment/assessment.component';
     LeaderboardComponent,
     HomeComponent,
     LearningZoneCategoryComponent,
-    SkillZoneContentComponent,
     ComingSoonComponent,
     ZoneArticlesComponent,
     LoaderComponent,
