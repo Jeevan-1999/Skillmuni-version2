@@ -16,7 +16,6 @@ import { InternationalZoneComponent } from './zone/international-zone/internatio
 import { PlacementZoneComponent } from './zone/placement-zone/placement-zone.component';
 import { FormsModule } from '@angular/forms';
 import { EntrepreneurZoneComponent } from './zone/entrepreneur-zone/entrepreneur-zone.component';
-import { OpportunityDetailComponent } from './zone/entrepreneur-zone/opportunity-detail/opportunity-detail.component';
 import { EntrepreneurRegistrationComponent } from './zone/entrepreneur-zone/entrepreneur-registration/entrepreneur-registration.component';
 import { InternationalRegistrationComponent } from './zone/international-zone/international-registration/international-registration.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
@@ -44,7 +43,6 @@ import { AssessmentComponent } from './shared/assessment/assessment.component';
     InternationalZoneComponent,
     PlacementZoneComponent,
     EntrepreneurZoneComponent,
-    OpportunityDetailComponent,
     EntrepreneurRegistrationComponent,
     InternationalRegistrationComponent,
     LeaderboardComponent,

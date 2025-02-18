@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoaderService } from 'src/app/services/loader.service';
 import { ZoneService } from 'src/app/services/zone.service';
 
 @Component({
@@ -9,8 +10,11 @@ import { ZoneService } from 'src/app/services/zone.service';
 })
 export class EntrepreneurZoneComponent implements OnInit {
   opportunityCards: any[] = [];
-  showComingSoon: boolean = false;  // Control the visibility of app-coming-soon
-
+  showComingSoon: boolean = false;  // Control visibility of app-coming-soon
+  isCardClicked: boolean = false;
+  selectedCardTitle: string = '';
+  articles: any[] = [];
+  id_academic_tile: string = '';
 
   comingSoonData = {
     zoneTitle: 'Entrepreneur Zone',
@@ -20,17 +24,76 @@ export class EntrepreneurZoneComponent implements OnInit {
     description: 'Get ready to explore your entrepreneurial strengths and uncover the skills that set you apart. This assessment is designed to guide you on your journey to success. Coming soon!'
   };
 
-  constructor(private router: Router, private zoneService: ZoneService) { }
+  constructor(
+    private router: Router,
+    private zoneService: ZoneService,
+    private loaderService: LoaderService
+  ) { }
 
   ngOnInit(): void {
-    this.opportunityCards = this.zoneService.getOpportunities();
+    // Fetch Entrepreneur Opportunities
+    this.zoneService.getEntrepreneurOpportunities().subscribe(
+      response => {
+        if (response.Status === 'SUCCESS' && response.Tile) {
+          this.opportunityCards = response.Tile.map((tile: any) => ({
+            title: tile.category_tile,
+            description: tile.tile_description,
+            image: tile.tile_image,
+            tileCode: tile.tile_code,  // Extract ENC (tile_code)
+          }));
+        }
+      },
+      error => {
+        console.error('Error fetching opportunities:', error);
+      }
+    );
+  }
+
+  // Fetch Articles when Opportunity is Clicked
+  fetchBriefListWithAcademy(tileCode: string, cardTitle: string) {
+    const id_academic_tile = '36';  // Manually set the ID
+
+    this.loaderService.show();
+    this.selectedCardTitle = cardTitle;
+
+    this.zoneService.getBriefListwithAcademy(tileCode, id_academic_tile).subscribe(
+      (data: any) => {
+        if (data.BriefList && data.BriefList.length > 0) {
+          this.articles = data.BriefList.map((brief: any) => {
+            const resource = brief.briefResource.find((res: any) => res.resource_type === 2);
+            let mediaUrl = resource?.resouce_data;
+            let isVideo = false;
+
+            if (mediaUrl?.startsWith('http')) {
+              isVideo = mediaUrl.includes('youtube.com') || mediaUrl.includes('youtu.be');
+            } else {
+              mediaUrl = `https://www.skillmuni.in/sulcmsproduction${resource?.brief_destination}${resource?.resouce_data}`;
+            }
+
+            return {
+              articleTitle: brief.brief_title,
+              articleContent: brief.briefResource.find((res: any) => res.resource_type === 1)?.resouce_data || 'No content available',
+              articleImage: mediaUrl,
+              isVideo: isVideo
+            };
+          });
+          this.isCardClicked = true;
+        }
+        this.loaderService.hide();
+      },
+      error => {
+        console.error('Error fetching brief list:', error);
+        this.loaderService.hide();
+      }
+    );
+
   }
 
   navigateToEntrepreneurialQuotient() {
     this.showComingSoon = true;  // Show the coming-soon component
   }
 
-  navigateToOpportunity(title: string) {
-    this.router.navigate(['/entrepreneur-zone/opportunity', title]);
+  onBackClick() {
+    this.isCardClicked = false; // Reset view when closing `app-zone-articles`
   }
 }

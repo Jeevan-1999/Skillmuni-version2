@@ -12,6 +12,8 @@ export class ZoneService {
 
   private countryApiUrl = 'https://www.skillmuni.in/SkillmuniApi2022/api/getCategoryTileListForNonLearning?UID=2509&OID=130&tile_type=2';
 
+  private entrepreneur = 'https://www.skillmuni.in/SkillmuniApi2022/api/getCategoryTileListForNonLearning?UID=2509&OID=130&tile_type=3';
+
   constructor(private http: HttpClient) { }
 
   zones = [
@@ -38,53 +40,11 @@ export class ZoneService {
     },
   ];
 
-  knowledgeHubCards = [
-    { title: 'GLOBAL GYAN', image: 'assets/cards/global-gyan.png' },
-    { title: 'WHAT’S THE GOOD WORD', image: 'assets/cards/good-word.png' },
-    { title: 'YOUR WISHLIST', image: 'assets/cards/your-wishlist.png' },
-    { title: 'NATION WANTS TO KNOW', image: 'assets/cards/nation-knows.png' },
-  ];
 
 
 
-  opportunityCards = [
-    {
-      title: 'Social Entrepreneur',
-      description: 'Want to become a Social Entrepreneur?',
-      image: 'assets/cards/social.png',
-      articles: [
-        {
-          articleTitle: 'Masti - Ghar Ghar Mein Pathshala',
-          articleImage: 'assets/cards/Pathshala.png',
-          articleContent: 'Social entrepreneurship focuses on creating businesses that solve societal problems while maintaining financial sustainability.',
-        }
-      ]
-    },
-    {
-      title: 'Gamification Consultant',
-      description: 'Step Into Corporate Gamification Consulting!',
-      image: 'assets/cards/gamification.png',
-      articles: [
-        {
-          articleTitle: 'Afthonia Lab',
-          articleImage: 'assets/cards/coroebus.png',
-          articleContent: 'Gamification is the application of game elements in non-gaming contexts to enhance engagement and motivation.',
-        }
-      ]
-    },
-    {
-      title: 'Your Fintech Idea',
-      description: 'Want to bring your Fintech idea to life?',
-      image: 'assets/cards/fintech-idea.png',
-      articles: [
-        {
-          articleTitle: 'Afthonia Lab',
-          articleImage: 'assets/cards/lab.png',
-          articleContent: 'Gamification is the application of game elements in non-gaming contexts to enhance engagement and motivation.',
-        }
-      ]
-    }
-  ];
+
+
 
   getZones() {
     return this.zones;
@@ -92,10 +52,6 @@ export class ZoneService {
 
   getLearningZoneCards(): Observable<any[]> {
     return this.http.get<any[]>(this.learningZoneApiUrl);
-  }
-
-  getknowledgeHubCards() {
-    return this.knowledgeHubCards;
   }
 
   getSkillZoneCards(): Observable<any[]> {
@@ -118,7 +74,9 @@ export class ZoneService {
     const apiUrl = `https://www.skillmuni.in/SULAPIProduction_new/api/getBriefListwithAcademy?UID=2509&OID=130&ENC=${tileCode}&id_academy=${id_academic_tile}`;
     return this.http.get<any>(apiUrl);
   }
-  getOpportunities() {
-    return this.opportunityCards;
+
+
+  getEntrepreneurOpportunities(): Observable<any> {
+    return this.http.get<any>(this.entrepreneur);
   }
 }

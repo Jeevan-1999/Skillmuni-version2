@@ -7,7 +7,6 @@ import { LoginComponent } from './auth/login/login.component';
 import { InternationalZoneComponent } from './zone/international-zone/international-zone.component';
 import { PlacementZoneComponent } from './zone/placement-zone/placement-zone.component';
 import { EntrepreneurZoneComponent } from './zone/entrepreneur-zone/entrepreneur-zone.component';
-import { OpportunityDetailComponent } from './zone/entrepreneur-zone/opportunity-detail/opportunity-detail.component';
 import { InternationalRegistrationComponent } from './zone/international-zone/international-registration/international-registration.component';
 import { EntrepreneurRegistrationComponent } from './zone/entrepreneur-zone/entrepreneur-registration/entrepreneur-registration.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
@@ -80,10 +79,6 @@ const routes: Routes = [
     component: LearningZoneCategoryComponent,
   },
 
-  {
-    path: 'entrepreneur-zone/opportunity/:title',
-    component: OpportunityDetailComponent,
-  },
 
 
   { path: 'leaderboard', component: LeaderboardComponent },

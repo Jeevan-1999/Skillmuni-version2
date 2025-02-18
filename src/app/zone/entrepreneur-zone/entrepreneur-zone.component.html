@@ -1,4 +1,4 @@
-<div class="entrepreneur-zone-container" *ngIf="!showComingSoon">
+<div class="entrepreneur-zone-container" *ngIf="!showComingSoon && !isCardClicked">
     <!-- Header -->
     <div class="header">
         <img src="assets/icons/back-arrow.png" alt="Back Icon" routerLink="/home" class="back-button" />
@@ -11,11 +11,11 @@
 
     <!-- Section 1: Entrepreneurial Quotient -->
     <div class="section Entrepreneur">
-        <div class="section-header ">
+        <div class="section-header">
             <h2 class="section-title">
                 Check your <span class="highlight">Entrepreneur Quotient</span>
             </h2>
-            <div class="section-line"></div> <!-- Horizontal line in the same row -->
+            <div class="section-line"></div>
         </div>
 
         <div class="eq-banner" (click)="navigateToEntrepreneurialQuotient()">
@@ -24,10 +24,10 @@
                 <p class="eq-title">Are You Born to Lead? Find Out! <span>→</span></p>
             </div>
         </div>
-
     </div>
     <br>
 
+    <!-- Section 2: Opportunities -->
     <div class="section">
         <div class="section-header">
             <h2 class="section-title">Explore <span class="highlight">Opportunities</span></h2>
@@ -36,7 +36,7 @@
 
         <div class="card-container">
             <div *ngFor="let card of opportunityCards" class="opportunity-card"
-                (click)="navigateToOpportunity(card.title)">
+                (click)="fetchBriefListWithAcademy(card.tileCode, card.title)">
                 <div class="card-content">
                     <img class="opportunity-image" [src]="card.image" [alt]="card.title" />
                     <div class="card-details">
@@ -51,8 +51,14 @@
         </div>
     </div>
 </div>
+
 <!-- Coming Soon Component -->
 <app-coming-soon *ngIf="showComingSoon" [zoneTitle]="comingSoonData.zoneTitle" [subtitle]="comingSoonData.subtitle"
     [cardTitle]="comingSoonData.cardTitle" [imageUrl]="comingSoonData.imageUrl"
     [description]="comingSoonData.description" (backClicked)="showComingSoon = false">
 </app-coming-soon>
+
+<!-- Display Articles When Opportunity Clicked -->
+<app-zone-articles *ngIf="isCardClicked" [title]="'Entrepreneur Zone'" [subtitle]="selectedCardTitle"
+    [articles]="articles" (backClicked)="onBackClick()">
+</app-zone-articles>
