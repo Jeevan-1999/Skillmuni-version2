@@ -81,7 +81,7 @@ const routes: Routes = [
 
 
   {
-    path: 'international-zone/article/register',
+    path: 'register',
     component: InternationalRegistrationComponent
   },
 

@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./international-registration.component.css']
 })
 export class InternationalRegistrationComponent {
-
-  userName = 'Jeevan';
-  email = 'jeevan@tgc.com';
+  userProfileImg = JSON.parse(localStorage.getItem('loggedInUser')!).picture;
+  userName = JSON.parse(localStorage.getItem('loggedInUser')!).name;
+  email = JSON.parse(localStorage.getItem('loggedInUser')!).email;
   phone = '123-456-7890';
   selectedInquiry = ''; // Bind this to track the selected option
   isFormSubmitted = false; // Track form submission state

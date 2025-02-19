@@ -103,11 +103,11 @@
 }
 
 .card-header h2 {
-  position: absolute;
+  /* position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); */
   margin: 0;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: bold;
   color: #f7931e;
 }
@@ -276,9 +276,18 @@
     align-items: center;
   }
 
+  .card-header {
+    gap: 10px;
+  }
+
   .card-header h2 {
     left: auto;
     transform: none;
+    font-size: 14px;
+  }
+
+  .card-image {
+    width: 80%;
   }
 }
 

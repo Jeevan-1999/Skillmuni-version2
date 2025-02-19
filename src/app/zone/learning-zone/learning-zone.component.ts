@@ -68,7 +68,12 @@ export class LearningZoneComponent implements OnInit {
         description: 'Nation Wants to Know is gearing up for an exciting debate competition. Stay tuned for updates and be the first to join!'
       };
       this.showComingSoon = true;  // Show the coming-soon component
-    } else {
+    }
+    else if (card.title.toLowerCase() === 'your wishlist') {
+      // Navigate to the registration page if "Your Wishlist" card is clicked
+      this.router.navigate(['/register']);
+    }
+    else {
       const specialCards = ["Global Gyan", "Whats the good word"];
       if (specialCards.includes(card.title)) {
         this.zoneService.getLearningZoneCards().subscribe((data: any[]) => {
