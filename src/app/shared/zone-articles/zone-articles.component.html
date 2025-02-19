@@ -30,9 +30,19 @@
 
                 <div class="card-content">
                     <p>{{ article.articleContent }}</p>
-                    <button class="test-button" (click)="navigateToTest(article)">
-                        Test Yourself
+
+                    <!-- Show Register button only for International Zone -->
+                    <button *ngIf="title === 'International Zone' || title === 'Entrepreneur Zone';  else testButton"
+                        class="test-button" (click)="navigateToRegister()">
+                        Register
                     </button>
+
+                    <!-- Show Test Yourself button for other zones -->
+                    <ng-template #testButton>
+                        <button class="test-button" (click)="navigateToTest(article)">
+                            Test Yourself
+                        </button>
+                    </ng-template>
                 </div>
             </div>
 

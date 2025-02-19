@@ -17,6 +17,10 @@ export class ZoneArticlesComponent {
   onBackClick() {
     this.backClicked.emit(); // Emit event to parent when back is clicked
   }
+  navigateToRegister() {
+    console.log("Navigating to International Registration page...");
+    this.router.navigate(['/international-zone/article/register']);
+  }
 
   navigateToTest(article: any) {
     if (!article?.brief_code) {

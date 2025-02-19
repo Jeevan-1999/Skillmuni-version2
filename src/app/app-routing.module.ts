@@ -80,6 +80,12 @@ const routes: Routes = [
   },
 
 
+  {
+    path: 'international-zone/article/register',
+    component: InternationalRegistrationComponent
+  },
+
+
 
   { path: 'leaderboard', component: LeaderboardComponent },
   { path: 'coming-soon', component: ComingSoonComponent },
