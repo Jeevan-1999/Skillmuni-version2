@@ -39,8 +39,10 @@
 
         <!-- Right Section: Avatar and Profile Icon -->
         <div class="right-section d-flex align-items-center">
-            <img src="assets/icons/chat-icon.png" alt="Profile Icon" class="profile-icon" />
-            <img [src]="userProfileImg" alt="" class="name-logo">
+            <div class="right-icons">
+                <img src="assets/icons/chat-icon.png" alt="Profile Icon" class="profile-icon" />
+                <img [src]="userProfileImg" alt="" class="name-logo">
+            </div>
             &nbsp;&nbsp;
             <i class="material-icons" style="cursor: pointer;" (click)="signOut()">logout</i>
         </div>

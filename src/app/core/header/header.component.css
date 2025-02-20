@@ -1,8 +1,13 @@
 /* General Navbar Styling */
 .navbar {
   border-radius: 0 0 20px 20px;
-  background-color: #f5f5f5;
+  background: linear-gradient(to bottom, #f6f8ff, #ffffff) !important;
   width: 100%;
+}
+
+.container-fluid {
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 /* Left Section: Logo */
@@ -40,15 +45,22 @@
   border-radius: 5px;
 
   bottom: -15px;
-  width: 80%;
+  width: 82%;
   height: 6px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #6f79a2;
+}
+
+.right-icons {
+  display: flex;
 }
 
 .nav-link {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #2c3e50;
   font-size: 16px;
   font-weight: 500;
   transition: color 0.3s ease;
@@ -59,7 +71,7 @@
 }
 
 .nav-link i {
-  margin-right: 8px; /* Space between icon and text */
+  margin-right: 2px; /* Space between icon and text */
   font-size: 20px;
 }
 
@@ -97,6 +109,7 @@
   font-size: 18px;
   font-weight: bold;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 3px;
 }
 
 /* Navbar Shadow */
