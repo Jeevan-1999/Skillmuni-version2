@@ -9,7 +9,8 @@
             <div class="zone" *ngFor="let zone of zones" (click)="navigateToZone(zone.name)">
                 <div class="content">
                     <div class="zone-content">
-                        <h2>{{ zone.name }} <span class="arrow">→</span></h2>
+                        <h2>{{ zone.name }} &nbsp; <i class="material-icons arrow" style="cursor: pointer;">east</i>
+                        </h2>
                         <p class="zone-description">{{zone.description}}</p>
                         <img [src]="zone.img" [alt]="zone.name" />
                     </div>
