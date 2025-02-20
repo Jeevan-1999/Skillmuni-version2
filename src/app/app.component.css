@@ -10,6 +10,24 @@ app-footer {
   display: none;
 }
 
+.copyright-container {
+  text-align: center;
+  font-weight: 500;
+  color: #34437a;
+  font-size: 10px;
+  text-align: end;
+  padding-right: 20px;
+  background-color: #f5f7fb;
+}
+
+.copyright-container .highlight {
+  font-weight: bold;
+  color: #f7931e;
+}
+.copyright-container p {
+  margin: 0;
+}
+
 /* Show the footer only for mobile screens (max-width: 768px) */
 @media (max-width: 768px) {
   app-footer {

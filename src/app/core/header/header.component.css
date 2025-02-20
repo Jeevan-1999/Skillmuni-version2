@@ -3,6 +3,8 @@
   border-radius: 0 0 20px 20px;
   background: linear-gradient(to bottom, #f6f8ff, #ffffff) !important;
   width: 100%;
+  padding-top: 5px;
+  padding-bottom: 0;
 }
 
 .container-fluid {
@@ -12,7 +14,7 @@
 
 /* Left Section: Logo */
 .logo-left {
-  height: 32px;
+  height: 30px;
   object-fit: contain;
   cursor: pointer;
 }
@@ -40,11 +42,9 @@
 }
 .underline {
   position: absolute;
-
   background-color: #f7931e;
   border-radius: 5px;
-
-  bottom: -15px;
+  bottom: -8px;
   width: 82%;
   height: 6px;
 }
