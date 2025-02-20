@@ -19,6 +19,12 @@ export class ZoneService {
   getZones() {
     return [
       {
+        name: 'Placement Zone',
+        description: 'Take assessments to match jobs with your skills and needs. Opportunities are waiting!',
+        img: 'assets/zones/Placement zone.png',
+        route: 'placement-zone',
+      },
+      {
         name: 'International Zone',
         description: 'Compare countries, find top institutes, and register your interest – we’ll guide you all the way!',
         img: 'assets/zones/International zone.png',
@@ -30,12 +36,7 @@ export class ZoneService {
         img: 'assets/zones/Entrepreneur zone.png',
         route: 'entrepreneur-zone',
       },
-      {
-        name: 'Placement Zone',
-        description: 'Take assessments to match jobs with your skills and needs. Opportunities are waiting!',
-        img: 'assets/zones/Placement zone.png',
-        route: 'placement-zone',
-      },
+
     ];
   }
 

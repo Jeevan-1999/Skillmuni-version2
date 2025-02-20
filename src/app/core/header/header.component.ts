@@ -9,15 +9,19 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class HeaderComponent {
   activeLink: string = 'home';
-  userProfileImg = JSON.parse(localStorage.getItem('loggedInUser')!).picture;
-
+  userProfileImg = JSON.parse(localStorage.getItem('loggedInUser')!)?.picture || '';
 
   constructor(private router: Router, private authService: AuthService) {
-
-
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.activeLink = event.urlAfterRedirects.split('/')[1] || 'home';
+        const currentRoute = event.urlAfterRedirects.split('/')[1] || 'home';
+
+        // Keep 'home' active unless navigating to 'leaderboard' or 'dashboard'
+        if (currentRoute === 'leaderboard' || currentRoute === 'dashboard') {
+          this.activeLink = currentRoute;
+        } else {
+          this.activeLink = 'home';
+        }
       }
     });
 
@@ -34,7 +38,11 @@ export class HeaderComponent {
   }
 
   setActiveLink(link: string) {
-    this.activeLink = link;
+    if (link === 'leaderboard' || link === 'dashboard') {
+      this.activeLink = link;
+    } else {
+      this.activeLink = 'home';
+    }
     this.router.navigate([`/${link}`]); // Navigate to the selected route
   }
 }

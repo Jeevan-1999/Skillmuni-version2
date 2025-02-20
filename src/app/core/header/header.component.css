@@ -28,8 +28,20 @@
 }
 
 .nav-item {
+  position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
+}
+.underline {
+  position: absolute;
+
+  background-color: #f7931e;
+  border-radius: 5px;
+
+  bottom: -15px;
+  width: 80%;
+  height: 6px;
 }
 
 .nav-link {
