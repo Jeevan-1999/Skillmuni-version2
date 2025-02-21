@@ -14,7 +14,6 @@ export class LearningZoneCategoryComponent implements OnInit {
   id_academic_tile: string = '';
   learnAndPlayCards: any[] = [];
   articles: any[] = [];
-  externalUrl: SafeResourceUrl | null = null;
   isCardClicked: boolean = false;
   selectedCardTitle: string = '';
 
@@ -29,11 +28,6 @@ export class LearningZoneCategoryComponent implements OnInit {
     this.id_academic_tile = this.route.snapshot.paramMap.get('id') || '';
     this.title = decodeURIComponent(this.route.snapshot.paramMap.get('title') || '');
     const url = this.route.snapshot.queryParamMap.get('url');
-
-    if (url) {
-      window.open(url, '_blank');
-      this.externalUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-    }
 
     if (this.id_academic_tile) {
       this.fetchBriefTiles(this.id_academic_tile);

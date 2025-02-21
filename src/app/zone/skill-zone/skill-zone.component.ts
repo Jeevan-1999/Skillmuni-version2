@@ -9,6 +9,7 @@ import { ZoneService } from 'src/app/services/zone.service';
 })
 export class SkillZoneComponent implements OnInit {
   skillZoneCards: any[] = [];
+  showAd: boolean = true;
 
   constructor(private router: Router, private zoneService: ZoneService) { }
 
@@ -25,8 +26,8 @@ export class SkillZoneComponent implements OnInit {
             id_academic_tile: item.id_academic_tile,
             title: item.tile_name,
             image: item.tile_image,
-            solved: '0/0',
-            goals: '0'
+            solved: '1111/9999',
+            credits: '99'
           }));
       },
       error => {
@@ -37,5 +38,9 @@ export class SkillZoneComponent implements OnInit {
 
   navigateToCategory(card: any) {
     this.router.navigate(['/skill-zone-category', card.id_academic_tile, encodeURIComponent(card.title)]);
+  }
+
+  hideAd() {
+    this.showAd = false; // Hides the ad on click
   }
 }

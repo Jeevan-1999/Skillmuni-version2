@@ -1,7 +1,7 @@
-/* Main container */
+/* Main Container */
 .learning-zone-container {
   width: 100%;
-  min-height: 100vh; /* Ensure full height */
+  min-height: 100vh;
   padding: 0;
   box-sizing: border-box;
   background-color: #f5f7fb;
@@ -27,7 +27,7 @@
 }
 
 .header h1 {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   color: #34437a;
   margin: 0;
@@ -45,31 +45,53 @@
   width: 30px;
   height: 30px;
   cursor: pointer;
+  margin: 10px;
 }
 
-/* Section Title */
+/* Knowledge Hub Section */
 .section-header {
   display: flex;
   align-items: center;
   margin: 20px;
-  gap: 10px; /* Space between the title and the line */
+  gap: 10px;
+  margin-bottom: 0;
 }
 
 .section-title {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
   color: #34437a;
   margin: 0;
 }
 
 .section-line {
-  flex-grow: 1; /* Makes the line take up the remaining space */
-  height: 2px; /* Thickness of the line */
-  background-color: #f7931e; /* Orange color */
+  flex-grow: 1;
+  height: 2px;
+  background-color: #f7931e;
 }
 
 .highlight {
   color: #f7931e;
+}
+
+/* Collapse Icon */
+.collapse-icon {
+  font-size: 18px;
+  color: #34437a;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid #34437a;
+  transition: transform 0.5s;
+}
+
+.collapse-icon:hover {
+  background-color: #f6f8ff;
 }
 
 /* Card Container */
@@ -78,6 +100,7 @@
   gap: 20px;
   justify-content: flex-start;
   padding: 20px;
+  padding-bottom: 0;
 }
 
 .card {
@@ -88,12 +111,14 @@
   background: #ffffff;
   border-radius: 20px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 15px;
+  padding: 10px;
   width: 220px;
   height: auto;
   position: relative;
   transition: transform 0.2s ease-in-out;
+  cursor: pointer;
 }
+
 .card:hover {
   transform: scale(1.05);
   background: linear-gradient(to bottom, #ffffff, #f0f3ff);
@@ -104,40 +129,67 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0 10px;
+  padding: 5px;
+  position: relative;
+  height: 40px;
 }
 
 .card-title {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   color: #34437a;
   margin: 0;
   width: 100%;
 }
 
+.card-line {
+  width: 70%;
+  margin-top: 40px;
+  height: 2px;
+  background-color: #f7931e;
+  position: absolute;
+  left: 10px;
+}
+
 .card-arrow {
   font-size: 20px;
   color: #f7931e;
-  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-arrow .material-icons {
+  font-size: 22px;
+  vertical-align: middle;
 }
 
 .card-image {
   width: 100%;
-  height: auto;
+  height: 130px;
   margin-top: 10px;
   align-self: center;
 }
 
+.card .coming-soon-card {
+  max-height: 164px;
+}
+
 /* Play Section */
+.play-section {
+  padding-bottom: 20px;
+}
+
 .play-section-header {
   display: flex;
   align-items: center;
   margin: 20px;
   gap: 10px;
+  margin-bottom: 0;
 }
 
 .play-section-title {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
   color: #34437a;
   margin: 0;
@@ -147,30 +199,32 @@
   flex-grow: 1;
   height: 2px;
   background-color: #f7931e;
+  margin: 5px;
 }
 
 .play-highlight {
   color: #f7931e;
 }
 
+/* Play Card Container */
 .play-card-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
   padding: 20px;
 }
 
+/* Play Card */
 .play-card {
   display: flex;
   align-items: center;
   border-radius: 20px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  width: 400px;
+  padding: 10px;
   height: auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   background: linear-gradient(to bottom, #ffffff, #f0f3ff);
+  cursor: pointer;
 }
 
 .play-card:hover {
@@ -185,91 +239,117 @@
 }
 
 .play-card-image-left {
-  width: 40%;
+  width: 38%;
   height: auto;
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 .play-card-details {
   display: flex;
   flex-direction: column;
+  width: 62%;
 }
 
 .play-card-title {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
   color: #34437a;
 }
 
 .play-card-stats {
   display: flex;
-  justify-content: space-between; /* Keeps items aligned on the same row */
+  justify-content: space-between;
   background-color: #fff0de;
   border-radius: 10px;
-  gap: 20px;
+  gap: 8px;
   padding: 8px;
   max-width: 100%;
   box-sizing: border-box;
+  font-size: 12px;
 }
 
 .play-card-solved,
 .play-card-goals {
-  font-size: 14px;
+  font-size: 11px;
+  font-weight: 600;
   color: #666;
-  margin: 0; /* Remove default margin between <p> tags */
+  margin: 0;
+}
+
+.play-card-stats img {
+  width: 15px;
+}
+
+.horizontal-line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #f7931e;
+  position: relative;
+  bottom: 10px;
+}
+
+/* Ad Section */
+.ad-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 20px;
+  padding-right: 20px;
+}
+
+.ad {
+  width: 250px;
+  height: 250px;
+  background-color: #eceffa;
+  border: 1px solid #6b6b8d;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #34345b;
+  text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Close Button for Ad */
+.ad-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #34345b;
+  border: 1px solid #34345b;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.ad-close:hover {
+  background-color: #d8dae5;
 }
 
 /* Responsive Styling */
 @media (max-width: 768px) {
-  .section-title {
-    font-size: 18px;
-  }
-
-  .play-section-title {
-    font-size: 18px;
-  }
-
-  .play-card-image-left {
-    width: 100px;
-    height: auto;
-  }
-  .play-card-solved,
-  .play-card-goals {
-    font-size: 12px;
-  }
-  .card-title {
-    font-size: 12px;
-  }
-
-  .header h1 {
-    font-size: 20px;
-  }
-
-  .long-arrow {
-    width: 120px;
-  }
-
-  .card-container {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 10px;
-  }
-
-  .card {
-    flex: 0 0 auto;
-    width: 40%;
-    height: auto;
-    padding: 10px;
-  }
-
   .play-card-container {
-    flex-direction: column;
-    align-items: center;
-    padding: 0;
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .play-card {
-    width: 90%;
+  .ad-container {
+    justify-content: center;
+    padding-right: 0;
+  }
+
+  .ad {
+    width: 200px;
+    height: 200px;
   }
 }

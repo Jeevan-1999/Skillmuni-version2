@@ -1,7 +1,7 @@
 /* Main container */
 .skill-zone-container {
   width: 100%;
-  min-height: 100vh; /* Ensure full height */
+  min-height: 100vh;
   padding: 0;
   box-sizing: border-box;
   background-color: #f5f7fb;
@@ -27,7 +27,7 @@
 }
 
 .header h1 {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   color: #34437a;
   margin: 0;
@@ -45,18 +45,24 @@
   width: 30px;
   height: 30px;
   cursor: pointer;
+  margin: 10px;
 }
 
-/* Learn and Play Section */
+/* Play Section */
+.play-section {
+  padding-bottom: 20px;
+}
+
 .play-section-header {
   display: flex;
   align-items: center;
   margin: 20px;
   gap: 10px;
+  margin-bottom: 0;
 }
 
 .play-section-title {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
   color: #34437a;
   margin: 0;
@@ -66,37 +72,40 @@
   flex-grow: 1;
   height: 2px;
   background-color: #f7931e;
+  margin: 5px;
 }
 
 .play-highlight {
   color: #f7931e;
 }
 
+/* Play Card Container */
 .play-card-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
   padding: 20px;
 }
 
+/* Play Card */
 .play-card {
   display: flex;
   align-items: center;
   border-radius: 20px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  width: 400px;
+  padding: 10px;
   height: auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   background: linear-gradient(to bottom, #ffffff, #f0f3ff);
+  cursor: pointer;
 }
 
 .play-card:hover {
   transform: translateY(-5px);
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
 }
 
+/* Play Card Content */
 .play-card-content {
   display: flex;
   align-items: center;
@@ -104,55 +113,120 @@
 }
 
 .play-card-image-left {
-  width: 40%;
+  width: 38%;
   height: auto;
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 .play-card-details {
   display: flex;
   flex-direction: column;
+  width: 62%;
 }
 
+/* Play Card Title */
 .play-card-title {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
   color: #34437a;
 }
 
+/* Play Card Stats */
 .play-card-stats {
   display: flex;
   justify-content: space-between;
   background-color: #fff0de;
   border-radius: 10px;
-  gap: 20px;
+  gap: 8px;
   padding: 8px;
+  max-width: 100%;
   box-sizing: border-box;
+  font-size: 12px;
 }
 
 .play-card-solved,
 .play-card-goals {
-  font-size: 14px;
+  font-size: 11px;
+  font-weight: 600;
   color: #666;
   margin: 0;
 }
 
-.coming-soon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.play-card-stats img {
+  width: 15px;
 }
 
-.coming-soon img {
-  max-width: 240px;
-  margin-top: 35px;
+/* Horizontal Line */
+.horizontal-line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #f7931e;
+  position: relative;
+  bottom: 10px;
+}
+
+.coming-soon-image {
+  max-width: 360px;
+}
+
+/* Ad Section */
+.ad-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 20px;
+  padding-right: 20px;
+}
+
+.ad {
+  width: 250px;
+  height: 250px;
+  background-color: #eceffa;
+  border: 1px solid #6b6b8d;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #34345b;
+  text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Close Button for Ad */
+.ad-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #34345b;
+  border: 1px solid #34345b;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.ad-close:hover {
+  background-color: #d8dae5;
 }
 
 /* Responsive Styling */
 @media (max-width: 768px) {
-  .play-section-title {
-    font-size: 18px;
+  .play-card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .play-card-image-left {
+    width: 100px;
+    height: auto;
   }
 
   .play-card-solved,
@@ -161,12 +235,7 @@
   }
 
   .play-card-title {
-    font-size: 14px;
-  }
-
-  .play-card-image-left {
-    width: 100px;
-    height: auto;
+    font-size: 12px;
   }
 
   .header h1 {
@@ -177,13 +246,13 @@
     width: 120px;
   }
 
-  .play-card-container {
-    flex-direction: column;
-    align-items: center;
-    padding: 0;
+  .ad-container {
+    justify-content: center;
+    padding-right: 0;
   }
 
-  .play-card {
-    width: 90%;
+  .ad {
+    width: 200px;
+    height: 200px;
   }
 }

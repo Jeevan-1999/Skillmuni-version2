@@ -8,8 +8,9 @@ import { ZoneService } from 'src/app/services/zone.service';  // Import the Zone
   styleUrls: ['./learning-zone.component.css']
 })
 export class LearningZoneComponent implements OnInit {
-
-  showComingSoon: boolean = false;  // Control the visibility of app-coming-soon
+  knowledgeHubCollapsed: boolean = true;
+  showComingSoon: boolean = false;
+  showAd: boolean = true; // Initially visible
   learningZoneCards: any[] = [];
   knowledgeHubCards: any[] = [];
   comingSoonData = {
@@ -45,8 +46,8 @@ export class LearningZoneComponent implements OnInit {
           id_academic_tile: item.id_academic_tile,
           title: item.tile_name,
           image: item.tile_image,
-          solved: '0/0',
-          goals: '0'
+          solved: '1111/9999',
+          credits: '99'
         }));
     },
       (error) => {
@@ -94,5 +95,15 @@ export class LearningZoneComponent implements OnInit {
   navigateToComingSoon() {
     this.showComingSoon = true;  // Show the coming-soon component
   }
+
+  toggleKnowledgeHub() {
+    this.knowledgeHubCollapsed = !this.knowledgeHubCollapsed;
+  }
+
+  hideAd() {
+    this.showAd = false; // Hides the ad on click
+  }
+
+
 
 }
