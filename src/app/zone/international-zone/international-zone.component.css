@@ -4,14 +4,15 @@
   min-height: 100vh;
   padding: 0;
   box-sizing: border-box;
+  background-color: #f5f7fb;
 }
 
-/* Header section styling */
+/* Header */
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 10px 0;
+  padding: 20px 5px 0;
   background: linear-gradient(to right, #d2dbff, #f7f9ff, #e7ecff);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   height: 85px;
@@ -26,7 +27,7 @@
 }
 
 .header h1 {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   color: #34437a;
   margin: 0;
@@ -44,6 +45,7 @@
   width: 30px;
   height: 30px;
   cursor: pointer;
+  margin: 10px;
 }
 
 /* Section header for learn and play */

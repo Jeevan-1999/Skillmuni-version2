@@ -2,14 +2,18 @@
 .navbar {
   border-radius: 0 0 20px 20px;
   background: linear-gradient(to bottom, #f6f8ff, #ffffff) !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
-  padding-top: 5px;
   padding-bottom: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensures it's above other content */
 }
 
 .container-fluid {
-  padding-left: 5px;
-  padding-right: 5px;
+  padding: 0;
+  width: 100%;
 }
 
 /* Left Section: Logo */

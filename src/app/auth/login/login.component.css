@@ -1,10 +1,11 @@
 /* Parent container */
 .login-container {
-  position: relative;
+  position: absolute;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   background: linear-gradient(to bottom, #f7f9ff, #e7ecff, #d2dbff);
+  top: 0;
 }
 
 /* Background image */

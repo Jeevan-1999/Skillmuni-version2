@@ -40,7 +40,7 @@ export class SkillZoneCategoryComponent implements OnInit {
           image: item.tile_image,
           tileCode: item.tile_code,
           solved: '0/51', // Placeholder, modify if needed
-          goals: '0'
+          credits: '1'
         }));
       },
       error => {

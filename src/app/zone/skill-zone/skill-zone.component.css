@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 10px 0;
+  padding: 20px 5px 0;
   background: linear-gradient(to right, #d2dbff, #f7f9ff, #e7ecff);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   height: 85px;
@@ -50,7 +50,7 @@
 
 /* Play Section */
 .play-section {
-  padding-bottom: 20px;
+  padding-bottom: 0;
 }
 
 .play-section-header {
@@ -113,7 +113,7 @@
 }
 
 .play-card-image-left {
-  width: 38%;
+  width: 35%;
   height: auto;
   margin-right: 10px;
 }
@@ -121,7 +121,7 @@
 .play-card-details {
   display: flex;
   flex-direction: column;
-  width: 62%;
+  width: 65%;
 }
 
 /* Play Card Title */
@@ -153,7 +153,7 @@
 }
 
 .play-card-stats img {
-  width: 19px;
+  width: 22px;
 }
 
 /* Horizontal Line */
@@ -174,7 +174,7 @@
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 0;
   padding-right: 20px;
 }
 
