@@ -16,6 +16,7 @@ export class SkillZoneCategoryComponent implements OnInit {
   articles: any[] = [];
   isCardClicked: boolean = false;
   selectedCardTitle: string = '';
+  showAd: boolean = true; // Initially visible
 
   constructor(
     private route: ActivatedRoute,
@@ -100,5 +101,10 @@ export class SkillZoneCategoryComponent implements OnInit {
       this.isCardClicked = false;
       this.loaderService.hide();
     }, 500); // Simulating a small delay for smoother transition
+  }
+
+
+  hideAd() {
+    this.showAd = false; // Hides the ad on click
   }
 }

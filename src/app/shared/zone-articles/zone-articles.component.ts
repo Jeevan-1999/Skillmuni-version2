@@ -86,11 +86,11 @@ export class ZoneArticlesComponent implements AfterViewInit {
   scrollToCard(index: number) {
     const container = this.contentContainer.nativeElement;
     const targetElement = container.children[index];
-
     if (targetElement) {
-      container.scrollTo({ top: targetElement.offsetTop, behavior: 'smooth' });
+      container.scrollTo({ top: targetElement.offsetTop - 20, behavior: 'smooth' });
     }
   }
+
 
   onBackClick() {
     this.backClicked.emit();

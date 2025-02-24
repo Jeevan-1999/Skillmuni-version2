@@ -46,6 +46,13 @@
             <img src="assets/cards/coming-soon-card.png" alt="Coming Soon" class="coming-soon-image" />
         </div>
     </div>
+
+    <div class="ad-container" *ngIf="showAd">
+        <div class="ad">
+            AD PLACEHOLDER
+            <span class="ad-close" (click)="hideAd()">✕</span>
+        </div>
+    </div>
 </div>
 
 <!-- Display articles when a card is clicked -->

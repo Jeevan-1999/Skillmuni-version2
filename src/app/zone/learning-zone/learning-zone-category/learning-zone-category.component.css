@@ -167,6 +167,55 @@
   margin: auto;
 }
 
+/* Ad Section */
+.ad-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 0;
+  padding-right: 20px;
+}
+
+.ad {
+  width: 250px;
+  height: 250px;
+  background-color: #eceffa;
+  border: 1px solid #6b6b8d;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #34345b;
+  text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Close Button for Ad */
+.ad-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #34345b;
+  border: 1px solid #34345b;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.ad-close:hover {
+  background-color: #d8dae5;
+}
+
 /* Responsive Styling */
 @media (max-width: 768px) {
   .header h1 {

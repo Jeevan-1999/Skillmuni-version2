@@ -17,6 +17,7 @@ export class LearningZoneCategoryComponent implements OnInit {
   isCardClicked: boolean = false;
   selectedCardTitle: string = '';
   externalUrl: SafeResourceUrl | null = null;
+  showAd: boolean = true; // Initially visible
 
 
   constructor(
@@ -99,4 +100,9 @@ export class LearningZoneCategoryComponent implements OnInit {
       this.loaderService.hide();
     }, 500); // Simulating a small delay for smoother transition
   }
+
+  hideAd() {
+    this.showAd = false; // Hides the ad on click
+  }
+
 }
