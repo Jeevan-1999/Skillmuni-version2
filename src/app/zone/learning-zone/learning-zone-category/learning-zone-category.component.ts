@@ -16,6 +16,8 @@ export class LearningZoneCategoryComponent implements OnInit {
   articles: any[] = [];
   isCardClicked: boolean = false;
   selectedCardTitle: string = '';
+  externalUrl: SafeResourceUrl | null = null;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -28,7 +30,11 @@ export class LearningZoneCategoryComponent implements OnInit {
     this.id_academic_tile = this.route.snapshot.paramMap.get('id') || '';
     this.title = decodeURIComponent(this.route.snapshot.paramMap.get('title') || '');
     const url = this.route.snapshot.queryParamMap.get('url');
-
+    if (url) {
+      // window.location.href = url; //The issue is related to Content Security Policy (CSP), which would not open external site directly in app.
+      window.open(url);
+      this.externalUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    }
     if (this.id_academic_tile) {
       this.fetchBriefTiles(this.id_academic_tile);
     }

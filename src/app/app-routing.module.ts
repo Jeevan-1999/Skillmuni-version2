@@ -85,13 +85,9 @@ const routes: Routes = [
     component: InternationalRegistrationComponent
   },
 
-
-
   { path: 'leaderboard', component: LeaderboardComponent },
   { path: 'coming-soon', component: ComingSoonComponent },
   { path: 'assessment', component: AssessmentComponent },
-
-
 
 ];
 
