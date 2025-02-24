@@ -10,9 +10,7 @@ import { ZoneService } from 'src/app/services/zone.service';
 })
 export class EntrepreneurZoneComponent implements OnInit {
   opportunityCards: any[] = [];
-  showComingSoon: boolean = false;  // Control visibility of app-coming-soon
-  isCardClicked: boolean = false;
-  selectedCardTitle: string = '';
+  showComingSoon: boolean = false;  // Controls visibility of the coming-soon component
   articles: any[] = [];
   id_academic_tile: string = '';
 
@@ -39,7 +37,8 @@ export class EntrepreneurZoneComponent implements OnInit {
             title: tile.category_tile,
             description: tile.tile_description,
             image: tile.tile_image,
-            tileCode: tile.tile_code,  // Extract ENC (tile_code)
+            tileCode: tile.tile_code,  // Extract tile_code (ENC)
+            id_academic_tile: tile.id_academic_tile  // Use academic tile ID (adjust property name if needed)
           }));
         }
       },
@@ -49,13 +48,9 @@ export class EntrepreneurZoneComponent implements OnInit {
     );
   }
 
-  // Fetch Articles when Opportunity is Clicked
+  // Fetch Articles when an Opportunity is Clicked
   fetchBriefListWithAcademy(tileCode: string, cardTitle: string, id_academic_tile: string) {
-    // const id_academic_tile = '36';  // Manually set the ID
-
     this.loaderService.show();
-    this.selectedCardTitle = cardTitle;
-
     this.zoneService.getBriefListwithAcademy(tileCode, id_academic_tile).subscribe(
       (data: any) => {
         if (data.BriefList && data.BriefList.length > 0) {
@@ -63,21 +58,23 @@ export class EntrepreneurZoneComponent implements OnInit {
             const resource = brief.briefResource.find((res: any) => res.resource_type === 2);
             let mediaUrl = resource?.resouce_data;
             let isVideo = false;
-
             if (mediaUrl?.startsWith('http')) {
               isVideo = mediaUrl.includes('youtube.com') || mediaUrl.includes('youtu.be');
             } else {
               mediaUrl = `https://www.skillmuni.in/sulcmsproduction${resource?.brief_destination}${resource?.resouce_data}`;
             }
-
             return {
               articleTitle: brief.brief_title,
               articleContent: brief.briefResource.find((res: any) => res.resource_type === 1)?.resouce_data || 'No content available',
               articleImage: mediaUrl,
-              isVideo: isVideo
+              isVideo: isVideo,
+              brief_code: brief.brief_code  // Ensure brief_code is included for assessment navigation
             };
           });
-          this.isCardClicked = true;
+          // Navigate to the dedicated article page, passing articles, fixed title, and card title as subtitle
+          this.router.navigate(['/article'], {
+            state: { articles: this.articles, title: 'Entrepreneur Zone', subtitle: cardTitle }
+          });
         }
         this.loaderService.hide();
       },
@@ -86,14 +83,9 @@ export class EntrepreneurZoneComponent implements OnInit {
         this.loaderService.hide();
       }
     );
-
   }
 
   navigateToEntrepreneurialQuotient() {
-    this.showComingSoon = true;  // Show the coming-soon component
-  }
-
-  onBackClick() {
-    this.isCardClicked = false; // Reset view when closing `app-zone-articles`
+    this.showComingSoon = true;  // Show the coming-soon component for entrepreneurial quotient
   }
 }

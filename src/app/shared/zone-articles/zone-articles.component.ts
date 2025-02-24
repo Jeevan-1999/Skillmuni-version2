@@ -1,38 +1,46 @@
-import { Component, Input, Output, EventEmitter, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-zone-articles',
   templateUrl: './zone-articles.component.html',
   styleUrls: ['./zone-articles.component.css']
 })
-export class ZoneArticlesComponent implements AfterViewInit {
-  @Input() title: string = '';
-  @Input() subtitle: string = '';
-  @Input() articles: any[] = [];
-  @Output() backClicked = new EventEmitter<void>();
+export class ZoneArticlesComponent implements OnInit, AfterViewInit, OnDestroy {
+  title: string = '';
+  subtitle: string = '';
+  articles: any[] = [];
 
   @ViewChild('contentContainer', { static: false }) contentContainer!: ElementRef;
-
   currentIndex: number = 0;
   touchStartY: number = 0;
   touchEndY: number = 0;
   isScrolling: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private location: Location) { }
 
   ngOnInit() {
-    // Disable scrolling for the body when entering the component
+    // Disable scrolling on the body while this component is active.
     document.body.style.overflow = 'hidden';
-  }
 
-  ngOnDestroy() {
-    // Re-enable scrolling when leaving the component
-    document.body.style.overflow = 'auto';
+    // Retrieve the state passed during navigation.
+    const state = this.location.getState() as { articles: any[], title: string, subtitle: string };
+    if (state && state.articles) {
+      this.articles = state.articles;
+      this.title = state.title;
+      this.subtitle = state.subtitle;
+    } else {
+      console.warn('No state found. Please navigate via the proper channel.');
+    }
   }
 
   ngAfterViewInit() {
     this.scrollToCard(0);
+  }
+
+  ngOnDestroy() {
+    document.body.style.overflow = 'auto';
   }
 
   @HostListener('touchstart', ['$event'])
@@ -91,9 +99,8 @@ export class ZoneArticlesComponent implements AfterViewInit {
     }
   }
 
-
   onBackClick() {
-    this.backClicked.emit();
+    this.location.back();
   }
 
   navigateToRegister() {
@@ -105,7 +112,6 @@ export class ZoneArticlesComponent implements AfterViewInit {
       console.error('Error: Missing article or brief_code', article);
       return;
     }
-
     this.router.navigate(['/assessment'], {
       queryParams: {
         brfcode: article.brief_code,

@@ -14,12 +14,12 @@
     <div class="total-stats">
         <div class="stat-box">
             <img src="assets/icons/bulb-icon.png" alt="Quiz Icon" class="stat-icon" />
-            <p>Total<br><span>Quiz: 1 / 106 Solved</span></p>
+            <p><span>Quiz: 1 <span style="color: #f7931e;">/106 SOLVED</span></span></p>
         </div>
 
         <div class="stat-box">
             <img src="assets/icons/credits-icon.png" alt="credits Icon" class="stat-icon" />
-            <p>Total<br><span>Credits: 3 Earned</span></p>
+            <p><span>Credits: 3<span style="color: #f7931e;"> EARNED</span></span></p>
         </div>
     </div>
 
@@ -34,7 +34,6 @@
                         <img src="assets/icons/share-icon.png" alt="Share" class="header-article-icon" />
                     </div>
                 </div>
-                <br><br>
                 <div class="card-body">
                     <ng-container *ngIf="article.isVideo; else imageTemplate">
                         <iframe [src]="article.articleImage | safeUrl" height="260px" width="50%"

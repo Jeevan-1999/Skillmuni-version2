@@ -1,6 +1,8 @@
-import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ZoneService } from 'src/app/services/zone.service';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-assessment',
@@ -13,9 +15,9 @@ export class AssessmentComponent implements OnInit {
   questions: any[] = [];
   briefCode: string = '';
   previousArticles: any[] = []; // Store previous articles
-  @Output() backClicked = new EventEmitter<void>(); // Back button event
 
-  constructor(private route: ActivatedRoute, private zoneService: ZoneService) { }
+  constructor(private route: ActivatedRoute, private zoneService: ZoneService, private location: Location,
+  ) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -51,8 +53,9 @@ export class AssessmentComponent implements OnInit {
     );
   }
 
+
   onBackClick() {
-    this.backClicked.emit(); // Emit event to return to app-zone-articles
+    this.location.back();
   }
 
   submitAnswers() {

@@ -9,13 +9,8 @@ import { ZoneService } from 'src/app/services/zone.service';
 })
 export class InternationalZoneComponent implements OnInit {
   places: any[] = [];
-  selectedTileCode: string = '';
-  selectedPlaceName: string = '';
-  showZoneDetails: boolean = false; // To control visibility of zone details
-  showInternationalZone: boolean = true; // To control visibility of international-zone-container
-  zoneArticles: any[] = []; // To hold the articles fetched from the API
-  zoneTitle: string = 'International Zone'; // Dynamic title for the zone
-  zoneSubtitle: string = ''; // Dynamic subtitle for the zone
+  zoneTitle: string = 'International Zone';
+  showInternationalZone: boolean = true; // Always show the zone container
 
   constructor(private router: Router, private zoneService: ZoneService) { }
 
@@ -26,7 +21,7 @@ export class InternationalZoneComponent implements OnInit {
           this.places = response.Tile.map((item: { category_tile: any; tile_image: any; tile_code: any }) => ({
             name: item.category_tile,
             image: item.tile_image,
-            tileCode: item.tile_code, // Store tile_code for API call
+            tileCode: item.tile_code,
           }));
         }
       },
@@ -37,41 +32,47 @@ export class InternationalZoneComponent implements OnInit {
   }
 
   navigateToPlace(place: { name: string; tileCode: string }) {
-    this.selectedTileCode = place.tileCode;
-    this.selectedPlaceName = place.name;
-    this.showZoneDetails = true; // Show zone details
-    this.showInternationalZone = false; // Hide international-zone-container
-
-    // Fetch data for the selected zone (this could be dynamic)
-    this.fetchZoneArticles(this.selectedTileCode);
-    this.zoneSubtitle = place.name; // Set subtitle dynamically
+    // Instead of displaying inline zone details, fetch articles and navigate to the article page.
+    this.fetchZoneArticles(place);
   }
 
-  fetchZoneArticles(tileCode: string) {
-    this.zoneService.getBriefListwithAcademy(tileCode, '37').subscribe(
+  fetchZoneArticles(place: { name: string; tileCode: string }) {
+    this.zoneService.getBriefListwithAcademy(place.tileCode, '37').subscribe(
       (response) => {
-        console.log('API Response:', response);
-
-        // Check if response contains the BriefList array
+        let zoneArticles: any[] = [];
         if (response && Array.isArray(response.BriefList)) {
-          this.zoneArticles = response.BriefList.map((item: any) => ({
-            articleTitle: item.brief_title,
-            articleContent: item.briefResource.find((res: any) => res.resource_type === 1)?.resouce_data || 'No content available',
-            articleImage: `https://www.skillmuni.in/sulcmsproduction${item.briefResource.find((res: any) => res.resource_type === 2)?.brief_destination}${item.briefResource.find((res: any) => res.resource_type === 2)?.resouce_data}`,
-          }));
+          zoneArticles = response.BriefList.map((item: any) => {
+            const resource1 = item.briefResource.find((res: any) => res.resource_type === 1);
+            const resource2 = item.briefResource.find((res: any) => res.resource_type === 2);
+            let mediaUrl = '';
+            let isVideo = false;
+            if (resource2) {
+              mediaUrl = resource2.resouce_data;
+              if (mediaUrl?.startsWith('http')) {
+                isVideo = mediaUrl.includes('youtube.com') || mediaUrl.includes('youtu.be');
+              } else {
+                mediaUrl = `https://www.skillmuni.in/sulcmsproduction${resource2.brief_destination}${resource2.resouce_data}`;
+              }
+            }
+            return {
+              articleTitle: item.brief_title,
+              articleContent: resource1?.resouce_data || 'No content available',
+              articleImage: mediaUrl,
+              isVideo: isVideo,
+              brief_code: item.brief_code  // Ensure the brief_code property is included
+            };
+          });
         } else {
           console.error('BriefList not found or not an array:', response);
         }
+        // Navigate to the article page, passing the articles, zone title, and place name as subtitle
+        this.router.navigate(['/article'], {
+          state: { articles: zoneArticles, title: this.zoneTitle, subtitle: place.name }
+        });
       },
       (error) => {
         console.error('Error fetching articles:', error);
       }
     );
-  }
-
-
-  onBackClick() {
-    this.showZoneDetails = false; // Hide zone details
-    this.showInternationalZone = true; // Show international-zone-container
   }
 }

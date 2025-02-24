@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-international-registration',
@@ -13,9 +15,15 @@ export class InternationalRegistrationComponent {
   selectedInquiry = ''; // Bind this to track the selected option
   isFormSubmitted = false; // Track form submission state
 
+  constructor(private location: Location,) { }
+
   submitForm() {
     // Simulate form submission
     console.log('Form submitted');
     this.isFormSubmitted = true; // Show success screen
+  }
+
+  onBackClick() {
+    this.location.back();
   }
 }

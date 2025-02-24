@@ -2,7 +2,6 @@
     <div class="header">
         <img src="assets/icons/back-arrow.png" alt="Back Icon" class="back-button" (click)="onBackClick()" />
         <div class="title-container">
-            <!-- Display title and subtitle dynamically -->
             <h1>{{ subtitle }}</h1>
             <img src="assets/icons/long-arrow.png" alt="Arrow" class="long-arrow" />
             <h2>Assessment</h2>
@@ -10,37 +9,45 @@
         <img src="assets/icons/category-icon.png" alt="Category Icon" class="header-icon" />
     </div>
 
-    <div class="status-container">
-        <div class="status-card quiz-status">
-            <img src="assets/icons/bulb-icon.png" alt="Quiz Icon">
-            <span>Quiz: <b>1 / <span class="highlight">106</span> Solved</b></span>
+    <!-- Total Stats Section -->
+    <div class="total-stats">
+        <div class="stat-box">
+            <img src="assets/icons/bulb-icon.png" alt="Quiz Icon" class="stat-icon" />
+            <p><span>Quiz: 1 <span style="color: #f7931e;">/106 SOLVED</span></span></p>
         </div>
-
-        <div class="status-card goal-status">
-            <img src="assets/icons/ball-icon.png" alt="Goal Icon">
-            <span>Goal: <b>3 <span class="highlight">Earned</span></b></span>
+        <div class="stat-box">
+            <img src="assets/icons/credits-icon.png" alt="credits Icon" class="stat-icon" />
+            <p><span>Credits: 3<span style="color: #f7931e;"> EARNED</span></span></p>
         </div>
     </div>
 
+    <!-- Questions -->
     <div *ngFor="let question of questions; let i = index" class="question-card">
-        <div class="question-header">
-            <span class="question-number">{{ i + 1 }}</span>
-            <p class="question-text"><b>Q.</b> {{ question.text }}</p>
+        <!-- Question Number -->
+        <div class="question-number">
+            {{ i + 1 }}
         </div>
 
+        <!-- Question Text -->
+        <div class="question-text">
+            <b>Q.</b> {{ question.text }}
+        </div>
+
+        <!-- Options -->
         <div class="options-container">
             <label *ngFor="let option of question.options" class="option"
                 [class.selected]="question.selectedOption === option.text">
                 <span class="option-text">{{ option.text }}</span>
                 <input type="radio" [name]="'question-' + i" [value]="option.text"
-                    [(ngModel)]="question.selectedOption">
+                    [(ngModel)]="question.selectedOption" />
             </label>
         </div>
     </div>
 
+    <!-- Show Score Button -->
     <div class="submit-container">
         <button class="submit-btn" (click)="submitAnswers()">
-            Submit
+            Show Score!
             <span class="submit-icon">&#10132;</span>
         </button>
     </div>

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ZoneService } from 'src/app/services/zone.service';
 import { LoaderService } from 'src/app/services/loader.service';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-skill-zone-category',
@@ -14,12 +13,11 @@ export class SkillZoneCategoryComponent implements OnInit {
   id_academic_tile: string = '';
   learnAndPlayCards: any[] = [];
   articles: any[] = [];
-  isCardClicked: boolean = false;
-  selectedCardTitle: string = '';
   showAd: boolean = true; // Initially visible
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private zoneService: ZoneService,
     private loaderService: LoaderService
   ) { }
@@ -27,7 +25,6 @@ export class SkillZoneCategoryComponent implements OnInit {
   ngOnInit(): void {
     this.id_academic_tile = this.route.snapshot.paramMap.get('id') || '';
     this.title = decodeURIComponent(this.route.snapshot.paramMap.get('title') || '');
-
     if (this.id_academic_tile) {
       this.fetchBriefTiles(this.id_academic_tile);
     }
@@ -50,41 +47,37 @@ export class SkillZoneCategoryComponent implements OnInit {
     );
   }
 
+  // Fetch articles and navigate to the article page
   fetchBriefListWithAcademy(tileCode: string, id_academic_tile: string, cardTitle: string) {
     this.loaderService.show();
-    this.selectedCardTitle = cardTitle;
-
     this.zoneService.getBriefListwithAcademy(tileCode, id_academic_tile).subscribe(
       (data: any) => {
-        console.log("Fetched Brief List Data:", data); // Debugging Log
-
         if (data.BriefList && data.BriefList.length > 0) {
           this.articles = data.BriefList.map((brief: any) => {
             const resource = brief.briefResource?.find((res: any) => res.resource_type === 2);
             let mediaUrl = resource?.resouce_data;
             let isVideo = false;
-
             if (mediaUrl?.startsWith('http')) {
               isVideo = mediaUrl.includes('youtube.com') || mediaUrl.includes('youtu.be');
             } else {
               mediaUrl = `https://www.skillmuni.in/sulcmsproduction${resource?.brief_destination}${resource?.resouce_data}`;
             }
-
             return {
               articleTitle: brief.brief_title,
               articleContent: brief.briefResource?.find((res: any) => res.resource_type === 1)?.resouce_data || 'No content available',
               articleImage: mediaUrl,
               isVideo: isVideo,
-              brief_code: brief.brief_code // Ensure brief_code is included
+              brief_code: brief.brief_code
             };
           });
 
-          console.log("Updated Articles with brief_code:", this.articles); // Debugging Log
-          this.isCardClicked = true;
+          // Navigate to the article page passing data via router state
+          this.router.navigate(['/article'], {
+            state: { articles: this.articles, title: 'Skill Zone', subtitle: cardTitle }
+          });
         } else {
           console.warn("No articles found for this tile.");
         }
-
         this.loaderService.hide();
       },
       error => {
@@ -94,17 +87,7 @@ export class SkillZoneCategoryComponent implements OnInit {
     );
   }
 
-
-  onBackClick() {
-    this.loaderService.show();
-    setTimeout(() => {
-      this.isCardClicked = false;
-      this.loaderService.hide();
-    }, 500); // Simulating a small delay for smoother transition
-  }
-
-
   hideAd() {
-    this.showAd = false; // Hides the ad on click
+    this.showAd = false;
   }
 }

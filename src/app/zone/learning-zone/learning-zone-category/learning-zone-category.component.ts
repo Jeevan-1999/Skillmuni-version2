@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router'; // Added Router import
 import { ZoneService } from 'src/app/services/zone.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { LoaderService } from 'src/app/services/loader.service';
@@ -14,14 +14,13 @@ export class LearningZoneCategoryComponent implements OnInit {
   id_academic_tile: string = '';
   learnAndPlayCards: any[] = [];
   articles: any[] = [];
-  isCardClicked: boolean = false;
   selectedCardTitle: string = '';
   externalUrl: SafeResourceUrl | null = null;
   showAd: boolean = true; // Initially visible
 
-
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private zoneService: ZoneService,
     private sanitizer: DomSanitizer,
     private loaderService: LoaderService
@@ -30,12 +29,14 @@ export class LearningZoneCategoryComponent implements OnInit {
   ngOnInit(): void {
     this.id_academic_tile = this.route.snapshot.paramMap.get('id') || '';
     this.title = decodeURIComponent(this.route.snapshot.paramMap.get('title') || '');
+
     const url = this.route.snapshot.queryParamMap.get('url');
     if (url) {
-      // window.location.href = url; //The issue is related to Content Security Policy (CSP), which would not open external site directly in app.
+      // Open external URL in a new tab/window due to CSP restrictions.
       window.open(url);
       this.externalUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
     }
+
     if (this.id_academic_tile) {
       this.fetchBriefTiles(this.id_academic_tile);
     }
@@ -60,49 +61,44 @@ export class LearningZoneCategoryComponent implements OnInit {
 
   fetchBriefListWithAcademy(tileCode: string, id_academic_tile: string, cardTitle: string) {
     this.loaderService.show();
-    this.selectedCardTitle = cardTitle; // Store selected card title
     this.zoneService.getBriefListwithAcademy(tileCode, id_academic_tile).subscribe(
       (data: any) => {
         if (data.BriefList && data.BriefList.length > 0) {
           this.articles = data.BriefList.map((brief: any) => {
-            const resource = brief.briefResource.find((res: any) => res.resource_type === 2);
+            const resource = brief.briefResource?.find((res: any) => res.resource_type === 2);
             let mediaUrl = resource?.resouce_data;
             let isVideo = false;
-
             if (mediaUrl?.startsWith('http')) {
               isVideo = mediaUrl.includes('youtube.com') || mediaUrl.includes('youtu.be');
             } else {
               mediaUrl = `https://www.skillmuni.in/sulcmsproduction${resource?.brief_destination}${resource?.resouce_data}`;
             }
-
             return {
               articleTitle: brief.brief_title,
-              articleContent: brief.briefResource.find((res: any) => res.resource_type === 1)?.resouce_data || 'No content available',
+              articleContent: brief.briefResource?.find((res: any) => res.resource_type === 1)?.resouce_data || 'No content available',
               articleImage: mediaUrl,
-              isVideo: isVideo
+              isVideo: isVideo,
+              brief_code: brief.brief_code
             };
           });
-          this.isCardClicked = true;
+
+          // Navigate to the article page passing data via router state
+          this.router.navigate(['/article'], {
+            state: { articles: this.articles, title: 'Learning Zone', subtitle: cardTitle }
+          });
+        } else {
+          console.warn("No articles found for this tile.");
         }
         this.loaderService.hide();
       },
       error => {
-        console.error('Error fetching brief list:', error);
+        console.error("Error fetching brief list:", error);
         this.loaderService.hide();
       }
     );
   }
 
-  onBackClick() {
-    this.loaderService.show();
-    setTimeout(() => {
-      this.isCardClicked = false;
-      this.loaderService.hide();
-    }, 500); // Simulating a small delay for smoother transition
-  }
-
   hideAd() {
-    this.showAd = false; // Hides the ad on click
+    this.showAd = false;
   }
-
 }

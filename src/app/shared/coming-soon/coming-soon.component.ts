@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-coming-soon',
@@ -12,9 +13,8 @@ export class ComingSoonComponent {
   @Input() imageUrl: string = '';
   @Input() description: string = '';
 
-  @Output() backClicked = new EventEmitter<void>();
-
+  constructor(private location: Location,) { }
   onBackClick() {
-    this.backClicked.emit();  // Emit the event to the parent
+    this.location.back();
   }
 }

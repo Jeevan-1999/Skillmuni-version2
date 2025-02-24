@@ -1,4 +1,4 @@
-<div class="entrepreneur-zone-container" *ngIf="!showComingSoon && !isCardClicked">
+<div class="entrepreneur-zone-container" *ngIf="!showComingSoon">
     <!-- Header -->
     <div class="header">
         <img src="assets/icons/back-arrow.png" alt="Back Icon" routerLink="/home" class="back-button" />
@@ -57,8 +57,3 @@
     [cardTitle]="comingSoonData.cardTitle" [imageUrl]="comingSoonData.imageUrl"
     [description]="comingSoonData.description" (backClicked)="showComingSoon = false">
 </app-coming-soon>
-
-<!-- Display Articles When Opportunity Clicked -->
-<app-zone-articles *ngIf="isCardClicked" [title]="'Entrepreneur Zone'" [subtitle]="selectedCardTitle"
-    [articles]="articles" (backClicked)="onBackClick()">
-</app-zone-articles>

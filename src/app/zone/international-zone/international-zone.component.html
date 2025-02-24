@@ -13,7 +13,7 @@
         <h2 class="section-title">
             Explore places for<span class="highlight"> Higher Studies</span>
         </h2>
-        <div class="section-line"></div> <!-- Horizontal line in the same row -->
+        <div class="section-line"></div>
     </div>
 
     <div class="quick-access">
@@ -37,8 +37,3 @@
         </div>
     </div>
 </div>
-
-<!-- Zone Details Component (Will be shown when selected) -->
-<app-zone-articles *ngIf="showZoneDetails" [title]="zoneTitle" [subtitle]="zoneSubtitle" [articles]="zoneArticles"
-    (backClicked)="onBackClick()">
-</app-zone-articles>
