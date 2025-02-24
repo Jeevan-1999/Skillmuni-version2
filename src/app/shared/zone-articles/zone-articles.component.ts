@@ -17,15 +17,24 @@ export class ZoneArticlesComponent implements AfterViewInit {
   currentIndex: number = 0;
   touchStartY: number = 0;
   touchEndY: number = 0;
-  isScrolling: boolean = false; // Prevent rapid triggering
+  isScrolling: boolean = false;
 
   constructor(private router: Router) { }
 
-  ngAfterViewInit() {
-    this.scrollToCard(0); // Now the function accepts an argument
+  ngOnInit() {
+    // Disable scrolling for the body when entering the component
+    document.body.style.overflow = 'hidden';
   }
 
-  /*** Detect touch swipe ***/
+  ngOnDestroy() {
+    // Re-enable scrolling when leaving the component
+    document.body.style.overflow = 'auto';
+  }
+
+  ngAfterViewInit() {
+    this.scrollToCard(0);
+  }
+
   @HostListener('touchstart', ['$event'])
   onTouchStart(event: TouchEvent) {
     this.touchStartY = event.touches[0].clientY;
@@ -46,7 +55,6 @@ export class ZoneArticlesComponent implements AfterViewInit {
     }
   }
 
-  /*** Detect mouse scroll ***/
   @HostListener('wheel', ['$event'])
   onScroll(event: WheelEvent) {
     if (this.isScrolling) return;
@@ -58,18 +66,16 @@ export class ZoneArticlesComponent implements AfterViewInit {
       this.prevCard();
     }
 
-    setTimeout(() => (this.isScrolling = false), 700); // Prevent rapid scrolling
+    setTimeout(() => (this.isScrolling = false), 700);
   }
 
-  /*** Scroll to the next card ***/
   nextCard() {
     if (this.currentIndex < this.articles.length - 1) {
       this.currentIndex++;
-      this.scrollToCard(this.currentIndex); // Pass currentIndex
+      this.scrollToCard(this.currentIndex);
     }
   }
 
-  /*** Scroll to the previous card ***/
   prevCard() {
     if (this.currentIndex > 0) {
       this.currentIndex--;
@@ -77,10 +83,13 @@ export class ZoneArticlesComponent implements AfterViewInit {
     }
   }
 
-  /*** Ensure smooth scrolling ***/
   scrollToCard(index: number) {
     const container = this.contentContainer.nativeElement;
-    container.scrollTo({ top: 0, behavior: 'smooth' });
+    const targetElement = container.children[index];
+
+    if (targetElement) {
+      container.scrollTo({ top: targetElement.offsetTop, behavior: 'smooth' });
+    }
   }
 
   onBackClick() {
@@ -95,9 +104,8 @@ export class ZoneArticlesComponent implements AfterViewInit {
     if (!article?.brief_code) {
       console.error('Error: Missing article or brief_code', article);
       return;
-
     }
-    console.log('Navigating to assessment with brief_code:', article.brief_code);
+
     this.router.navigate(['/assessment'], {
       queryParams: {
         brfcode: article.brief_code,
