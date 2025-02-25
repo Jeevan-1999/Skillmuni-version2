@@ -1,54 +1,77 @@
-<div class="main-container">
-    <div class="welcome-section">
-        <div class="greeting">
-            <h1>Hello {{Name}}!</h1>
-            <p>Explore the <span class="highlight">Zones of Possibility.</span></p>
-            <img src="assets/icons/long-arrow.png" alt="arrow">
+<div class="performance-section">
+    <div class="heading-section">
+        <div class="section-header">
+            <div class="section-line"></div> <!-- Horizontal line in the same row -->
+            <h2 class="section-title">
+                My Performance
+            </h2>
+            <div class="section-line"></div> <!-- Horizontal line in the same row -->
         </div>
-        <div class="zone-container">
-            <div class="zone" *ngFor="let zone of zones" (click)="navigateToZone(zone.name)">
-                <div class="content">
-                    <div class="zone-content">
-                        <h2>{{ zone.name }} <span class="arrow">→</span></h2>
-                        <p class="zone-description">{{zone.description}}</p>
-                        <img [src]="zone.img" [alt]="zone.name" />
-                    </div>
-                </div>
+        <div class="profile-card">
+            <div class="profile-info">
+                <img [src]="userProfileImg" alt="" class="name-logo">
+                <h3>{{name}}</h3>
+                <p class="profile-level">GRADUATE LEVEL</p>
             </div>
         </div>
     </div>
 
-    <!-- New Zones Section -->
-    <div class="new-zones-section">
-        <div class="zone-card-container">
-            <div class="zone-header">
-                <div class="zone-title">
-                    <img src="assets/icons/learning-zone-logo.png" alt="Learning Zone Logo" class="zone-logo" />
-                    <h2>Learning Zone</h2>
-                </div>
-                <a [routerLink]="'/learning-zone'" class="see-all-link">See All &gt;</a>
+    <!-- Stats Section -->
+    <div class="stats-section">
+        <!-- Badges -->
+        <div class="badges-container">
+            <div class="badge-card">
+                <img src="assets/icons/badge-gold.png" alt="Gold Badge">
+                <p>0</p>
             </div>
-            <div class="card-container">
-                <div class="card" *ngFor="let card of learningZoneCards.slice(0, 3)">
-                    <img [src]="card.image" alt="{{card.title}}" />
-                    <p>{{card.title}}</p>
-                </div>
+            <div class="badge-card">
+                <img src="assets/icons/badge-silver.png" alt="Silver Badge">
+                <p>0</p>
             </div>
+            <div class="badge-card">
+                <img src="assets/icons/badge-bronze.png" alt="Bronze Badge">
+                <p>0</p>
+            </div>
+            <div class="badge-title">BADGES WON</div>
         </div>
 
-        <div class="zone-card-container">
-            <div class="zone-header">
-                <div class="zone-title">
-                    <img src="assets/icons/skill-zone-logo.png" alt="Skill Zone Logo" class="zone-logo" />
-                    <h2>Skill Zone</h2>
-                </div>
-                <a [routerLink]="'/skill-zone'" class="see-all-link">See All &gt;</a>
+        <!-- Other Stats -->
+        <div class="other-stats">
+            <div class="stat-card">
+                <img src="assets/icons/goal-icon.png" alt="Goals">
+                <span>GOALS</span>
+                <p>0</p>
             </div>
-            <div class="card-container">
-                <div class="card" *ngFor="let card of skillZoneCards.slice(0, 3)">
-                    <img [src]="card.image" alt="{{card.title}}" />
-                    <p>{{card.title}}</p>
-                </div>
+            <div class="stat-card">
+                <img src="assets/icons/gem-icon.png" alt="Gems">
+                <span>GEMS</span>
+                <p>0</p>
+            </div>
+            <div class="stat-card">
+                <img src="assets/icons/wallet-icon.png" alt="Wallet">
+                <span>WALLET</span>
+                <p>0</p>
             </div>
         </div>
     </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+        <div class="action-button">
+            <img src="assets/icons/orange-bookmark-icon.png" alt="Bookmark">
+            <p>View Bookmarked</p>
+        </div>
+        <div class="action-button">
+            <img src="assets/icons/reward-icon.png" alt="Rewards">
+            <p>View Available Rewards</p>
+        </div>
+        <div class="action-button">
+            <img src="assets/icons/assessment-icon.png" alt="Assessment">
+            <p>Assessment Score</p>
+        </div>
+        <div class="action-button">
+            <img src="assets/icons/redeemed-icon.png" alt="Redeemed">
+            <p>Rewards Redeemed</p>
+        </div>
+    </div>
+</div>

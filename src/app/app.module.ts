@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router'; // Import this
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,15 +10,24 @@ import { FooterComponent } from './core/footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LearningZoneComponent } from './zone/learning-zone/learning-zone.component';
 import { SkillZoneComponent } from './zone/skill-zone/skill-zone.component';
-import { LearningCategoryDetailComponent } from './zone/learning-zone/learning-category-detail/learning-category-detail.component';
 import { SkillZoneCategoryComponent } from './zone/skill-zone/skill-zone-category/skill-zone-category.component';
 import { LoginComponent } from './auth/login/login.component';
 import { InternationalZoneComponent } from './zone/international-zone/international-zone.component';
 import { PlacementZoneComponent } from './zone/placement-zone/placement-zone.component';
-import { InternationalZoneDetailsComponent } from './zone/international-zone/international-zone-details/international-zone-details.component';
-import { RegistrationComponent } from './zone/international-zone/registration/registration.component';
 import { FormsModule } from '@angular/forms';
 import { EntrepreneurZoneComponent } from './zone/entrepreneur-zone/entrepreneur-zone.component';
+import { EntrepreneurRegistrationComponent } from './zone/entrepreneur-zone/entrepreneur-registration/entrepreneur-registration.component';
+import { InternationalRegistrationComponent } from './zone/international-zone/international-registration/international-registration.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { HomeComponent } from './home/home.component';
+import { LearningZoneCategoryComponent } from './zone/learning-zone/learning-zone-category/learning-zone-category.component';
+import { ComingSoonComponent } from './shared/coming-soon/coming-soon.component';
+import { ZoneArticlesComponent } from './shared/zone-articles/zone-articles.component';
+import { LoaderComponent } from './shared/loader/loader.component';
+import { LoaderService } from './services/loader.service';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { SafeUrlPipe } from './shared/safe-url.pipe';
+import { AssessmentComponent } from './shared/assessment/assessment.component';
 
 @NgModule({
   declarations: [
@@ -27,22 +37,33 @@ import { EntrepreneurZoneComponent } from './zone/entrepreneur-zone/entrepreneur
     DashboardComponent,
     LearningZoneComponent,
     SkillZoneComponent,
-    LearningCategoryDetailComponent,
     SkillZoneCategoryComponent,
     LoginComponent,
     InternationalZoneComponent,
     PlacementZoneComponent,
-    InternationalZoneDetailsComponent,
-    RegistrationComponent,
     EntrepreneurZoneComponent,
+    EntrepreneurRegistrationComponent,
+    InternationalRegistrationComponent,
+    LeaderboardComponent,
+    HomeComponent,
+    LearningZoneCategoryComponent,
+    ComingSoonComponent,
+    ZoneArticlesComponent,
+    LoaderComponent,
+    SafeUrlPipe,
+    AssessmentComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     FormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    LoaderService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

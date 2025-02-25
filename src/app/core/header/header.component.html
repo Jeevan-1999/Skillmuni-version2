@@ -2,9 +2,9 @@
     <div class="container-fluid">
         <!-- Left Section: Logo -->
         <div class="left-section d-flex align-items-center">
-            <img src="assets/icons/skillmuni-desktop-icon.png" routerLink="/dashboard" alt="Skillmuni Logo"
+            <img src="assets/icons/skillmuni-desktop-icon.png" routerLink="/home" alt="Skillmuni Logo"
                 class="logo-left desktop-only" />
-            <img src="assets/icons/skillmuni-mobile-icon.png" routerLink="/dashboard" alt="Skillmuni Logo"
+            <img src="assets/icons/skillmuni-mobile-icon.png" routerLink="/home" alt="Skillmuni Logo"
                 class="logo-left mobile-only" />
         </div>
 
@@ -16,6 +16,7 @@
                     <i class="material-icons">home</i>
                     <span>My Home</span>
                 </a>
+                <div class="underline" *ngIf="activeLink === 'home'"></div>
             </li>
             <li class="nav-item">
                 <a class="nav-link" [ngClass]="{'active': activeLink === 'leaderboard'}"
@@ -23,6 +24,7 @@
                     <i class="material-icons">leaderboard</i>
                     <span>Leaderboard</span>
                 </a>
+                <div class="underline" *ngIf="activeLink === 'leaderboard'"></div>
             </li>
             <li class="nav-item">
                 <a class="nav-link" [ngClass]="{'active': activeLink === 'dashboard'}"
@@ -30,13 +32,19 @@
                     <i class="material-icons">dashboard</i>
                     <span>Dashboard</span>
                 </a>
+                <div class="underline" *ngIf="activeLink === 'dashboard'"></div>
             </li>
         </ul>
 
+
         <!-- Right Section: Avatar and Profile Icon -->
         <div class="right-section d-flex align-items-center">
-            <img src="assets/icons/chat-icon.png" alt="Profile Icon" class="profile-icon" />
-            <div class="name-logo">S</div>
+            <div class="right-icons">
+                <img src="assets/icons/chat-icon.png" alt="Profile Icon" class="profile-icon" />
+                <img [src]="userProfileImg" alt="" class="name-logo">
+            </div>
+            &nbsp;&nbsp;
+            <i class="material-icons" style="cursor: pointer;" (click)="signOut()">logout</i>
         </div>
     </div>
 </nav>

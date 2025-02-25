@@ -1,0 +1,74 @@
+<div class="details-container">
+    <!-- Fixed Header -->
+    <div class="header">
+        <img src="assets/icons/back-arrow.png" alt="Back Icon" class="back-button" (click)="onBackClick()" />
+        <div class="title-container">
+            <h1>{{ title }}</h1>
+            <img src="assets/icons/long-arrow.png" alt="Arrow" class="long-arrow" />
+            <h2>{{ subtitle }}</h2>
+        </div>
+        <img src="assets/icons/category-icon.png" alt="Category Icon" class="header-icon" />
+    </div>
+
+    <!-- Total Stats Section -->
+    <div class="total-stats">
+        <div class="stat-box">
+            <img src="assets/icons/bulb-icon.png" alt="Quiz Icon" class="stat-icon" />
+            <p><span>Quiz: 1 <span style="color: #f7931e;">/106 SOLVED</span></span></p>
+        </div>
+
+        <div class="stat-box">
+            <img src="assets/icons/credits-icon.png" alt="credits Icon" class="stat-icon" />
+            <p><span>Credits: 3<span style="color: #f7931e;"> EARNED</span></span></p>
+        </div>
+    </div>
+
+    <!-- Scrollable Reel Container -->
+    <div #contentContainer class="scroll-container">
+        <div *ngFor="let article of articles; let i = index" [class.active]="currentIndex === i" class="scroll-item">
+            <div class="card">
+                <div class="card-header">
+                    <h2>{{ article.articleTitle }}</h2>
+                    <div class="article-icons">
+                        <img src="assets/icons/bookmark-icon.png" alt="Bookmark" class="header-article-icon" />
+                        <img src="assets/icons/share-icon.png" alt="Share" class="header-article-icon" />
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ng-container *ngIf="article.isVideo; else imageTemplate">
+                        <iframe [src]="article.articleImage | safeUrl" height="260px" width="50%"
+                            frameborder="0"></iframe>
+                    </ng-container>
+                    <ng-template #imageTemplate>
+                        <img [src]="article.articleImage" alt="{{ article.articleTitle }}" class="card-image" />
+                    </ng-template>
+
+                    <div class="card-content">
+                        <p>{{ article.articleContent }}</p>
+                        <button *ngIf="title === 'International Zone' || title === 'Entrepreneur Zone'; else testButton"
+                            class="test-button" (click)="navigateToRegister()">
+                            Register
+                        </button>
+
+                        <ng-template #testButton>
+                            <button class="test-button" (click)="navigateToTest(article)">
+                                Test Yourself
+                            </button>
+                        </ng-template>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <p (click)="nextCard()" style="cursor: pointer;">
+                        Swipe up for more
+                        <span class="material-icons">arrow_upward</span>
+                    </p>
+                    <div class="footer-icons">
+                        <span class="material-icons">thumb_up</span>
+                        <span class="material-icons">thumb_down</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

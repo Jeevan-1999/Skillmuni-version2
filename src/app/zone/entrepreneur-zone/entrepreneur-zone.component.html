@@ -1,7 +1,7 @@
-<div class="entrepreneur-zone-container">
+<div class="entrepreneur-zone-container" *ngIf="!showComingSoon">
     <!-- Header -->
     <div class="header">
-        <img src="assets/icons/back-arrow.png" alt="Back Icon" routerLink="" class="back-button" />
+        <img src="assets/icons/back-arrow.png" alt="Back Icon" routerLink="/home" class="back-button" />
         <div class="title-container">
             <h1>Entrepreneur Zone</h1>
             <img src="assets/icons/long-arrow.png" alt="Arrow" class="long-arrow" />
@@ -11,14 +11,14 @@
 
     <!-- Section 1: Entrepreneurial Quotient -->
     <div class="section Entrepreneur">
-        <div class="section-header ">
+        <div class="section-header">
             <h2 class="section-title">
                 Check your <span class="highlight">Entrepreneur Quotient</span>
             </h2>
-            <div class="section-line"></div> <!-- Horizontal line in the same row -->
+            <div class="section-line"></div>
         </div>
 
-        <div class="eq-banner">
+        <div class="eq-banner" (click)="navigateToEntrepreneurialQuotient()">
             <div class="eq-content">
                 <img src="assets/cards/entrepreneurial-quotient.jpg" alt="Entrepreneurial Quotient" class="eq-image" />
                 <p class="eq-title">Are You Born to Lead? Find Out! <span>→</span></p>
@@ -27,46 +27,21 @@
     </div>
     <br>
 
+    <!-- Section 2: Opportunities -->
     <div class="section">
         <div class="section-header">
-            <h2 class="section-title">
-                Explore <span class="highlight">Opportunities</span>
-            </h2>
-            <div class="section-line"></div> <!-- Horizontal line in the same row -->
+            <h2 class="section-title">Explore <span class="highlight">Opportunities</span></h2>
+            <div class="section-line"></div>
         </div>
+
         <div class="card-container">
-            <div class="opportunity-card">
+            <div *ngFor="let card of opportunityCards" class="opportunity-card"
+                (click)="fetchBriefListWithAcademy(card.tileCode, card.title, card.id_academic_tile)">
                 <div class="card-content">
-                    <img class="opportunity-image" src="assets/cards/social.png" alt="Social Entrepreneur" />
+                    <img class="opportunity-image" [src]="card.image" [alt]="card.title" />
                     <div class="card-details">
-                        <p class="opportunity-title">Social Entrepreneur</p>
-                        <p class="opportunity-description">Want to become a Social Entrepreneur?</p>
-                        <div class="card-explore">
-                            <span class="explore-text">Explore →</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="opportunity-card">
-                <div class="card-content">
-                    <img class="opportunity-image" src="assets/cards/gamification.png" alt="Gamification Consultant" />
-                    <div class="card-details">
-                        <p class="opportunity-title">Gamification Consultant</p>
-                        <p class="opportunity-description">Step Into Corporate Gamification Consulting!</p>
-                        <div class="card-explore">
-                            <span class="explore-text">Explore →</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="opportunity-card">
-                <div class="card-content">
-                    <img class="opportunity-image" src="assets/cards/fintech-idea.png" alt="Social Entrepreneur" />
-                    <div class="card-details">
-                        <p class="opportunity-title">Your Fintech Idea</p>
-                        <p class="opportunity-description">Want to bring your Fintech idea to life?</p>
+                        <p class="opportunity-title">{{ card.title }}</p>
+                        <p class="opportunity-description">{{ card.description }}</p>
                         <div class="card-explore">
                             <span class="explore-text">Explore →</span>
                         </div>
@@ -76,3 +51,9 @@
         </div>
     </div>
 </div>
+
+<!-- Coming Soon Component -->
+<app-coming-soon *ngIf="showComingSoon" [zoneTitle]="comingSoonData.zoneTitle" [subtitle]="comingSoonData.subtitle"
+    [cardTitle]="comingSoonData.cardTitle" [imageUrl]="comingSoonData.imageUrl"
+    [description]="comingSoonData.description" (backClicked)="showComingSoon = false">
+</app-coming-soon>

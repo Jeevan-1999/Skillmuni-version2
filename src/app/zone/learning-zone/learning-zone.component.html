@@ -1,8 +1,7 @@
-<!-- Learning Zone Component HTML -->
-<div class="learning-zone-container">
+<div class="learning-zone-container" *ngIf="!showComingSoon">
     <!-- Header -->
     <div class="header">
-        <img src="assets/icons/back-arrow.png" alt="Back Icon" routerLink="" class="back-button" />
+        <img src="assets/icons/back-arrow.png" alt="Back Icon" routerLink="/home" class="back-button" />
         <div class="title-container">
             <h1>Learning Zone</h1>
             <img src="assets/icons/long-arrow.png" alt="Arrow" class="long-arrow" />
@@ -11,25 +10,41 @@
     </div>
 
     <!-- Knowledge Hub Section -->
-    <div class="section">
+    <div class="section" style="width: 80%;">
         <div class="section-header">
             <h2 class="section-title">
                 Knowledge <span class="highlight">Hub</span>
             </h2>
             <div class="section-line"></div>
+            <!-- Collapse Icon -->
+            <span class="collapse-icon" (click)="toggleKnowledgeHub()">
+                <i class="material-icons">
+                    {{ knowledgeHubCollapsed ? 'expand_more' : 'expand_less' }}
+                </i>
+            </span>
         </div>
-        <div class="card-container">
-            <div class="card" *ngFor="let item of knowledgeHubCards">
+
+        <!-- Card Container (Show/Hide based on condition) -->
+        <div class="card-container" *ngIf="!knowledgeHubCollapsed">
+            <div class="card" *ngFor="let item of knowledgeHubCards" (click)="navigateToDetail(item)">
                 <div class="card-heading">
-                    <p class="card-title">{{ item.title }}</p>
+                    <p class="card-title">{{ item.title | uppercase }}</p>
                     <div class="card-arrow">
-                        <span>→</span>
+                        <i class="material-icons arrow">east</i>
                     </div>
                 </div>
+                <!-- Horizontal orange line below the card-title -->
+                <div class="card-line"></div>
                 <img [src]="item.image" alt="{{ item.title }}" class="card-image" />
             </div>
+            <div class="card">
+                <img src="assets/cards/coming-soon-card.png" alt="" class="coming-soon-card">
+            </div>
         </div>
+
+
     </div>
+
 
     <!-- Learn and Play Section -->
     <div class="play-section">
@@ -38,20 +53,53 @@
                 Learn and <span class="play-highlight">Play</span>
             </h2>
             <div class="play-section-line"></div>
+            <div class="play-card-stats"
+                style="background-color: #ECF0FF;border: 1px solid#BFCEFF; width: 320px;justify-content: space-around; ">
+                <p class="play-card-solved">
+                    <img src="assets/icons/bulb-icon.png" alt="">6
+                    <span style="color: #f7931e;">/1106 SOLVED</span>
+                </p>
+                <p class="play-card-goals">
+                    <img src="assets/icons/credits-icon.png" alt="">45
+                    <span style="color: #f7931e;">CREDITS</span>
+                </p>
+            </div>
         </div>
         <div class="play-card-container">
-            <div class="play-card" *ngFor="let card of learnAndPlayCards">
+            <div class="play-card" *ngFor="let card of learningZoneCards" (click)="navigateToDetail(card)">
                 <div class="play-card-content">
                     <img [src]="card.image" alt="{{ card.title }}" class="play-card-image-left" />
                     <div class="play-card-details">
-                        <p class="play-card-title">{{ card.title }}</p>
+                        <p class="play-card-title">{{ card.title | uppercase }}</p>
+                        <div class="horizontal-line"></div>
                         <div class="play-card-stats">
-                            <p class="play-card-solved">🏆 {{ card.solved }} SOLVED</p>
-                            <p class="play-card-goals">⚽ {{ card.goals }} GOALS</p>
+                            <p class="play-card-solved">
+                                <img src="assets/icons/bulb-icon.png" alt=""> {{ card.solved }}
+                                <span style="color: #f7931e;">SOLVED</span>
+                            </p>
+                            <p class="play-card-goals">
+                                <img src="assets/icons/credits-icon.png" alt=""> {{ card.credits }}
+                                <span style="color: #f7931e;">CREDITS</span>
+                            </p>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
+
+    <div class="ad-container" *ngIf="showAd">
+        <div class="ad">
+            AD PLACEHOLDER
+            <span class="ad-close" (click)="hideAd()">✕</span>
+        </div>
+    </div>
+
 </div>
+
+<!-- Coming Soon Component -->
+<app-coming-soon *ngIf="showComingSoon" [zoneTitle]="comingSoonData.zoneTitle" [subtitle]="comingSoonData.subtitle"
+    [cardTitle]="comingSoonData.cardTitle" [imageUrl]="comingSoonData.imageUrl"
+    [description]="comingSoonData.description" (backClicked)="showComingSoon = false">
+</app-coming-soon>

@@ -1,14 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LearnAndPlayService } from 'src/app/services/learn-and-play.service';
-
-// Define an interface for the learnAndPlayCard
-interface LearnAndPlayCard {
-  title: string;
-  image: string;
-  solved: string;
-  goals: string;
-}
+import { ZoneService } from 'src/app/services/zone.service';
 
 @Component({
   selector: 'app-skill-zone',
@@ -16,18 +8,39 @@ interface LearnAndPlayCard {
   styleUrls: ['./skill-zone.component.css']
 })
 export class SkillZoneComponent implements OnInit {
-  learnAndPlayCards: LearnAndPlayCard[] = [];  // Specify the type here
+  skillZoneCards: any[] = [];
+  showAd: boolean = true;
 
-  constructor(
-    private router: Router,
-    private learnAndPlayService: LearnAndPlayService
-  ) { }
+  constructor(private router: Router, private zoneService: ZoneService) { }
 
   ngOnInit(): void {
-    this.learnAndPlayCards = this.learnAndPlayService.getLearnAndPlayCards();
+    this.fetchSkillZoneCards();
   }
 
-  navigateToCategory(title: string) {
-    this.router.navigate(['/skill-zone-category', title]);
+  fetchSkillZoneCards() {
+    this.zoneService.getSkillZoneCards().subscribe(
+      (data: any[]) => {
+        this.skillZoneCards = data
+          .filter(item => item.status === "A") // Only active items
+          .map(item => ({
+            id_academic_tile: item.id_academic_tile,
+            title: item.tile_name,
+            image: item.tile_image,
+            solved: '1111/9999',
+            credits: '99'
+          }));
+      },
+      error => {
+        console.error('Error fetching skill zone cards:', error);
+      }
+    );
+  }
+
+  navigateToCategory(card: any) {
+    this.router.navigate(['/skill-zone-category', card.id_academic_tile, encodeURIComponent(card.title)]);
+  }
+
+  hideAd() {
+    this.showAd = false; // Hides the ad on click
   }
 }
