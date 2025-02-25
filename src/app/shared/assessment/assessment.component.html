@@ -35,11 +35,21 @@
 
         <!-- Options -->
         <div class="options-container">
-            <label *ngFor="let option of question.options" class="option"
-                [class.selected]="question.selectedOption === option.text">
+            <label *ngFor="let option of question.options" class="option" [ngClass]="{
+                        'selected': question.selectedOption === option.text,
+                        'correct': submitted && option.isCorrect === 1,
+                        'wrong': submitted && option.isCorrect === 0 && question.selectedOption === option.text
+                   }">
                 <span class="option-text">{{ option.text }}</span>
-                <input type="radio" [name]="'question-' + i" [value]="option.text"
-                    [(ngModel)]="question.selectedOption" />
+                <input type="radio" [name]="'question-' + i" [value]="option.text" [(ngModel)]="question.selectedOption"
+                    [disabled]="submitted" />
+
+                <!-- Correct/Incorrect Indicators -->
+                <div *ngIf="submitted && question.selectedOption === option.text" class="answer-indicator">
+                    <span class="icon"
+                        [ngClass]="{'icon-correct': option.isCorrect === 1, 'icon-wrong': option.isCorrect === 0}"></span>
+                    <span class="status-text">{{ option.isCorrect === 1 ? '✔ Correct' : '✖ Incorrect' }}</span>
+                </div>
             </label>
         </div>
     </div>

@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ZoneService } from 'src/app/services/zone.service';
 import { Location } from '@angular/common';
-
+import { QuestionItem, AnswerOption } from 'src/app/models/assessment.model';
 
 @Component({
   selector: 'app-assessment',
@@ -12,17 +12,19 @@ import { Location } from '@angular/common';
 export class AssessmentComponent implements OnInit {
   @Input() title: string = '';
   @Input() subtitle: string = '';
-  questions: any[] = [];
+  // Use the interface type instead of any
+  questions: QuestionItem[] = [];
   briefCode: string = '';
   previousArticles: any[] = []; // Store previous articles
+  submitted: boolean = false;
+  score: number = 0;
 
-  constructor(private route: ActivatedRoute, private zoneService: ZoneService, private location: Location,
-  ) { }
+  constructor(private route: ActivatedRoute, private zoneService: ZoneService, private location: Location) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.briefCode = params['brfcode'];
-      this.title = params['title'] || 'Assessment'; // Use default if not provided
+      this.title = params['title'] || 'Assessment';
       this.subtitle = params['subtitle'] || '';
 
       if (this.briefCode) {
@@ -37,9 +39,9 @@ export class AssessmentComponent implements OnInit {
         console.log('Assessment API Response:', data);
 
         if (data.briefDatals?.QTNLIST) {
-          this.questions = data.briefDatals.QTNLIST.map((item: any) => ({
+          this.questions = data.briefDatals.QTNLIST.map((item: any): QuestionItem => ({
             text: item.question.brief_question,
-            options: item.answers.map((ans: any) => ({
+            options: item.answers.map((ans: any): AnswerOption => ({
               text: ans.brief_answer,
               isCorrect: ans.is_correct_answer
             })),
@@ -53,12 +55,26 @@ export class AssessmentComponent implements OnInit {
     );
   }
 
-
   onBackClick() {
     this.location.back();
   }
 
   submitAnswers() {
+    this.submitted = true;
+    this.score = 0;
+    // Now TypeScript knows that each option is an AnswerOption, so 'opt' is inferred correctly.
+    this.questions.forEach(question => {
+      const selectedOption = question.options.find(opt => opt.text === question.selectedOption);
+      if (selectedOption) {
+        question.answerStatus = selectedOption.isCorrect === 1 ? 'correct' : 'wrong';
+        if (selectedOption.isCorrect === 1) {
+          this.score++;
+        }
+      } else {
+        question.answerStatus = 'unanswered';
+      }
+    });
     console.log('User answers:', this.questions);
+    console.log('Score:', this.score);
   }
 }

@@ -142,16 +142,19 @@
 }
 
 .option {
-  background: #dbe3ff;
-  border: 1px solid #beccff;
-  padding: 5px;
+  background: #e0e7ff;
+  border: 1px solid #b2c2ff;
+  padding: 12px;
   display: flex;
-  justify-content: space-between; /* pushes radio to the right */
+  justify-content: space-between;
   align-items: center;
   cursor: pointer;
   transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
-  padding-right: 15px; /* adds space on the right */
-  border-radius: 8px;
+  border-radius: 12px;
+  position: relative;
+  font-size: 14px;
+  font-weight: 500;
+  color: #34437a;
 }
 
 .option-text {
@@ -249,4 +252,35 @@
 
 .submit-btn:hover .submit-icon {
   transform: translateX(10px);
+}
+.option.correct {
+  background-color: #d4edda; /* Light green */
+  border: 1px solid #28a745;
+  color: #155724;
+  position: relative;
+}
+.option.wrong {
+  background-color: #f8d7da; /* Light red */
+  border: 1px solid #dc3545;
+  color: #721c24;
+  position: relative;
+}
+.answer-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  right: 12px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.icon-correct {
+  background-color: #28a745;
+  padding: 5px;
+}
+
+.icon-wrong {
+  background-color: #dc3545;
+  padding: 5px;
 }
